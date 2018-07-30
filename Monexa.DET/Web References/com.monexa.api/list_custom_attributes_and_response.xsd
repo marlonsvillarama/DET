@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="ListCustomAttributesRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="LIST_CUSTOM_ATTRIBUTES" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LIST_CUSTOM_ATTRIBUTES">
+    <xsd:annotation>
+      <xsd:documentation>
+				The LIST_CUSTOM_ATTRIBUTES request will return all custom attributes configured for a provider.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for the List Account History Request:
+					LIST_CUSTOM_ATTRIBUTES: provider_id
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="provider_id" />
+        <xsd:element minOccurs="0" ref="record_type" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_LIST_CUSTOM_ATTRIBUTES">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Custom_Attribute_Entry" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

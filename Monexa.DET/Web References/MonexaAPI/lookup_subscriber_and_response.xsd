@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="LookupSubscriberRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="LOOKUP_SUBSCRIBER" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LOOKUP_SUBSCRIBER">
+    <xsd:annotation>
+      <xsd:documentation>
+				The Lookup Subscriber transaction will return information about an existing Subscriber
+				Account. In the case where the Subscriber Account does not exist, an error will be
+				returned.
+
+				Performing a Lookup Subscriber on a Master Account with master_account_id as a
+				parameter will return Subscriber_Information for any Sub Accounts.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for the Lookup Subscriber Request:
+						LOOKUP_SUBSCRIBER: account_id | master_account_id | Account_Namespace
+			</xsd:documentation>
+      <xsd:documentation>
+				Sensitive Information
+					The following fields are not returned in a Lookup Subscriber response:
+						Password
+					The following fields are returned in masked format in a Lookup Subscriber response:
+						Credit Card Details
+						Bank Account Details
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="master_account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_LOOKUP_SUBSCRIBER">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="Subscriber_Information" type="REP_LOOK_SUB_SUBSCRIBER_INFORMATION_TYPE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="REP_LOOK_SUB_SUBSCRIBER_INFORMATION_TYPE">
+    <xsd:sequence>
+      <xsd:element name="Account_Information" type="REP_LOOK_SUB_ACCOUNT_INFORMATION_TYPE" />
+      <xsd:element name="Billing_Information" type="REP_LOOK_SUB_BILLING_INFORMATION_TYPE" />
+      <xsd:element name="Contact_Information" type="REP_LOOK_SUB_CONTACT_INFORMATION_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_LOOK_SUB_ACCOUNT_INFORMATION_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="account_id" />
+      <xsd:element ref="login_id" />
+      <xsd:element ref="external_group_id" />
+      <xsd:element ref="provider_id" />
+      <xsd:element ref="provider_name" />
+      <xsd:element ref="office_id" />
+      <xsd:element ref="office_name" />
+      <xsd:element name="Plan" type="REP_LOOK_SUB_ACT_PLAN_TYPE" />
+      <xsd:element ref="account_status" />
+      <xsd:element ref="account_status_note" />
+      <xsd:element ref="cancellation_reason" />
+      <xsd:element minOccurs="0" ref="invoice_notify_flag" />
+      <xsd:element minOccurs="0" ref="statement_notify_flag" />
+      <xsd:element minOccurs="0" ref="sales_representative_name" />
+      <xsd:element minOccurs="0" ref="sales_representative_email" />
+      <xsd:element minOccurs="0" ref="promo_code" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_LOOK_SUB_ACT_PLAN_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="provider_id" />
+      <xsd:element ref="plan_id" />
+      <xsd:element minOccurs="0" ref="name" />
+      <xsd:element name="Plan_Discount_Type" type="REP_LOOK_SUB_PLAN_DISCOUNT_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Plan_Service" type="REP_LOOK_SUB_PLAN_SERVICE_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_LOOK_SUB_PLAN_DISCOUNT_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="discount_type_id" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_LOOK_SUB_PLAN_SERVICE_TYPE">
+    <xsd:sequence>
+      <xsd:element name="Service_Group" type="REP_LOOK_SUB_SERVICE_GROUP_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_LOOK_SUB_SERVICE_GROUP_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="service_group_id" />
+      <xsd:element name="description" type="string64" />
+      <xsd:element name="Service" type="REP_LOOK_SUB_SERVICE_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_LOOK_SUB_SERVICE_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="service_id" />
+      <xsd:element name="description" type="string64" />
+      <xsd:element minOccurs="0" ref="Service_Parameter" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_LOOK_SUB_BILLING_INFORMATION_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="payment_method" />
+      <xsd:element minOccurs="0" ref="Credit_Card_Information" />
+      <xsd:element minOccurs="0" ref="Bank_Account_Information" />
+      <xsd:element minOccurs="0" ref="PayPal_Information" />
+      <xsd:element ref="Start_Date" />
+      <xsd:element ref="Expiry_Date" />
+      <xsd:element ref="billing_day" />
+      <xsd:element ref="billing_frequency" />
+      <xsd:element minOccurs="0" ref="contract_term" />
+      <xsd:element minOccurs="0" ref="currency" />
+      <xsd:element minOccurs="0" name="Price_Book" type="REP_LOOK_SUB_PRICE_BOOK_TYPE" />
+      <xsd:element ref="Billed_Up_To_Date" />
+      <xsd:element ref="Overtime_Billed_Up_To_Date" />
+      <xsd:element minOccurs="0" ref="Last_Payment_Attempt_Date" />
+      <xsd:element minOccurs="0" ref="last_payment_amount" />
+      <xsd:element minOccurs="0" ref="Last_Payment_Date" />
+      <xsd:element minOccurs="0" ref="number_failed_payment_attempts" />
+      <xsd:element minOccurs="0" ref="current_balance" />
+      <xsd:element minOccurs="0" ref="Earliest_Amount_Owing_Date" />
+      <xsd:element minOccurs="0" ref="tax_exempt" />
+      <xsd:element minOccurs="0" ref="tax_exempt_document_type" />
+      <xsd:element minOccurs="0" ref="tax_exempt_document_reference" />
+      <xsd:element minOccurs="0" ref="Tax_Exempt_Start_Date" />
+      <xsd:element minOccurs="0" ref="Tax_Exempt_End_Date" />
+      <xsd:element minOccurs="0" ref="Business_Rules_Class" />
+      <xsd:element ref="setup_fee_applied_flag" />
+      <xsd:element minOccurs="0" ref="po_number" />
+      <xsd:element minOccurs="0" ref="collection_status" />
+      <xsd:element minOccurs="0" ref="credit_limit" />
+      <xsd:element minOccurs="0" ref="trial_balance" />
+      <xsd:element minOccurs="0" ref="Trial_Balance_Date" />
+      <xsd:element minOccurs="0" ref="contract_minimum" />
+      <xsd:element minOccurs="0" ref="auto_pay_day" />
+      <xsd:element minOccurs="0" ref="Auto_Pay_Run_Date" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_LOOK_SUB_PRICE_BOOK_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="internal_price_book_id" />
+      <xsd:element minOccurs="0" ref="price_book_id" />
+      <xsd:element minOccurs="0" ref="price_book_name" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_LOOK_SUB_CONTACT_INFORMATION_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="first_name" />
+      <xsd:element ref="last_name" />
+      <xsd:element ref="company" />
+      <xsd:element ref="contact_email" />
+      <xsd:element minOccurs="0" ref="Bill_To_Address" />
+      <xsd:element ref="Ship_To_Address" />
+      <xsd:element ref="timezone" />
+      <xsd:element ref="phone_number_1" />
+      <xsd:element ref="phone_number_2" />
+      <xsd:element ref="fax_number" />
+      <xsd:element ref="notes" />
+      <xsd:element ref="external_account_id" />
+      <xsd:element ref="language" />
+      <xsd:element ref="verification_question" />
+      <xsd:element ref="verification_answer" />
+      <xsd:element ref="receive_provider_marketing" />
+      <xsd:element ref="receive_third_party_marketing" />
+      <xsd:element minOccurs="0" ref="master_account_id" />
+      <xsd:element ref="referral" />
+      <xsd:element minOccurs="0" name="custom_field_1" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_2" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_3" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_4" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_5" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_6" type="string1024" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

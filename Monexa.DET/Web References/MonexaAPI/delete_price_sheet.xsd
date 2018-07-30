@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="DeletePriceSheetRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="DELETE_PRICE_SHEET" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="DELETE_PRICE_SHEET">
+    <xsd:annotation>
+      <xsd:documentation>
+			The DELETE_PRICE_SHEET request will delete an existing Price Sheet in iTAPP.
+			
+			NOTE: A Price Sheet cannot be deleted if an Account or Subscriber in the system is
+			using the Price Sheet.
+		</xsd:documentation>
+      <xsd:documentation>
+			The following is the list of Required Fields for the Delete Price Sheet Request:
+			DELETE_PRICE_SHEET: internal_price_sheet_id
+		</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="internal_price_sheet_id" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

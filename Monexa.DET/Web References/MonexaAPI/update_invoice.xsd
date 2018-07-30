@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="UpdateInvoiceRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="UPDATE_INVOICE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="UPDATE_INVOICE">
+    <xsd:annotation>
+      <xsd:documentation>
+			  	The UPDATE_INVOICE request will allow update of External Invoice Number of an existing Invoice in Monexa.
+			</xsd:documentation>
+      <xsd:documentation>
+				The following is the list of Required Fields for the Update Invoice Request:
+				UPDATE_INVOICE: account_id | Account_Namespace, invoice_number, external_invoice_number
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element ref="invoice_number" />
+        <xsd:element ref="external_invoice_number" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

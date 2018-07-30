@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="SearchServiceRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="SEARCH_SERVICE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SEARCH_SERVICE">
+    <xsd:annotation>
+      <xsd:documentation>
+			Search Service will return the specified Service by id or all Services if id not specified.
+		</xsd:documentation>
+      <xsd:documentation>
+			Required Fields
+				The following is the list of Required Fields for the List Account History Request:
+					SEARCH_SERVICE: provider_id
+		</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="provider_id" />
+        <xsd:element minOccurs="0" ref="service_id" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_SEARCH_SERVICE">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Service" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="CreateServiceRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="CREATE_SERVICE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="CREATE_SERVICE">
+    <xsd:annotation>
+      <xsd:documentation>
+				The Create Service operation will add one or more services to a provider.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of required fields for the Create Service request:
+						provider_id
+						Service*
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="provider_id" />
+        <xsd:element minOccurs="1" maxOccurs="unbounded" ref="Service" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

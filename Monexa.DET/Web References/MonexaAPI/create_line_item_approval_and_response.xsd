@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="CreateLineItemApprovalRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element minOccurs="0" ref="Request_By_Account" />
+        <xsd:element ref="CREATE_LINE_ITEM_APPROVAL" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="CREATE_LINE_ITEM_APPROVAL">
+    <xsd:annotation>
+      <xsd:documentation>
+				The Create Line Item Approval operation will create line item one or more approvals or rejections.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of required fields for the Create Line Item Approval request:
+						line_item_id
+						Line_Item_Approval: line_item_id, approval_action, and optionally comment
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Line_Item_Approval" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_CREATE_LINE_ITEM_APPROVAL">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Line_Item_Approval_Error" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

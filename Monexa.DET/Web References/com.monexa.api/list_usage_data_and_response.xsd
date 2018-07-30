@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="ListUsageDataRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="LIST_USAGE_DATA" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LIST_USAGE_DATA">
+    <xsd:annotation>
+      <xsd:documentation>
+				List Usage Data will return detailed usage data information for the specified Account.
+				Note If the optional Date parameters are not specified, the Start_Date will default to
+				the first of the current month and the End_Date will default to today's date.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for the List Usage Data Request:
+					    LIST_USAGE_DATA: account_id | Account_Namespace
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element ref="service_id" />
+        <xsd:element minOccurs="0" ref="Start_Date" />
+        <xsd:element minOccurs="0" ref="End_Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_LIST_USAGE_DATA">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="account_id" />
+        <xsd:element ref="service_id" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Usage_Data" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

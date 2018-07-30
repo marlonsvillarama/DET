@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="GetSessionKeyRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="GET_SESSION_KEY" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GET_SESSION_KEY">
+    <xsd:annotation>
+      <xsd:documentation>
+				Get Session Key call is used to request a session key. The SILENT_ORDER_POST session
+				key is an Account specific one time use key that allows use of Silent Order Post.
+				The lifetime of a session key is included in the API response. Once a key has expired,
+				it can no longer be used. 
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for the Get Session Key Request:
+					    GET_SESSION_KEY: account_id | Account_Namespace
+					    GET_SESSION_KEY: session_type
+					    GET_SESSION_KEY: session_information
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element ref="session_type" />
+        <xsd:element ref="session_information" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_GET_SESSION_KEY">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Session_Key" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

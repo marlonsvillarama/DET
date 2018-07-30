@@ -1,0 +1,1858 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.monexa.com/wsdl" xmlns:types="http://www.monexa.com" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.monexa.com/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://www.monexa.com" location="Monexa.xsd" />
+  <wsdl:types />
+  <wsdl:message name="createAccountHistoryReq">
+    <wsdl:part name="createAccountHistoryParam" element="types:CreateAccountHistoryRequest" />
+  </wsdl:message>
+  <wsdl:message name="createAccountHistoryResponse">
+    <wsdl:part name="createAccountHistoryParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="createAccountPaymentScheduleReq">
+    <wsdl:part name="createAccountPaymentScheduleReqParameters" element="types:CreateAccountPaymentScheduleRequest" />
+  </wsdl:message>
+  <wsdl:message name="createAccountPaymentScheduleResponse">
+    <wsdl:part name="createAccountPaymentScheduleResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="createBillingLineItemReq">
+    <wsdl:part name="createBillingLineItemParam" element="types:CreateBillingLineItemRequest" />
+  </wsdl:message>
+  <wsdl:message name="createBillingLineItemResponse">
+    <wsdl:part name="createBillingLineItemResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="createBillableEventReq">
+    <wsdl:part name="createBillableEventParam" element="types:CreateBillableEventRequest" />
+  </wsdl:message>
+  <wsdl:message name="createBillableEventResponse">
+    <wsdl:part name="createBillableEventResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="createInvoiceReq">
+    <wsdl:part name="createInvoiceParam" element="types:CreateInvoiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="createInvoiceResponse">
+    <wsdl:part name="createInvoiceResponseParameters" element="types:Response_CREATE_INVOICE" />
+  </wsdl:message>
+  <wsdl:message name="createLineItemApprovalReq">
+    <wsdl:part name="createLineItemApprovalParam" element="types:CreateLineItemApprovalRequest" />
+  </wsdl:message>
+  <wsdl:message name="createLineItemApprovalResponse">
+    <wsdl:part name="createLineItemApprovalResponseParameters" element="types:Response_CREATE_LINE_ITEM_APPROVAL" />
+  </wsdl:message>
+  <wsdl:message name="createPlanReq">
+    <wsdl:part name="createPlanReqParam" element="types:CreatePlanRequest" />
+  </wsdl:message>
+  <wsdl:message name="createPlanResponse">
+    <wsdl:part name="createPlanResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="createPriceBookReq">
+    <wsdl:part name="createPriceBookReqParam" element="types:CreatePriceBookRequest" />
+  </wsdl:message>
+  <wsdl:message name="createPriceBookResponse">
+    <wsdl:part name="createPriceBookResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="createPriceSheetReq">
+    <wsdl:part name="createPriceSheetReqParam" element="types:CreatePriceSheetRequest" />
+  </wsdl:message>
+  <wsdl:message name="createPriceSheetResponse">
+    <wsdl:part name="createPriceSheetResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="createProductReq">
+    <wsdl:part name="createProductReqParam" element="types:CreateProductRequest" />
+  </wsdl:message>
+  <wsdl:message name="createProductResponse">
+    <wsdl:part name="createProductResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="createServiceReq">
+    <wsdl:part name="createServiceReqParam" element="types:CreateServiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="createServiceResponse">
+    <wsdl:part name="createServiceResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="createServiceGroupReq">
+    <wsdl:part name="createServiceGroupReqParam" element="types:CreateServiceGroupRequest" />
+  </wsdl:message>
+  <wsdl:message name="createServiceGroupResponse">
+    <wsdl:part name="createServiceGroupResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="createSubscriberReq">
+    <wsdl:part name="createSubscriberReqParameters" element="types:CreateSubscriberRequest" />
+  </wsdl:message>
+  <wsdl:message name="createSubscriberResponse">
+    <wsdl:part name="createSubscriberResponseParameters" element="types:Response_CREATE_SUBSCRIBER" />
+  </wsdl:message>
+  <wsdl:message name="createUserSettingReq">
+    <wsdl:part name="createUserSettingReqParameters" element="types:CreateUserSettingRequest" />
+  </wsdl:message>
+  <wsdl:message name="createUserSettingResponse">
+    <wsdl:part name="createUserSettingResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkPasswordReq">
+    <wsdl:part name="checkPasswordParameters" element="types:CheckPasswordRequest" />
+  </wsdl:message>
+  <wsdl:message name="checkPasswordResponse">
+    <wsdl:part name="checkPasswordResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteAccountPaymentScheduleReq">
+    <wsdl:part name="deleteAccountPaymentScheduleReqParam" element="types:DeleteAccountPaymentScheduleRequest" />
+  </wsdl:message>
+  <wsdl:message name="deleteAccountPaymentScheduleResponse">
+    <wsdl:part name="deleteAccountPaymentScheduleResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteBillingLineItemReq">
+    <wsdl:part name="deleteBillingLineItemReqParam" element="types:DeleteBillingLineItemRequest" />
+  </wsdl:message>
+  <wsdl:message name="deleteBillingLineItemResponse">
+    <wsdl:part name="deleteBillingLineItemResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteLineItemsReq">
+    <wsdl:part name="deleteLineItemsReqParam" element="types:DeleteLineItemsRequest" />
+  </wsdl:message>
+  <wsdl:message name="deleteLineItemsResponse">
+    <wsdl:part name="deleteLineItemsResponseParameters" element="types:Response_DELETE_LINE_ITEMS" />
+  </wsdl:message>
+  <wsdl:message name="deletePlanReq">
+    <wsdl:part name="deletePlanReqParam" element="types:DeletePlanRequest" />
+  </wsdl:message>
+  <wsdl:message name="deletePlanResponse">
+    <wsdl:part name="deletePlanResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="deletePriceBookReq">
+    <wsdl:part name="deletePriceBookReqParam" element="types:DeletePriceBookRequest" />
+  </wsdl:message>
+  <wsdl:message name="deletePriceBookResponse">
+    <wsdl:part name="deletePriceBookResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="deletePriceSheetReq">
+    <wsdl:part name="deletePriceSheetReqParam" element="types:DeletePriceSheetRequest" />
+  </wsdl:message>
+  <wsdl:message name="deletePriceSheetResponse">
+    <wsdl:part name="deletePriceSheetResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteUsageDataReq">
+    <wsdl:part name="deleteUsageDataParam" element="types:DeleteUsageDataRequest" />
+  </wsdl:message>
+  <wsdl:message name="deleteUsageDataResponse">
+    <wsdl:part name="deleteUsageDataResponseParameters" element="types:Response_DELETE_USAGE_DATA" />
+  </wsdl:message>
+  <wsdl:message name="deleteUserSettingReq">
+    <wsdl:part name="deleteUserSettingReqParam" element="types:DeleteUserSettingRequest" />
+  </wsdl:message>
+  <wsdl:message name="deleteUserSettingResponse">
+    <wsdl:part name="deleteUserSettingResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="generateLineItemsReq">
+    <wsdl:part name="generateLineItemsReqParameters" element="types:GenerateLineItemsRequest" />
+  </wsdl:message>
+  <wsdl:message name="generateLineItemsResponse">
+    <wsdl:part name="generateLineItemsResponseParameters" element="types:Response_GENERATE_LINE_ITEMS" />
+  </wsdl:message>
+  <wsdl:message name="getAccountBalanceInfoReq">
+    <wsdl:part name="getAccountBalanceInfoReqParameters" element="types:GetAccountBalanceInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="getAccountBalanceInfoResponse">
+    <wsdl:part name="getAccountBalanceInfoResponseParameters" element="types:Response_GET_ACCOUNT_BALANCE_INFO" />
+  </wsdl:message>
+  <wsdl:message name="getAccountBillingScheduleReq">
+    <wsdl:part name="getAccountBillingScheduleReqParameters" element="types:GetAccountBillingScheduleRequest" />
+  </wsdl:message>
+  <wsdl:message name="getAccountBillingScheduleResponse">
+    <wsdl:part name="getAccountBillingScheduleResponseParameters" element="types:Response_GET_ACCOUNT_BILLING_SCHEDULE" />
+  </wsdl:message>
+  <wsdl:message name="getAccountPaymentScheduleReq">
+    <wsdl:part name="getAccountPaymentScheduleReqParameters" element="types:GetAccountPaymentScheduleRequest" />
+  </wsdl:message>
+  <wsdl:message name="getAccountPaymentScheduleResponse">
+    <wsdl:part name="getAccountPaymentScheduleResponseParameters" element="types:Response_GET_ACCOUNT_PAYMENT_SCHEDULE" />
+  </wsdl:message>
+  <wsdl:message name="getAdministratorInfoReq">
+    <wsdl:part name="getAdministratorInfoReqParameters" element="types:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="getAdministratorInfoResponse">
+    <wsdl:part name="getAdministratorInfoResponseParameters" element="types:Response_GET_ADMINISTRATOR_INFO" />
+  </wsdl:message>
+  <wsdl:message name="getSessionKeyReq">
+    <wsdl:part name="getSessionKeyReqParameters" element="types:GetSessionKeyRequest" />
+  </wsdl:message>
+  <wsdl:message name="getSessionKeyResponse">
+    <wsdl:part name="getSessionKeyResponseParameters" element="types:Response_GET_SESSION_KEY" />
+  </wsdl:message>
+  <wsdl:message name="listAccountHistoryReq">
+    <wsdl:part name="listAccountHistoryReqParameters" element="types:ListAccountHistoryRequest" />
+  </wsdl:message>
+  <wsdl:message name="listAccountHistoryResponse">
+    <wsdl:part name="listAccountHistoryResponseParameters" element="types:Response_LIST_ACCOUNT_HISTORY" />
+  </wsdl:message>
+  <wsdl:message name="listCustomAttributesReq">
+    <wsdl:part name="listCustomAttributesReqParameters" element="types:ListCustomAttributesRequest" />
+  </wsdl:message>
+  <wsdl:message name="listCustomAttributesResponse">
+    <wsdl:part name="listCustomAttributesResponseParameters" element="types:Response_LIST_CUSTOM_ATTRIBUTES" />
+  </wsdl:message>
+  <wsdl:message name="searchLineItemReq">
+    <wsdl:part name="searchLineItemReqParameters" element="types:SearchLineItemRequest" />
+  </wsdl:message>
+  <wsdl:message name="searchLineItemResponse">
+    <wsdl:part name="searchLineItemResponseParameters" element="types:Response_SEARCH_LINE_ITEM" />
+  </wsdl:message>
+  <wsdl:message name="listOfficesReq">
+    <wsdl:part name="listOfficesReqParameters" element="types:ListOfficesRequest" />
+  </wsdl:message>
+  <wsdl:message name="listOfficesResponse">
+    <wsdl:part name="listOfficesResponseParameters" element="types:Response_LIST_OFFICES" />
+  </wsdl:message>
+  <wsdl:message name="listPermissionsReq">
+    <wsdl:part name="listPermissionReqParameters" element="types:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="listPermissionsResponse">
+    <wsdl:part name="listPermissionResponseParameters" element="types:Response_LIST_PERMISSIONS" />
+  </wsdl:message>
+  <wsdl:message name="listPlansReq">
+    <wsdl:part name="listPlansReqParameters" element="types:ListPlansRequest" />
+  </wsdl:message>
+  <wsdl:message name="listPlansResponse">
+    <wsdl:part name="listPlansResponseParameters" element="types:Response_LIST_PLANS" />
+  </wsdl:message>
+  <wsdl:message name="listProductsReq">
+    <wsdl:part name="listProductsReqParameters" element="types:ListProductsRequest" />
+  </wsdl:message>
+  <wsdl:message name="listProductsResponse">
+    <wsdl:part name="listProductsResponseParameters" element="types:Response_LIST_PRODUCTS" />
+  </wsdl:message>
+  <wsdl:message name="listProvidersReq">
+    <wsdl:part name="listProvidersReqParameters" element="types:ListProvidersRequest" />
+  </wsdl:message>
+  <wsdl:message name="listProvidersResponse">
+    <wsdl:part name="listProvidersResponseParameters" element="types:Response_LIST_PROVIDERS" />
+  </wsdl:message>
+  <wsdl:message name="listSessionKeyReq">
+    <wsdl:part name="listSessionKeyReqParameters" element="types:ListSessionKeyRequest" />
+  </wsdl:message>
+  <wsdl:message name="listSessionKeyResponse">
+    <wsdl:part name="listSessionKeyResponseParameters" element="types:Response_LIST_SESSION_KEY" />
+  </wsdl:message>
+  <wsdl:message name="listStatementsReq">
+    <wsdl:part name="listStatementsReqParameters" element="types:ListStatementsRequest" />
+  </wsdl:message>
+  <wsdl:message name="listStatementsResponse">
+    <wsdl:part name="listStatementsResponseParameters" element="types:Response_LIST_STATEMENTS" />
+  </wsdl:message>
+  <wsdl:message name="listUsageDataReq">
+    <wsdl:part name="listUsageDataReqParameters" element="types:ListUsageDataRequest" />
+  </wsdl:message>
+  <wsdl:message name="listUsageDataResponse">
+    <wsdl:part name="listUsageDataResponseParameters" element="types:Response_LIST_USAGE_DATA" />
+  </wsdl:message>
+  <wsdl:message name="listUserSettingReq">
+    <wsdl:part name="listUserSettingReqParameters" element="types:ListUserSettingRequest" />
+  </wsdl:message>
+  <wsdl:message name="listUserSettingResponse">
+    <wsdl:part name="listUserSettingResponseParameters" element="types:Response_LIST_USER_SETTING" />
+  </wsdl:message>
+  <wsdl:message name="lookupInvoiceReq">
+    <wsdl:part name="lookupInvoiceReqParameters" element="types:LookupInvoiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="lookupInvoiceResponse">
+    <wsdl:part name="lookupInvoiceResponseParameters" element="types:Response_LOOKUP_INVOICE" />
+  </wsdl:message>
+  <wsdl:message name="lookupOfficeReq">
+    <wsdl:part name="lookupOfficeReqParameters" element="types:LookupOfficeRequest" />
+  </wsdl:message>
+  <wsdl:message name="lookupOfficeResponse">
+    <wsdl:part name="lookupOfficeResponseParameters" element="types:Response_LOOKUP_OFFICE" />
+  </wsdl:message>
+  <wsdl:message name="lookupPlanReq">
+    <wsdl:part name="lookupPlanReqParameters" element="types:LookupPlanRequest" />
+  </wsdl:message>
+  <wsdl:message name="lookupPlanResponse">
+    <wsdl:part name="lookupPlanResponseParameters" element="types:Response_LOOKUP_PLAN" />
+  </wsdl:message>
+  <wsdl:message name="lookupProductReq">
+    <wsdl:part name="lookupProductReqParameters" element="types:LookupProductRequest" />
+  </wsdl:message>
+  <wsdl:message name="lookupProductResponse">
+    <wsdl:part name="lookupProductResponseParameters" element="types:Response_LOOKUP_PRODUCT" />
+  </wsdl:message>
+  <wsdl:message name="lookupProviderReq">
+    <wsdl:part name="lookupProviderReqParameters" element="types:LookupProviderRequest" />
+  </wsdl:message>
+  <wsdl:message name="lookupProviderResponse">
+    <wsdl:part name="lookupProviderResponseParameters" element="types:Response_LOOKUP_PROVIDER" />
+  </wsdl:message>
+  <wsdl:message name="lookupPriceBookReq">
+    <wsdl:part name="lookupPriceBookReqParameters" element="types:LookupPriceBookRequest" />
+  </wsdl:message>
+  <wsdl:message name="lookupPriceBookResponse">
+    <wsdl:part name="lookupPriceBookResponseParameters" element="types:Response_LOOKUP_PRICE_BOOK" />
+  </wsdl:message>
+  <wsdl:message name="lookupStatementReq">
+    <wsdl:part name="lookupStatementReqParameters" element="types:LookupStatementRequest" />
+  </wsdl:message>
+  <wsdl:message name="lookupStatementResponse">
+    <wsdl:part name="lookupStatementResponseParameters" element="types:Response_LOOKUP_STATEMENT" />
+  </wsdl:message>
+  <wsdl:message name="lookupSubscriberReq">
+    <wsdl:part name="lookupSubscriberReqParameters" element="types:LookupSubscriberRequest" />
+  </wsdl:message>
+  <wsdl:message name="lookupSubscriberResponse">
+    <wsdl:part name="lookupSubscriberResponseParameters" element="types:Response_LOOKUP_SUBSCRIBER" />
+  </wsdl:message>
+  <wsdl:message name="lookupTransactionReq">
+    <wsdl:part name="lookupTransactionReqParameters" element="types:LookupTransactionRequest" />
+  </wsdl:message>
+  <wsdl:message name="lookupTransactionResponse">
+    <wsdl:part name="lookupTransactionResponseParameters" element="types:Response_LOOKUP_TRANSACTION" />
+  </wsdl:message>
+  <wsdl:message name="manageInvoiceReq">
+    <wsdl:part name="manageInvoiceParam" element="types:ManageInvoiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="manageInvoiceResponse">
+    <wsdl:part name="manageInvoiceResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="pingServerReq">
+    <wsdl:part name="pingParameters" element="types:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="pingServerResponse">
+    <wsdl:part name="pingResponseParameters" element="types:Response_PING" />
+  </wsdl:message>
+  <wsdl:message name="processProformaInvoiceReq">
+    <wsdl:part name="processProformaInvoiceReqParameters" element="types:ProcessProformaInvoiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="processProformaInvoiceResponse">
+    <wsdl:part name="processProformaInvoiceResponseParameters" element="types:Response_PROCESS_PROFORMA_INVOICE" />
+  </wsdl:message>
+  <wsdl:message name="processTransactionReq">
+    <wsdl:part name="processTransactionReqParameters" element="types:ProcessTransactionRequest" />
+  </wsdl:message>
+  <wsdl:message name="processTransactionResponse">
+    <wsdl:part name="processTransactionResponseParameters" element="types:Response_PROCESS_TRANSACTION" />
+  </wsdl:message>
+  <wsdl:message name="searchAccountReq">
+    <wsdl:part name="searchAccountReqParameters" element="types:SearchAccountRequest" />
+  </wsdl:message>
+  <wsdl:message name="searchAccountResponse">
+    <wsdl:part name="searchAccountResponseParameters" element="types:Response_SEARCH_ACCOUNT" />
+  </wsdl:message>
+  <wsdl:message name="searchInvoiceReq">
+    <wsdl:part name="searchInvoiceReqParameters" element="types:SearchInvoiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="searchInvoiceResponse">
+    <wsdl:part name="searchInvoiceResponseParameters" element="types:Response_SEARCH_INVOICE" />
+  </wsdl:message>
+  <wsdl:message name="searchPlanReq">
+    <wsdl:part name="searchPlanReqParameters" element="types:SearchPlanRequest" />
+  </wsdl:message>
+  <wsdl:message name="searchPlanResponse">
+    <wsdl:part name="searchPlanResponseParameters" element="types:Response_SEARCH_PLAN" />
+  </wsdl:message>
+  <wsdl:message name="searchProductReq">
+    <wsdl:part name="searchProductReqParameters" element="types:SearchProductRequest" />
+  </wsdl:message>
+  <wsdl:message name="searchProductResponse">
+    <wsdl:part name="searchProductResponseParameters" element="types:Response_SEARCH_PRODUCT" />
+  </wsdl:message>
+  <wsdl:message name="searchServiceReq">
+    <wsdl:part name="searchServiceReqParameters" element="types:SearchServiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="searchServiceResponse">
+    <wsdl:part name="searchServiceResponseParameters" element="types:Response_SEARCH_SERVICE" />
+  </wsdl:message>
+  <wsdl:message name="searchServiceGroupReq">
+    <wsdl:part name="searchServiceGroupReqParameters" element="types:SearchServiceGroupRequest" />
+  </wsdl:message>
+  <wsdl:message name="searchServiceGroupResponse">
+    <wsdl:part name="searchServiceGroupResponseParameters" element="types:Response_SEARCH_SERVICE_GROUP" />
+  </wsdl:message>
+  <wsdl:message name="searchSubscriberReq">
+    <wsdl:part name="searchSubscriberReqParameters" element="types:SearchSubscriberRequest" />
+  </wsdl:message>
+  <wsdl:message name="searchSubscriberResponse">
+    <wsdl:part name="searchSubscriberResponseParameters" element="types:Response_SEARCH_SUBSCRIBER" />
+  </wsdl:message>
+  <wsdl:message name="searchTransactionReq">
+    <wsdl:part name="searchTransactionReqParameters" element="types:SearchTransactionRequest" />
+  </wsdl:message>
+  <wsdl:message name="searchTransactionResponse">
+    <wsdl:part name="searchTransactionResponseParameters" element="types:Response_SEARCH_TRANSACTION" />
+  </wsdl:message>
+  <wsdl:message name="searchUsageDataReq">
+    <wsdl:part name="searchUsageDataReqParameters" element="types:SearchUsageDataRequest" />
+  </wsdl:message>
+  <wsdl:message name="searchUsageDataResponse">
+    <wsdl:part name="searchUsageDataResponseParameters" element="types:Response_SEARCH_USAGE_DATA" />
+  </wsdl:message>
+  <wsdl:message name="suggestAccountPaymentScheduleReq">
+    <wsdl:part name="suggestAccountPaymentScheduleReqParameters" element="types:SuggestAccountPaymentScheduleRequest" />
+  </wsdl:message>
+  <wsdl:message name="suggestAccountPaymentScheduleResponse">
+    <wsdl:part name="suggestAccountPaymentScheduleResponseParameters" element="types:Response_SUGGEST_ACCOUNT_PAYMENT_SCHEDULE" />
+  </wsdl:message>
+  <wsdl:message name="updateInvoiceReq">
+    <wsdl:part name="updateInvoiceReqParameters" element="types:UpdateInvoiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="updateInvoiceResponse">
+    <wsdl:part name="updateInvoiceResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="updatePlanReq">
+    <wsdl:part name="updatePlanReqParameters" element="types:UpdatePlanRequest" />
+  </wsdl:message>
+  <wsdl:message name="updatePlanResponse">
+    <wsdl:part name="updatePlanResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateSubscriberReq">
+    <wsdl:part name="updateSubscriberReqParameters" element="types:UpdateSubscriberRequest" />
+  </wsdl:message>
+  <wsdl:message name="updateSubscriberResponse">
+    <wsdl:part name="updateSubscriberResponseParameters" element="types:SuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateSessionKeyReq">
+    <wsdl:part name="validateSessionKeyReqParameters" element="types:ValidateSessionKeyRequest" />
+  </wsdl:message>
+  <wsdl:message name="validateSessionKeyResponse">
+    <wsdl:part name="validateSessionKeyResponseParameters" element="types:Response_VALIDATE_SESSION_KEY" />
+  </wsdl:message>
+  <wsdl:message name="ResponseStatusFaultMessage">
+    <wsdl:part name="fault" element="types:Response_Status" />
+  </wsdl:message>
+  <wsdl:message name="MonexaSvcFaultMessage">
+    <wsdl:part name="fault" element="types:MonexaSvcFaultData" />
+  </wsdl:message>
+  <wsdl:message name="empty" />
+  <wsdl:portType name="MonexaSvcInterface">
+    <wsdl:operation name="createAccountHistory">
+      <wsdl:input message="tns:createAccountHistoryReq" />
+      <wsdl:output message="tns:createAccountHistoryResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createAccountPaymentSchedule">
+      <wsdl:input message="tns:createAccountPaymentScheduleReq" />
+      <wsdl:output message="tns:createAccountPaymentScheduleResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createBillingLineItem">
+      <wsdl:input message="tns:createBillingLineItemReq" />
+      <wsdl:output message="tns:createBillingLineItemResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createBillableEvent">
+      <wsdl:input message="tns:createBillableEventReq" />
+      <wsdl:output message="tns:createBillableEventResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createInvoice">
+      <wsdl:input message="tns:createInvoiceReq" />
+      <wsdl:output message="tns:createInvoiceResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createLineItemApproval">
+      <wsdl:input message="tns:createLineItemApprovalReq" />
+      <wsdl:output message="tns:createLineItemApprovalResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createPlan">
+      <wsdl:input message="tns:createPlanReq" />
+      <wsdl:output message="tns:createPlanResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createPriceBook">
+      <wsdl:input message="tns:createPriceBookReq" />
+      <wsdl:output message="tns:createPriceBookResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createPriceSheet">
+      <wsdl:input message="tns:createPriceSheetReq" />
+      <wsdl:output message="tns:createPriceSheetResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createProduct">
+      <wsdl:input message="tns:createProductReq" />
+      <wsdl:output message="tns:createProductResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createService">
+      <wsdl:input message="tns:createServiceReq" />
+      <wsdl:output message="tns:createServiceResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createServiceGroup">
+      <wsdl:input message="tns:createServiceGroupReq" />
+      <wsdl:output message="tns:createServiceGroupResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createSubscriber">
+      <wsdl:input message="tns:createSubscriberReq" />
+      <wsdl:output message="tns:createSubscriberResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createUserSetting">
+      <wsdl:input message="tns:createUserSettingReq" />
+      <wsdl:output message="tns:createUserSettingResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="checkPassword">
+      <wsdl:input message="tns:checkPasswordReq" />
+      <wsdl:output message="tns:checkPasswordResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccountPaymentSchedule">
+      <wsdl:input message="tns:deleteAccountPaymentScheduleReq" />
+      <wsdl:output message="tns:deleteAccountPaymentScheduleResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteBillingLineItem">
+      <wsdl:input message="tns:deleteBillingLineItemReq" />
+      <wsdl:output message="tns:deleteBillingLineItemResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteLineItems">
+      <wsdl:input message="tns:deleteLineItemsReq" />
+      <wsdl:output message="tns:deleteLineItemsResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deletePlan">
+      <wsdl:input message="tns:deletePlanReq" />
+      <wsdl:output message="tns:deletePlanResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deletePriceBook">
+      <wsdl:input message="tns:deletePriceBookReq" />
+      <wsdl:output message="tns:deletePriceBookResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deletePriceSheet">
+      <wsdl:input message="tns:deletePriceSheetReq" />
+      <wsdl:output message="tns:deletePriceSheetResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteUsageData">
+      <wsdl:input message="tns:deleteUsageDataReq" />
+      <wsdl:output message="tns:deleteUsageDataResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteUserSetting">
+      <wsdl:input message="tns:deleteUserSettingReq" />
+      <wsdl:output message="tns:deleteUserSettingResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="generateLineItems">
+      <wsdl:input message="tns:generateLineItemsReq" />
+      <wsdl:output message="tns:generateLineItemsResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccountBalanceInfo">
+      <wsdl:input message="tns:getAccountBalanceInfoReq" />
+      <wsdl:output message="tns:getAccountBalanceInfoResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccountBillingSchedule">
+      <wsdl:input message="tns:getAccountBillingScheduleReq" />
+      <wsdl:output message="tns:getAccountBillingScheduleResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccountPaymentSchedule">
+      <wsdl:input message="tns:getAccountPaymentScheduleReq" />
+      <wsdl:output message="tns:getAccountPaymentScheduleResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAdministratorInfo">
+      <wsdl:input message="tns:getAdministratorInfoReq" />
+      <wsdl:output message="tns:getAdministratorInfoResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSessionKey">
+      <wsdl:input message="tns:getSessionKeyReq" />
+      <wsdl:output message="tns:getSessionKeyResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="pingServer">
+      <wsdl:input message="tns:pingServerReq" />
+      <wsdl:output message="tns:pingServerResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listAccountHistory">
+      <wsdl:input message="tns:listAccountHistoryReq" />
+      <wsdl:output message="tns:listAccountHistoryResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listCustomAttributes">
+      <wsdl:input message="tns:listCustomAttributesReq" />
+      <wsdl:output message="tns:listCustomAttributesResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchLineItem">
+      <wsdl:input message="tns:searchLineItemReq" />
+      <wsdl:output message="tns:searchLineItemResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listOffices">
+      <wsdl:input message="tns:listOfficesReq" />
+      <wsdl:output message="tns:listOfficesResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listPermissions">
+      <wsdl:input message="tns:listPermissionsReq" />
+      <wsdl:output message="tns:listPermissionsResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listPlans">
+      <wsdl:input message="tns:listPlansReq" />
+      <wsdl:output message="tns:listPlansResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listProducts">
+      <wsdl:input message="tns:listProductsReq" />
+      <wsdl:output message="tns:listProductsResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listProviders">
+      <wsdl:input message="tns:listProvidersReq" />
+      <wsdl:output message="tns:listProvidersResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listSessionKey">
+      <wsdl:input message="tns:listSessionKeyReq" />
+      <wsdl:output message="tns:listSessionKeyResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listStatements">
+      <wsdl:input message="tns:listStatementsReq" />
+      <wsdl:output message="tns:listStatementsResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listUsageData">
+      <wsdl:input message="tns:listUsageDataReq" />
+      <wsdl:output message="tns:listUsageDataResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listUserSetting">
+      <wsdl:input message="tns:listUserSettingReq" />
+      <wsdl:output message="tns:listUserSettingResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="lookupInvoice">
+      <wsdl:input message="tns:lookupInvoiceReq" />
+      <wsdl:output message="tns:lookupInvoiceResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="lookupOffice">
+      <wsdl:input message="tns:lookupOfficeReq" />
+      <wsdl:output message="tns:lookupOfficeResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="lookupPlan">
+      <wsdl:input message="tns:lookupPlanReq" />
+      <wsdl:output message="tns:lookupPlanResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="lookupProduct">
+      <wsdl:input message="tns:lookupProductReq" />
+      <wsdl:output message="tns:lookupProductResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="lookupProvider">
+      <wsdl:input message="tns:lookupProviderReq" />
+      <wsdl:output message="tns:lookupProviderResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="lookupPriceBook">
+      <wsdl:input message="tns:lookupPriceBookReq" />
+      <wsdl:output message="tns:lookupPriceBookResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="lookupStatement">
+      <wsdl:input message="tns:lookupStatementReq" />
+      <wsdl:output message="tns:lookupStatementResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="lookupSubscriber">
+      <wsdl:input message="tns:lookupSubscriberReq" />
+      <wsdl:output message="tns:lookupSubscriberResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="lookupTransaction">
+      <wsdl:input message="tns:lookupTransactionReq" />
+      <wsdl:output message="tns:lookupTransactionResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="manageInvoice">
+      <wsdl:input message="tns:manageInvoiceReq" />
+      <wsdl:output message="tns:manageInvoiceResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="processProformaInvoice">
+      <wsdl:input message="tns:processProformaInvoiceReq" />
+      <wsdl:output message="tns:processProformaInvoiceResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="processTransaction">
+      <wsdl:input message="tns:processTransactionReq" />
+      <wsdl:output message="tns:processTransactionResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchAccount">
+      <wsdl:input message="tns:searchAccountReq" />
+      <wsdl:output message="tns:searchAccountResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchInvoice">
+      <wsdl:input message="tns:searchInvoiceReq" />
+      <wsdl:output message="tns:searchInvoiceResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchPlan">
+      <wsdl:input message="tns:searchPlanReq" />
+      <wsdl:output message="tns:searchPlanResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchProduct">
+      <wsdl:input message="tns:searchProductReq" />
+      <wsdl:output message="tns:searchProductResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchService">
+      <wsdl:input message="tns:searchServiceReq" />
+      <wsdl:output message="tns:searchServiceResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchServiceGroup">
+      <wsdl:input message="tns:searchServiceGroupReq" />
+      <wsdl:output message="tns:searchServiceGroupResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchSubscriber">
+      <wsdl:input message="tns:searchSubscriberReq" />
+      <wsdl:output message="tns:searchSubscriberResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchTransaction">
+      <wsdl:input message="tns:searchTransactionReq" />
+      <wsdl:output message="tns:searchTransactionResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchUsageData">
+      <wsdl:input message="tns:searchUsageDataReq" />
+      <wsdl:output message="tns:searchUsageDataResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="suggestAccountPaymentSchedule">
+      <wsdl:input message="tns:suggestAccountPaymentScheduleReq" />
+      <wsdl:output message="tns:suggestAccountPaymentScheduleResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateInvoice">
+      <wsdl:input message="tns:updateInvoiceReq" />
+      <wsdl:output message="tns:updateInvoiceResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updatePlan">
+      <wsdl:input message="tns:updatePlanReq" />
+      <wsdl:output message="tns:updatePlanResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSubscriber">
+      <wsdl:input message="tns:updateSubscriberReq" />
+      <wsdl:output message="tns:updateSubscriberResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="validateSessionKey">
+      <wsdl:input message="tns:validateSessionKeyReq" />
+      <wsdl:output message="tns:validateSessionKeyResponse" />
+      <wsdl:fault name="MonexaSvcResponseException" message="tns:ResponseStatusFaultMessage" />
+      <wsdl:fault name="MonexaSvcException" message="tns:MonexaSvcFaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MonexaSOAPBinding" type="tns:MonexaSvcInterface">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="createAccountHistory">
+      <soap:operation soapAction="createAccountHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createAccountPaymentSchedule">
+      <soap:operation soapAction="createAccountPaymentSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createBillingLineItem">
+      <soap:operation soapAction="createBillingLineItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createBillableEvent">
+      <soap:operation soapAction="createBillableEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createInvoice">
+      <soap:operation soapAction="createInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createLineItemApproval">
+      <soap:operation soapAction="createLineItemApproval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createPlan">
+      <soap:operation soapAction="createPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createPriceBook">
+      <soap:operation soapAction="createPriceBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createPriceSheet">
+      <soap:operation soapAction="createPriceSheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createProduct">
+      <soap:operation soapAction="createProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createService">
+      <soap:operation soapAction="createService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createServiceGroup">
+      <soap:operation soapAction="createServiceGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createSubscriber">
+      <soap:operation soapAction="createSubscriber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createUserSetting">
+      <soap:operation soapAction="createUserSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkPassword">
+      <soap:operation soapAction="checkPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccountPaymentSchedule">
+      <soap:operation soapAction="deleteAccountPaymentSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBillingLineItem">
+      <soap:operation soapAction="deleteBilingLineItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteLineItems">
+      <soap:operation soapAction="deleteLineItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deletePlan">
+      <soap:operation soapAction="deletePlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deletePriceBook">
+      <soap:operation soapAction="deletePriceBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deletePriceSheet">
+      <soap:operation soapAction="deletePriceSheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUsageData">
+      <soap:operation soapAction="deleteUsageData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUserSetting">
+      <soap:operation soapAction="deleteUserSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="generateLineItems">
+      <soap:operation soapAction="generateLineItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountBalanceInfo">
+      <soap:operation soapAction="getAccountBalanceInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountBillingSchedule">
+      <soap:operation soapAction="getAccountBillingSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountPaymentSchedule">
+      <soap:operation soapAction="getAccountPaymentSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAdministratorInfo">
+      <soap:operation soapAction="getAdministratorInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSessionKey">
+      <soap:operation soapAction="getSessionKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pingServer">
+      <soap:operation soapAction="pingServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listAccountHistory">
+      <soap:operation soapAction="listAccountHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listCustomAttributes">
+      <soap:operation soapAction="listCustomAttributes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchLineItem">
+      <soap:operation soapAction="searchLineItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listOffices">
+      <soap:operation soapAction="listOffices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listPermissions">
+      <soap:operation soapAction="listPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listPlans">
+      <soap:operation soapAction="listPlans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listProducts">
+      <soap:operation soapAction="listProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listProviders">
+      <soap:operation soapAction="listProviders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listSessionKey">
+      <soap:operation soapAction="listSessionKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listStatements">
+      <soap:operation soapAction="listStatements" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listUsageData">
+      <soap:operation soapAction="listUsageData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listUserSetting">
+      <soap:operation soapAction="listUserSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="lookupInvoice">
+      <soap:operation soapAction="lookupInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="lookupOffice">
+      <soap:operation soapAction="lookupOffice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="lookupPlan">
+      <soap:operation soapAction="lookupPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="lookupProduct">
+      <soap:operation soapAction="lookupProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="lookupProvider">
+      <soap:operation soapAction="lookupProvider" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="lookupPriceBook">
+      <soap:operation soapAction="lookupPriceBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="lookupStatement">
+      <soap:operation soapAction="lookupStatement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="lookupSubscriber">
+      <soap:operation soapAction="lookupSubscriber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="lookupTransaction">
+      <soap:operation soapAction="lookupTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="manageInvoice">
+      <soap:operation soapAction="manageInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="processProformaInvoice">
+      <soap:operation soapAction="processProformaInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="processTransaction">
+      <soap:operation soapAction="processTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchAccount">
+      <soap:operation soapAction="searchAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchInvoice">
+      <soap:operation soapAction="searchInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchPlan">
+      <soap:operation soapAction="searchPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchProduct">
+      <soap:operation soapAction="searchProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchService">
+      <soap:operation soapAction="searchService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchServiceGroup">
+      <soap:operation soapAction="searchServiceGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchSubscriber">
+      <soap:operation soapAction="searchSubscriber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchTransaction">
+      <soap:operation soapAction="searchTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchUsageData">
+      <soap:operation soapAction="searchPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="suggestAccountPaymentSchedule">
+      <soap:operation soapAction="suggestAccountPaymentSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateInvoice">
+      <soap:operation soapAction="updateInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updatePlan">
+      <soap:operation soapAction="updatePlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateSubscriber">
+      <soap:operation soapAction="updateSubscriber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validateSessionKey">
+      <soap:operation soapAction="validateSessionKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MonexaSvcResponseException">
+        <soap:fault use="literal" name="MonexaSvcResponseException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="MonexaSvcException">
+        <soap:fault use="literal" name="MonexaSvcException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MonexaWebservice_v05_40">
+    <wsdl:port name="MonexaSOAPPort" binding="tns:MonexaSOAPBinding">
+      <soap:address location="https://ondemand.monexa.com/SOAP/services/MonexaWebservice_v05_40" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

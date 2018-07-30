@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="UpdatePlanRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="UPDATE_PLAN" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="UPDATE_PLAN">
+    <xsd:annotation>
+      <xsd:documentation>
+				The UPDATE_PLAN request will update an existing Plan in iTAPP.
+			</xsd:documentation>
+      <xsd:documentation>
+				Functionality for Updating Plan Services
+					The following rules apply when updating Services within a Plan:
+						Only one default Service can be enabled per Service Group.
+						If a default Service is not optional, no other optional Services will be allowed in that Service
+						Group.
+						An optional Service cannot be removed if it is currently being used by an Account.
+						Removing a default Service completely will immediately de-provision all Accounts using the
+						service.
+						Changing a Service from default to optional will have no effect on Accounts using the Service.
+						Changing a Service from optional to default will cause all Accounts on the Plan to provision the
+						Service.
+						Adding a new optional Service will not affect Accounts on the Plan.
+						Adding a new default Service will cause all Accounts on the Plan to provision the Service.
+			</xsd:documentation>
+      <xsd:documentation>
+				Fields that cannot be Updated
+					The following is the list of fields that cannot be updated:
+						provider_id
+						plan_id
+			</xsd:documentation>
+      <xsd:documentation>
+				Command Specific Request Fields
+					The following is the list of Required Fields for the Update Plan Request:
+						provider_id
+						plan_id
+			</xsd:documentation>
+      <xsd:documentation>
+				Conditional Required Fields
+					Conditional Required Fields for the Update Plan Request:
+						if use_plan_credit_limit=’Y’: credit_limit
+						use_plan_credit_limit: apply_changes_to_existing
+						credit_limit: apply_changes_to_existing
+						expiry_num_units: expiry_units
+						expiry_units: expiry_num_units
+						discount_type: billing_frequency
+						billing_frequency: discount_type
+						if pooled_access=’Y’: pool_limit
+						pool_limit: pooled_access
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Plan" type="UPD_PLAN_TYPE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="UPD_PLAN_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="provider_id" />
+      <xsd:element ref="plan_id" />
+      <xsd:element minOccurs="0" ref="name" />
+      <xsd:element minOccurs="0" name="description" type="string4000" />
+      <xsd:element minOccurs="0" ref="product_id" />
+      <xsd:element minOccurs="0" ref="price" />
+      <xsd:element minOccurs="0" ref="setup_fee" />
+      <xsd:element minOccurs="0" ref="setup_fee_description" />
+      <xsd:element minOccurs="0" ref="early_cancellation_penalty" />
+      <xsd:element minOccurs="0" ref="cancellation_penalty_days" />
+      <xsd:element minOccurs="0" ref="expiry_num_units" />
+      <xsd:element minOccurs="0" ref="expiry_units" />
+      <xsd:element minOccurs="0" ref="use_plan_credit_limit" />
+      <xsd:element minOccurs="0" ref="apply_changes_to_existing" />
+      <xsd:element minOccurs="0" ref="credit_limit" />
+      <xsd:element minOccurs="0" ref="pooled_access" />
+      <xsd:element minOccurs="0" ref="pool_limit" />
+      <xsd:element minOccurs="0" ref="plan_property" />
+      <xsd:element minOccurs="0" name="custom_field_1" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_2" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_3" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_4" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_5" type="string2048" />
+      <xsd:element minOccurs="0" name="custom_field_6" type="string2048" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Plan_Discount_Type" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Plan_Service" type="UPD_PLAN_PLAN_SERVICE_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UPD_PLAN_PLAN_SERVICE_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Service_Group" type="UPD_PLAN_SERVICE_GROUP_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UPD_PLAN_SERVICE_GROUP_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="service_group_id" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Service" type="UPD_PLAN_SERVICE_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UPD_PLAN_SERVICE_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="service_id" />
+      <xsd:element minOccurs="0" ref="price" />
+      <xsd:element minOccurs="0" ref="default_service" />
+      <xsd:element minOccurs="0" ref="optional_service" />
+      <xsd:element minOccurs="0" ref="product_id" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

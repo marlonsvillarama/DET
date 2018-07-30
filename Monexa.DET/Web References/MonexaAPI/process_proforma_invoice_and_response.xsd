@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="ProcessProformaInvoiceRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="PROCESS_PROFORMA_INVOICE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="PROCESS_PROFORMA_INVOICE">
+    <xsd:annotation>
+      <xsd:documentation>
+				Process Proforma Invoice will attempt to move a proforma invoice to a real invoice and 
+				optionally process proforma invoice amount for an Account.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for the Process Transaction Request:
+						account_id | Account_Namespace
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element minOccurs="0" ref="transact_proforma_amount" />
+        <xsd:element minOccurs="0" ref="apply_outstanding_amounts" />
+        <xsd:element minOccurs="0" ref="transaction_token" />
+        <xsd:element minOccurs="0" ref="Payment_Information" />
+        <xsd:element minOccurs="0" ref="comment" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_PROCESS_PROFORMA_INVOICE">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="monexa_transaction_id" />
+        <xsd:element minOccurs="0" ref="transaction_id" />
+        <xsd:element minOccurs="0" ref="reference_number" />
+        <xsd:element minOccurs="0" ref="approval_code" />
+        <xsd:element minOccurs="0" ref="response_code" />
+        <xsd:element minOccurs="0" ref="response_description" />
+        <xsd:element minOccurs="0" ref="avs_code" />
+        <xsd:element ref="Invoice" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

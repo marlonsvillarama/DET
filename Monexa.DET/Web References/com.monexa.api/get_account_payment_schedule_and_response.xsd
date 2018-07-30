@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="GetAccountPaymentScheduleRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="GET_ACCOUNT_PAYMENT_SCHEDULE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GET_ACCOUNT_PAYMENT_SCHEDULE">
+    <xsd:annotation>
+      <xsd:documentation>
+				Get Account Payment Schedule returns the payment schedule for the specified Account.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for Get Account Billing Schedule Request:
+						account_id | Account_Namespace
+						invoice_number?
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element minOccurs="0" ref="invoice_number" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_GET_ACCOUNT_PAYMENT_SCHEDULE">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Payment_Schedule" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

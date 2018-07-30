@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="DeleteBillingLineItemRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="DELETE_BILLING_LINE_ITEM" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="DELETE_BILLING_LINE_ITEM">
+    <xsd:annotation>
+      <xsd:documentation>
+		  	The DELETE_BILLING_LINE_ITEM request will delete an existing Billing Line Item in Monexa.
+			
+			NOTE: A Billing Line Item can only be deleted if line_item_type is PRO_FORMA_INVOICE.
+		</xsd:documentation>
+      <xsd:documentation>
+			The following is the list of Required Fields for the Delete Billing Line Item Request:
+			DELETE_BILLING_LINE_ITEM: line_item_id
+		</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:choice>
+        <xsd:element ref="line_item_id" />
+      </xsd:choice>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

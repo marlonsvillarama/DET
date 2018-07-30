@@ -1,0 +1,1110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:simpleType name="string16kb">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="16384" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string4000">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="4000" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string2000">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="2000" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string4kb">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="4096" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string3kb">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="3072" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string2048">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="2048" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string1024">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="1024" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string512">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="512" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string256">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="256" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string255">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="255" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string128">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="128" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string120">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="120" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string96">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="96" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string80">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="80" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string64">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="64" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string58">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="58" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string50">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="50" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string45">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="45" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string40">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="40" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string32">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="32" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string30">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="30" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string24">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="24" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string20">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string19">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="19" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string16">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="16" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string11">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="11" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string10">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string9">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="9" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string5">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="5" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string4WithInts">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="([0-9])*" />
+      <xsd:maxLength value="4" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string3">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="3" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string2">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="string2WithInts">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="([0-9])*" />
+      <xsd:maxLength value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="stringMaxSequenceNo">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="([0-9])*" />
+      <xsd:maxLength value="27" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="nullableIntegermax99999">
+    <xsd:union memberTypes="integermax99999 emptyString" />
+  </xsd:simpleType>
+  <xsd:simpleType name="integermax99999">
+    <xsd:restriction base="xsd:integer">
+      <xsd:maxInclusive value="99999" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="nullableInteger2">
+    <xsd:union memberTypes="integer2 emptyString" />
+  </xsd:simpleType>
+  <xsd:simpleType name="nullableInteger4">
+    <xsd:union memberTypes="integer4 emptyString" />
+  </xsd:simpleType>
+  <xsd:simpleType name="integer4">
+    <xsd:restriction base="xsd:integer">
+      <xsd:totalDigits value="4" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="yn_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Y" />
+      <xsd:enumeration value="N" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="emptyString">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="service_fault_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="XML_MARSHAL_EXCEPTION" />
+      <xsd:enumeration value="XML_VALIDATION_EXCEPTION" />
+      <xsd:enumeration value="IO_EXCEPTION" />
+      <xsd:enumeration value="INVALID_API_SERVER_RESPONSE" />
+      <xsd:enumeration value="INVALID_INPUT_REQUEST" />
+      <xsd:enumeration value="UNKNOWN" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="integer2">
+    <xsd:restriction base="xsd:integer">
+      <xsd:totalDigits value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="nullableDecimalfraction2">
+    <xsd:union memberTypes="decimalfraction2 emptyString" />
+  </xsd:simpleType>
+  <xsd:simpleType name="decimalfraction2">
+    <xsd:restriction base="xsd:decimal">
+      <xsd:fractionDigits value="2" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="decimalfraction4">
+    <xsd:restriction base="xsd:decimal">
+      <xsd:fractionDigits value="4" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="decimalfraction8">
+    <xsd:restriction base="xsd:decimal">
+      <xsd:fractionDigits value="8" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="account_status_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="enabled" />
+      <xsd:enumeration value="suspended" />
+      <xsd:enumeration value="cancelled" />
+      <xsd:enumeration value="deleted" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="account_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="master" />
+      <xsd:enumeration value="sub" />
+      <xsd:enumeration value="all" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="action_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="quick_link" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="apply_outstanding_amounts_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="negative_invoice_only" />
+      <xsd:enumeration value="negative_invoice_first" />
+      <xsd:enumeration value="pre_payment_only" />
+      <xsd:enumeration value="pre_payment_first" />
+      <xsd:enumeration value="do_not_apply" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="approval_action_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="approve" />
+      <xsd:enumeration value="reject" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="approval_status_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="all" />
+      <xsd:enumeration value="ready_or_approved" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="attribute_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="text" />
+      <xsd:enumeration value="long" />
+      <xsd:enumeration value="decimal" />
+      <xsd:enumeration value="date" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="password_expired_enum">
+    <xsd:union memberTypes="yn_enum emptyString" />
+  </xsd:simpleType>
+  <xsd:simpleType name="billing_frequency_enum">
+    <xsd:restriction base="xsd:integer">
+      <xsd:enumeration value="1" />
+      <xsd:enumeration value="3" />
+      <xsd:enumeration value="4" />
+      <xsd:enumeration value="6" />
+      <xsd:enumeration value="12" />
+      <xsd:enumeration value="18" />
+      <xsd:enumeration value="24" />
+      <xsd:enumeration value="36" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="billing_line_item_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="INVOICE" />
+      <xsd:enumeration value="PRO_FORMA_INVOICE" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="billing_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="contract_minimum" />
+      <xsd:enumeration value="plan_renewal" />
+      <xsd:enumeration value="plan_renewal_and_usage" />
+      <xsd:enumeration value="usage" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="calculation_period_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="hourly" />
+      <xsd:enumeration value="daily" />
+      <xsd:enumeration value="monthly" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="contract_term_enum">
+    <xsd:restriction base="xsd:integer">
+      <xsd:enumeration value="1" />
+      <xsd:enumeration value="12" />
+      <xsd:enumeration value="24" />
+      <xsd:enumeration value="36" />
+      <xsd:enumeration value="60" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="country_of_bank_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Canada" />
+      <xsd:enumeration value="United States" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="currency_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="USD" />
+      <xsd:enumeration value="CAD" />
+      <xsd:enumeration value="EUR" />
+      <xsd:enumeration value="GBP" />
+      <xsd:enumeration value="AUD" />
+      <xsd:enumeration value="THB" />
+      <xsd:enumeration value="BRL" />
+      <xsd:enumeration value="CLP" />
+      <xsd:enumeration value="DKK" />
+      <xsd:enumeration value="HKD" />
+      <xsd:enumeration value="INR" />
+      <xsd:enumeration value="MXN" />
+      <xsd:enumeration value="ILS" />
+      <xsd:enumeration value="NZD" />
+      <xsd:enumeration value="NOK" />
+      <xsd:enumeration value="PKR" />
+      <xsd:enumeration value="RUB" />
+      <xsd:enumeration value="SGD" />
+      <xsd:enumeration value="SEK" />
+      <xsd:enumeration value="CHF" />
+      <xsd:enumeration value="KRW" />
+      <xsd:enumeration value="JPY" />
+      <xsd:enumeration value="CNY" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="discount_option_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="percentage" />
+      <xsd:enumeration value="absolute" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="document_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="INVOICE" />
+      <xsd:enumeration value="PRO_FORMA_INVOICE" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="information_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="minimum" />
+      <xsd:enumeration value="summary" />
+      <xsd:enumeration value="full" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="invoice_notify_flag_enum">
+    <xsd:union memberTypes="invoice_notify_flag_enum2 emptyString" />
+  </xsd:simpleType>
+  <xsd:simpleType name="invoice_notify_flag_enum2">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="PDF" />
+      <xsd:enumeration value="PT" />
+      <xsd:enumeration value="POSTAL" />
+      <xsd:enumeration value="PDF+POSTAL" />
+      <xsd:enumeration value="PT+POSTAL" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="invoice_status_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="open" />
+      <xsd:enumeration value="closed" />
+      <xsd:enumeration value="all" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="payment_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="invoice" />
+      <xsd:enumeration value="transaction" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="plan_property_enum">
+    <xsd:annotation>
+      <xsd:documentation>
+		    Below are the meaning of valid values
+              1 for Principal Accounts only
+		      2 for Subscribers only
+		      3 for both Accounts and Subscribers
+		  </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:integer">
+      <xsd:enumeration value="1" />
+      <xsd:enumeration value="2" />
+      <xsd:enumeration value="3" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="record_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="usage_data" />
+      <xsd:enumeration value="provider_event_action" />
+      <xsd:enumeration value="provider_action" />
+      <xsd:enumeration value="invoice_data" />
+      <xsd:enumeration value="account_data" />
+      <xsd:enumeration value="subscriber_data" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="result_order_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="asc" />
+      <xsd:enumeration value="desc" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="result_sort_by_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="login_id" />
+      <xsd:enumeration value="external_group_id" />
+      <xsd:enumeration value="first_name" />
+      <xsd:enumeration value="last_name" />
+      <xsd:enumeration value="company" />
+      <xsd:enumeration value="external_account_id" />
+      <xsd:enumeration value="phone_number_1" />
+      <xsd:enumeration value="modified_time" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="search_account_filter_by_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="line_items_awaiting_approval" />
+      <xsd:enumeration value="line_items_approved" />
+      <xsd:enumeration value="line_items_approved_or_rejected" />
+      <xsd:enumeration value="line_items_rejected" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="search_plan_result_sort_by_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="plan_id" />
+      <xsd:enumeration value="name" />
+      <xsd:enumeration value="provider_name" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="search_usage_data_result_sort_by_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="service_id" />
+      <xsd:enumeration value="event_end_time" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="statement_notify_flag_enum">
+    <xsd:union memberTypes="statement_notify_flag_enum2 emptyString" />
+  </xsd:simpleType>
+  <xsd:simpleType name="statement_notify_flag_enum2">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="PDF" />
+      <xsd:enumeration value="PT" />
+      <xsd:enumeration value="POSTAL" />
+      <xsd:enumeration value="PDF+POSTAL" />
+      <xsd:enumeration value="PT+POSTAL" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="taxable_status_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="0" />
+      <xsd:enumeration value="1" />
+      <xsd:enumeration value="4" />
+      <xsd:enumeration value="5" />
+      <xsd:enumeration value="7" />
+      <xsd:enumeration value="13" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="tax_region_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="City" />
+      <xsd:enumeration value="County" />
+      <xsd:enumeration value="District" />
+      <xsd:enumeration value="State" />
+      <xsd:enumeration value="Country" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="transaction_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="auth" />
+      <xsd:enumeration value="auth_and_capture" />
+      <xsd:enumeration value="balance_inquiry" />
+      <xsd:enumeration value="capture" />
+      <xsd:enumeration value="refund" />
+      <xsd:enumeration value="void" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="transaction_status_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="success" />
+      <xsd:enumeration value="failure" />
+      <xsd:enumeration value="pending" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ecp_authorization_enum">
+    <xsd:union memberTypes="yn_enum emptyString" />
+  </xsd:simpleType>
+  <xsd:simpleType name="pricing_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Bracketed" />
+      <xsd:enumeration value="Tiered" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="yes_no_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Yes" />
+      <xsd:enumeration value="No" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="language_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="English" />
+      <xsd:enumeration value="French" />
+      <xsd:enumeration value="Spanish" />
+      <xsd:enumeration value="Chinese - Simplified" />
+      <xsd:enumeration value="Chinese - Traditional" />
+      <xsd:enumeration value="Danish" />
+      <xsd:enumeration value="Dutch" />
+      <xsd:enumeration value="Finnish" />
+      <xsd:enumeration value="German" />
+      <xsd:enumeration value="Greek" />
+      <xsd:enumeration value="Hebrew" />
+      <xsd:enumeration value="Hindi" />
+      <xsd:enumeration value="Italian" />
+      <xsd:enumeration value="Japanese" />
+      <xsd:enumeration value="Korean" />
+      <xsd:enumeration value="Norwegian" />
+      <xsd:enumeration value="Portuguese" />
+      <xsd:enumeration value="Punjabi" />
+      <xsd:enumeration value="Romanish" />
+      <xsd:enumeration value="Russian" />
+      <xsd:enumeration value="Scottish Gaelic" />
+      <xsd:enumeration value="Swedish" />
+      <xsd:enumeration value="Thai" />
+      <xsd:enumeration value="Urdu" />
+      <xsd:enumeration value="Welsh" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="line_item_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="SETUP_COST" />
+      <xsd:enumeration value="PLAN_COST" />
+      <xsd:enumeration value="SERVICE_COST" />
+      <xsd:enumeration value="USAGE_COST" />
+      <xsd:enumeration value="USAGE_COST_TIER_2" />
+      <xsd:enumeration value="MANUAL_LINE_ITEM" />
+      <xsd:enumeration value="TAX" />
+      <xsd:enumeration value="CONTRACT_MINIMUM" />
+      <xsd:enumeration value="SERVICE_BUNDLE_COMMIT" />
+      <xsd:enumeration value="FIXED_USAGE_COST" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="timezone_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Africa/Abidjan" />
+      <xsd:enumeration value="Africa/Accra" />
+      <xsd:enumeration value="Africa/Addis_Ababa" />
+      <xsd:enumeration value="Africa/Algiers" />
+      <xsd:enumeration value="Africa/Asmera" />
+      <xsd:enumeration value="Africa/Bamako" />
+      <xsd:enumeration value="Africa/Bangui" />
+      <xsd:enumeration value="Africa/Banjul" />
+      <xsd:enumeration value="Africa/Bissau" />
+      <xsd:enumeration value="Africa/Blantyre" />
+      <xsd:enumeration value="Africa/Brazzaville" />
+      <xsd:enumeration value="Africa/Bujumbura" />
+      <xsd:enumeration value="Africa/Casablanca" />
+      <xsd:enumeration value="Africa/Ceuta" />
+      <xsd:enumeration value="Africa/Conakry" />
+      <xsd:enumeration value="Africa/Dakar" />
+      <xsd:enumeration value="Africa/Dar_es_Salaam" />
+      <xsd:enumeration value="Africa/Djibouti" />
+      <xsd:enumeration value="Africa/Douala" />
+      <xsd:enumeration value="Africa/El_Aaiun" />
+      <xsd:enumeration value="Africa/Freetown" />
+      <xsd:enumeration value="Africa/Gaborone" />
+      <xsd:enumeration value="Africa/Harare" />
+      <xsd:enumeration value="Africa/Johannesburg" />
+      <xsd:enumeration value="Africa/Kampala" />
+      <xsd:enumeration value="Africa/Khartoum" />
+      <xsd:enumeration value="Africa/Kigali" />
+      <xsd:enumeration value="Africa/Kinshasa" />
+      <xsd:enumeration value="Africa/Lagos" />
+      <xsd:enumeration value="Africa/Libreville" />
+      <xsd:enumeration value="Africa/Lome" />
+      <xsd:enumeration value="Africa/Luanda" />
+      <xsd:enumeration value="Africa/Lubumbashi" />
+      <xsd:enumeration value="Africa/Lusaka" />
+      <xsd:enumeration value="Africa/Malabo" />
+      <xsd:enumeration value="Africa/Maputo" />
+      <xsd:enumeration value="Africa/Maseru" />
+      <xsd:enumeration value="Africa/Mbabane" />
+      <xsd:enumeration value="Africa/Mogadishu" />
+      <xsd:enumeration value="Africa/Monrovia" />
+      <xsd:enumeration value="Africa/Nairobi" />
+      <xsd:enumeration value="Africa/Ndjamena" />
+      <xsd:enumeration value="Africa/Niamey" />
+      <xsd:enumeration value="Africa/Nouakchott" />
+      <xsd:enumeration value="Africa/Ouagadougou" />
+      <xsd:enumeration value="Africa/Porto-Novo" />
+      <xsd:enumeration value="Africa/Sao_Tome" />
+      <xsd:enumeration value="Africa/Timbuktu" />
+      <xsd:enumeration value="Africa/Tunis" />
+      <xsd:enumeration value="Africa/Windhoek" />
+      <xsd:enumeration value="Africa/Cairo" />
+      <xsd:enumeration value="Africa/Tripoli" />
+      <xsd:enumeration value="America/Anguilla" />
+      <xsd:enumeration value="America/Antigua" />
+      <xsd:enumeration value="America/Aruba" />
+      <xsd:enumeration value="America/Asuncion" />
+      <xsd:enumeration value="America/Barbados" />
+      <xsd:enumeration value="America/Belize" />
+      <xsd:enumeration value="America/Bogota" />
+      <xsd:enumeration value="America/Boise" />
+      <xsd:enumeration value="America/Buenos_Aires" />
+      <xsd:enumeration value="America/Caracas" />
+      <xsd:enumeration value="America/Catamarca" />
+      <xsd:enumeration value="America/Cayenne" />
+      <xsd:enumeration value="America/Cayman" />
+      <xsd:enumeration value="America/Cordoba" />
+      <xsd:enumeration value="America/Costa_Rica" />
+      <xsd:enumeration value="America/Cuiaba" />
+      <xsd:enumeration value="America/Curacao" />
+      <xsd:enumeration value="America/Dawson" />
+      <xsd:enumeration value="America/Dawson_Creek" />
+      <xsd:enumeration value="America/Dominica" />
+      <xsd:enumeration value="America/El_Salvador" />
+      <xsd:enumeration value="America/Ensenada" />
+      <xsd:enumeration value="America/Fortaleza" />
+      <xsd:enumeration value="America/Glace_Bay" />
+      <xsd:enumeration value="America/Godthab" />
+      <xsd:enumeration value="America/Goose_Bay" />
+      <xsd:enumeration value="America/Grand_Turk" />
+      <xsd:enumeration value="America/Grenada" />
+      <xsd:enumeration value="America/Guadeloupe" />
+      <xsd:enumeration value="America/Guatemala" />
+      <xsd:enumeration value="America/Guayaquil" />
+      <xsd:enumeration value="America/Guyana" />
+      <xsd:enumeration value="America/Indiana/Marengo" />
+      <xsd:enumeration value="America/Indiana/Vevay" />
+      <xsd:enumeration value="America/Indiana/Indianapolis" />
+      <xsd:enumeration value="America/Indiana/Knox" />
+      <xsd:enumeration value="America/Inuvik" />
+      <xsd:enumeration value="America/Iqaluit" />
+      <xsd:enumeration value="America/Jujuy" />
+      <xsd:enumeration value="America/Juneau" />
+      <xsd:enumeration value="America/La_Paz" />
+      <xsd:enumeration value="America/Lima" />
+      <xsd:enumeration value="America/Louisville" />
+      <xsd:enumeration value="America/Maceio" />
+      <xsd:enumeration value="America/Managua" />
+      <xsd:enumeration value="America/Martinique" />
+      <xsd:enumeration value="America/Mendoza" />
+      <xsd:enumeration value="America/Menominee" />
+      <xsd:enumeration value="America/Miquelon" />
+      <xsd:enumeration value="America/Montevideo" />
+      <xsd:enumeration value="America/Montserrat" />
+      <xsd:enumeration value="America/Nassau" />
+      <xsd:enumeration value="America/Nipigon" />
+      <xsd:enumeration value="America/Nome" />
+      <xsd:enumeration value="America/Panama" />
+      <xsd:enumeration value="America/Pangnirtung" />
+      <xsd:enumeration value="America/Paramaribo" />
+      <xsd:enumeration value="America/Port-au-Prince" />
+      <xsd:enumeration value="America/Port_of_Spain" />
+      <xsd:enumeration value="America/Puerto_Rico" />
+      <xsd:enumeration value="America/Rainy_River" />
+      <xsd:enumeration value="America/Rankin_Inlet" />
+      <xsd:enumeration value="America/Rosario" />
+      <xsd:enumeration value="America/Santo_Domingo" />
+      <xsd:enumeration value="America/Scoresbysund" />
+      <xsd:enumeration value="America/St_Kitts" />
+      <xsd:enumeration value="America/St_Lucia" />
+      <xsd:enumeration value="America/St_Vincent" />
+      <xsd:enumeration value="America/Swift_Current" />
+      <xsd:enumeration value="America/Tegucigalpa" />
+      <xsd:enumeration value="America/Thule" />
+      <xsd:enumeration value="America/Thunder_Bay" />
+      <xsd:enumeration value="America/Tortola" />
+      <xsd:enumeration value="America/Virgin" />
+      <xsd:enumeration value="America/St_Thomas" />
+      <xsd:enumeration value="America/Yakutat" />
+      <xsd:enumeration value="America/Yellowknife" />
+      <xsd:enumeration value="America/Porto_Acre" />
+      <xsd:enumeration value="America/Noronha" />
+      <xsd:enumeration value="America/Sao_Paulo" />
+      <xsd:enumeration value="America/Manaus" />
+      <xsd:enumeration value="America/Halifax" />
+      <xsd:enumeration value="America/Winnipeg" />
+      <xsd:enumeration value="America/Montreal" />
+      <xsd:enumeration value="America/Edmonton" />
+      <xsd:enumeration value="America/St_Johns" />
+      <xsd:enumeration value="America/Vancouver" />
+      <xsd:enumeration value="America/Regina" />
+      <xsd:enumeration value="America/Whitehorse" />
+      <xsd:enumeration value="America/Santiago" />
+      <xsd:enumeration value="America/Havana" />
+      <xsd:enumeration value="America/Jamaica" />
+      <xsd:enumeration value="America/Tijuana" />
+      <xsd:enumeration value="America/Mazatlan" />
+      <xsd:enumeration value="America/Mexico_City" />
+      <xsd:enumeration value="America/Anchorage" />
+      <xsd:enumeration value="America/Adak" />
+      <xsd:enumeration value="America/Atka" />
+      <xsd:enumeration value="America/Phoenix" />
+      <xsd:enumeration value="America/Chicago" />
+      <xsd:enumeration value="America/Fort_Wayne" />
+      <xsd:enumeration value="America/Indianapolis" />
+      <xsd:enumeration value="America/New_York" />
+      <xsd:enumeration value="America/Knox_IN" />
+      <xsd:enumeration value="America/Detroit" />
+      <xsd:enumeration value="America/Denver" />
+      <xsd:enumeration value="America/Shiprock" />
+      <xsd:enumeration value="America/Los_Angeles" />
+      <xsd:enumeration value="Antarctica/Casey" />
+      <xsd:enumeration value="Antarctica/DumontDUrville" />
+      <xsd:enumeration value="Antarctica/Mawson" />
+      <xsd:enumeration value="Antarctica/Palmer" />
+      <xsd:enumeration value="Europe/Prague" />
+      <xsd:enumeration value="Europe/Bratislava" />
+      <xsd:enumeration value="Europe/Riga" />
+      <xsd:enumeration value="Europe/Samara" />
+      <xsd:enumeration value="Europe/Sarajevo" />
+      <xsd:enumeration value="Europe/Simferopol" />
+      <xsd:enumeration value="Europe/Skopje" />
+      <xsd:enumeration value="Europe/Sofia" />
+      <xsd:enumeration value="Europe/Stockholm" />
+      <xsd:enumeration value="Europe/Tallinn" />
+      <xsd:enumeration value="Europe/Tirane" />
+      <xsd:enumeration value="Europe/Vaduz" />
+      <xsd:enumeration value="Europe/Vatican" />
+      <xsd:enumeration value="Europe/Rome" />
+      <xsd:enumeration value="Europe/San_Marino" />
+      <xsd:enumeration value="Europe/Vienna" />
+      <xsd:enumeration value="Europe/Vilnius" />
+      <xsd:enumeration value="Europe/Zagreb" />
+      <xsd:enumeration value="Europe/Zurich" />
+      <xsd:enumeration value="Europe/London" />
+      <xsd:enumeration value="Europe/Warsaw" />
+      <xsd:enumeration value="Europe/Lisbon" />
+      <xsd:enumeration value="Europe/Istanbul" />
+      <xsd:enumeration value="Europe/Moscow" />
+      <xsd:enumeration value="Eire" />
+      <xsd:enumeration value="Factory" />
+      <xsd:enumeration value="GB" />
+      <xsd:enumeration value="Greenwich" />
+      <xsd:enumeration value="GMT" />
+      <xsd:enumeration value="GMT+0" />
+      <xsd:enumeration value="GMT-0" />
+      <xsd:enumeration value="GMT0" />
+      <xsd:enumeration value="Hongkong" />
+      <xsd:enumeration value="Iceland" />
+      <xsd:enumeration value="Indian/Antananarivo" />
+      <xsd:enumeration value="Indian/Chagos" />
+      <xsd:enumeration value="Indian/Christmas" />
+      <xsd:enumeration value="Indian/Cocos" />
+      <xsd:enumeration value="Indian/Comoro" />
+      <xsd:enumeration value="Indian/Kerguelen" />
+      <xsd:enumeration value="Indian/Mahe" />
+      <xsd:enumeration value="Indian/Maldives" />
+      <xsd:enumeration value="Indian/Mauritius" />
+      <xsd:enumeration value="Indian/Mayotte" />
+      <xsd:enumeration value="Indian/Reunion" />
+      <xsd:enumeration value="Iran" />
+      <xsd:enumeration value="Israel" />
+      <xsd:enumeration value="Jamaica" />
+      <xsd:enumeration value="Japan" />
+      <xsd:enumeration value="Libya" />
+      <xsd:enumeration value="MET" />
+      <xsd:enumeration value="Mexico/BajaNorte" />
+      <xsd:enumeration value="Mexico/BajaSur" />
+      <xsd:enumeration value="Mexico/General" />
+      <xsd:enumeration value="Mideast/Riyadh87" />
+      <xsd:enumeration value="Mideast/Riyadh88" />
+      <xsd:enumeration value="Mideast/Riyadh89" />
+      <xsd:enumeration value="PRC" />
+      <xsd:enumeration value="Pacific/Apia" />
+      <xsd:enumeration value="Pacific/Auckland" />
+      <xsd:enumeration value="Pacific/Chatham" />
+      <xsd:enumeration value="Pacific/Easter" />
+      <xsd:enumeration value="Pacific/Efate" />
+      <xsd:enumeration value="Pacific/Enderbury" />
+      <xsd:enumeration value="Pacific/Fakaofo" />
+      <xsd:enumeration value="Pacific/Fiji" />
+      <xsd:enumeration value="Pacific/Funafuti" />
+      <xsd:enumeration value="Pacific/Galapagos" />
+      <xsd:enumeration value="Pacific/Gambier" />
+      <xsd:enumeration value="Pacific/Guadalcanal" />
+      <xsd:enumeration value="Pacific/Guam" />
+      <xsd:enumeration value="Pacific/Johnston" />
+      <xsd:enumeration value="Pacific/Kiritimati" />
+      <xsd:enumeration value="Pacific/Kosrae" />
+      <xsd:enumeration value="Pacific/Kwajalein" />
+      <xsd:enumeration value="Pacific/Majuro" />
+      <xsd:enumeration value="Pacific/Marquesas" />
+      <xsd:enumeration value="Pacific/Midway" />
+      <xsd:enumeration value="Pacific/Nauru" />
+      <xsd:enumeration value="Pacific/Niue" />
+      <xsd:enumeration value="Pacific/Norfolk" />
+      <xsd:enumeration value="Pacific/Noumea" />
+      <xsd:enumeration value="Pacific/Palau" />
+      <xsd:enumeration value="Pacific/Pitcairn" />
+      <xsd:enumeration value="Pacific/Ponape" />
+      <xsd:enumeration value="Pacific/Port_Moresby" />
+      <xsd:enumeration value="Pacific/Rarotonga" />
+      <xsd:enumeration value="Pacific/Saipan" />
+      <xsd:enumeration value="Pacific/Tahiti" />
+      <xsd:enumeration value="Pacific/Tarawa" />
+      <xsd:enumeration value="Pacific/Tongatapu" />
+      <xsd:enumeration value="Pacific/Truk" />
+      <xsd:enumeration value="Pacific/Wake" />
+      <xsd:enumeration value="Pacific/Wallis" />
+      <xsd:enumeration value="Pacific/Yap" />
+      <xsd:enumeration value="Pacific/Honolulu" />
+      <xsd:enumeration value="Pacific/Pago_Pago" />
+      <xsd:enumeration value="Pacific/Samoa" />
+      <xsd:enumeration value="NZ" />
+      <xsd:enumeration value="NZ-CHAT" />
+      <xsd:enumeration value="Kwajalein" />
+      <xsd:enumeration value="Poland" />
+      <xsd:enumeration value="Portugal" />
+      <xsd:enumeration value="ROC" />
+      <xsd:enumeration value="ROK" />
+      <xsd:enumeration value="Singapore" />
+      <xsd:enumeration value="SystemV/AST4" />
+      <xsd:enumeration value="SystemV/AST4ADT" />
+      <xsd:enumeration value="SystemV/CST6" />
+      <xsd:enumeration value="SystemV/CST6CDT" />
+      <xsd:enumeration value="SystemV/EST5" />
+      <xsd:enumeration value="SystemV/EST5EDT" />
+      <xsd:enumeration value="SystemV/HST10" />
+      <xsd:enumeration value="SystemV/MST7" />
+      <xsd:enumeration value="SystemV/MST7MDT" />
+      <xsd:enumeration value="SystemV/PST8" />
+      <xsd:enumeration value="SystemV/PST8PDT" />
+      <xsd:enumeration value="SystemV/YST9" />
+      <xsd:enumeration value="SystemV/YST9YDT" />
+      <xsd:enumeration value="Turkey" />
+      <xsd:enumeration value="UCT" />
+      <xsd:enumeration value="US/Alaska" />
+      <xsd:enumeration value="US/Aleutian" />
+      <xsd:enumeration value="US/Arizona" />
+      <xsd:enumeration value="US/Central" />
+      <xsd:enumeration value="US/East-Indiana" />
+      <xsd:enumeration value="US/Eastern" />
+      <xsd:enumeration value="US/Hawaii" />
+      <xsd:enumeration value="US/Indiana-Starke" />
+      <xsd:enumeration value="US/Michigan" />
+      <xsd:enumeration value="US/Mountain" />
+      <xsd:enumeration value="US/Pacific" />
+      <xsd:enumeration value="US/Samoa" />
+      <xsd:enumeration value="MST" />
+      <xsd:enumeration value="CST6CDT" />
+      <xsd:enumeration value="EST" />
+      <xsd:enumeration value="EST5EDT" />
+      <xsd:enumeration value="HST" />
+      <xsd:enumeration value="MST7MDT" />
+      <xsd:enumeration value="Navajo" />
+      <xsd:enumeration value="PST8PDT" />
+      <xsd:enumeration value="W-SU" />
+      <xsd:enumeration value="WET" />
+      <xsd:enumeration value="Zulu" />
+      <xsd:enumeration value="UTC" />
+      <xsd:enumeration value="Antarctica/South_Pole" />
+      <xsd:enumeration value="Antarctica/McMurdo" />
+      <xsd:enumeration value="Arctic/Longyearbyen" />
+      <xsd:enumeration value="Asia/Aden" />
+      <xsd:enumeration value="Asia/Alma-Ata" />
+      <xsd:enumeration value="Asia/Amman" />
+      <xsd:enumeration value="Asia/Anadyr" />
+      <xsd:enumeration value="Asia/Aqtau" />
+      <xsd:enumeration value="Asia/Aqtobe" />
+      <xsd:enumeration value="Asia/Ashkhabad" />
+      <xsd:enumeration value="Asia/Baghdad" />
+      <xsd:enumeration value="Asia/Bahrain" />
+      <xsd:enumeration value="Asia/Baku" />
+      <xsd:enumeration value="Asia/Bangkok" />
+      <xsd:enumeration value="Asia/Beirut" />
+      <xsd:enumeration value="Asia/Bishkek" />
+      <xsd:enumeration value="Asia/Brunei" />
+      <xsd:enumeration value="Asia/Calcutta" />
+      <xsd:enumeration value="Asia/Chungking" />
+      <xsd:enumeration value="Asia/Colombo" />
+      <xsd:enumeration value="Asia/Dacca" />
+      <xsd:enumeration value="Asia/Damascus" />
+      <xsd:enumeration value="Asia/Dubai" />
+      <xsd:enumeration value="Asia/Dushanbe" />
+      <xsd:enumeration value="Asia/Gaza" />
+      <xsd:enumeration value="Asia/Harbin" />
+      <xsd:enumeration value="Asia/Irkutsk" />
+      <xsd:enumeration value="Asia/Ishigaki" />
+      <xsd:enumeration value="Asia/Jakarta" />
+      <xsd:enumeration value="Asia/Jayapura" />
+      <xsd:enumeration value="Asia/Kabul" />
+      <xsd:enumeration value="Asia/Kamchatka" />
+      <xsd:enumeration value="Asia/Karachi" />
+      <xsd:enumeration value="Asia/Kashgar" />
+      <xsd:enumeration value="Asia/Katmandu" />
+      <xsd:enumeration value="Asia/Krasnoyarsk" />
+      <xsd:enumeration value="Asia/Kuala_Lumpur" />
+      <xsd:enumeration value="Asia/Kuching" />
+      <xsd:enumeration value="Asia/Kuwait" />
+      <xsd:enumeration value="Asia/Macao" />
+      <xsd:enumeration value="Asia/Magadan" />
+      <xsd:enumeration value="Asia/Manila" />
+      <xsd:enumeration value="Asia/Muscat" />
+      <xsd:enumeration value="Asia/Nicosia" />
+      <xsd:enumeration value="Asia/Novosibirsk" />
+      <xsd:enumeration value="Asia/Omsk" />
+      <xsd:enumeration value="Asia/Phnom_Penh" />
+      <xsd:enumeration value="Asia/Pyongyang" />
+      <xsd:enumeration value="Asia/Qatar" />
+      <xsd:enumeration value="Asia/Rangoon" />
+      <xsd:enumeration value="Asia/Riyadh" />
+      <xsd:enumeration value="Asia/Saigon" />
+      <xsd:enumeration value="Asia/Tashkent" />
+      <xsd:enumeration value="Asia/Tbilisi" />
+      <xsd:enumeration value="Asia/Thimbu" />
+      <xsd:enumeration value="Asia/Ujung_Pandang" />
+      <xsd:enumeration value="Asia/Ulan_Bator" />
+      <xsd:enumeration value="Asia/Urumqi" />
+      <xsd:enumeration value="Asia/Vientiane" />
+      <xsd:enumeration value="Asia/Vladivostok" />
+      <xsd:enumeration value="Asia/Yakutsk" />
+      <xsd:enumeration value="Asia/Yekaterinburg" />
+      <xsd:enumeration value="Asia/Yerevan" />
+      <xsd:enumeration value="Asia/Hong_Kong" />
+      <xsd:enumeration value="Asia/Tehran" />
+      <xsd:enumeration value="Asia/Jerusalem" />
+      <xsd:enumeration value="Asia/Tel_Aviv" />
+      <xsd:enumeration value="Asia/Tokyo" />
+      <xsd:enumeration value="Asia/Riyadh87" />
+      <xsd:enumeration value="Asia/Riyadh88" />
+      <xsd:enumeration value="Asia/Riyadh89" />
+      <xsd:enumeration value="Asia/Shanghai" />
+      <xsd:enumeration value="Asia/Taipei" />
+      <xsd:enumeration value="Asia/Seoul" />
+      <xsd:enumeration value="Asia/Singapore" />
+      <xsd:enumeration value="Asia/Istanbul" />
+      <xsd:enumeration value="Atlantic/Azores" />
+      <xsd:enumeration value="Atlantic/Bermuda" />
+      <xsd:enumeration value="Atlantic/Canary" />
+      <xsd:enumeration value="Atlantic/Cape_Verde" />
+      <xsd:enumeration value="Atlantic/Faeroe" />
+      <xsd:enumeration value="Atlantic/Jan_Mayen" />
+      <xsd:enumeration value="Atlantic/Madeira" />
+      <xsd:enumeration value="Atlantic/South_Georgia" />
+      <xsd:enumeration value="Atlantic/St_Helena" />
+      <xsd:enumeration value="Atlantic/Stanley" />
+      <xsd:enumeration value="Atlantic/Reykjavik" />
+      <xsd:enumeration value="Australia/Lindeman" />
+      <xsd:enumeration value="Australia/Lord_Howe" />
+      <xsd:enumeration value="Australia/LHI" />
+      <xsd:enumeration value="Australia/North" />
+      <xsd:enumeration value="Australia/Darwin" />
+      <xsd:enumeration value="Australia/Queensland" />
+      <xsd:enumeration value="Australia/Brisbane" />
+      <xsd:enumeration value="Australia/South" />
+      <xsd:enumeration value="Australia/Adelaide" />
+      <xsd:enumeration value="Australia/Sydney" />
+      <xsd:enumeration value="Australia/ACT" />
+      <xsd:enumeration value="Australia/Canberra" />
+      <xsd:enumeration value="Australia/NSW" />
+      <xsd:enumeration value="Australia/Tasmania" />
+      <xsd:enumeration value="Australia/Hobart" />
+      <xsd:enumeration value="Australia/Victoria" />
+      <xsd:enumeration value="Australia/Melbourne" />
+      <xsd:enumeration value="Australia/West" />
+      <xsd:enumeration value="Australia/Perth" />
+      <xsd:enumeration value="Australia/Yancowinna" />
+      <xsd:enumeration value="Australia/Broken_Hill" />
+      <xsd:enumeration value="Brazil/Acre" />
+      <xsd:enumeration value="Brazil/DeNoronha" />
+      <xsd:enumeration value="Brazil/East" />
+      <xsd:enumeration value="Brazil/West" />
+      <xsd:enumeration value="CET" />
+      <xsd:enumeration value="Canada/Atlantic" />
+      <xsd:enumeration value="Canada/Central" />
+      <xsd:enumeration value="Canada/Eastern" />
+      <xsd:enumeration value="Canada/Mountain" />
+      <xsd:enumeration value="Canada/Newfoundland" />
+      <xsd:enumeration value="Canada/Pacific" />
+      <xsd:enumeration value="Canada/Saskatchewan" />
+      <xsd:enumeration value="Canada/East-Saskatchewan" />
+      <xsd:enumeration value="Canada/Yukon" />
+      <xsd:enumeration value="Chile/Continental" />
+      <xsd:enumeration value="Chile/EasterIsland" />
+      <xsd:enumeration value="Cuba" />
+      <xsd:enumeration value="EET" />
+      <xsd:enumeration value="Egypt" />
+      <xsd:enumeration value="Etc/GMT+1" />
+      <xsd:enumeration value="Etc/GMT+10" />
+      <xsd:enumeration value="Etc/GMT+11" />
+      <xsd:enumeration value="Etc/GMT+12" />
+      <xsd:enumeration value="Etc/GMT+2" />
+      <xsd:enumeration value="Etc/GMT+3" />
+      <xsd:enumeration value="Etc/GMT+4" />
+      <xsd:enumeration value="Etc/GMT+5" />
+      <xsd:enumeration value="Etc/GMT+6" />
+      <xsd:enumeration value="Etc/GMT+7" />
+      <xsd:enumeration value="Etc/GMT+8" />
+      <xsd:enumeration value="Etc/GMT+9" />
+      <xsd:enumeration value="Etc/GMT-1" />
+      <xsd:enumeration value="Etc/GMT-10" />
+      <xsd:enumeration value="Etc/GMT-11" />
+      <xsd:enumeration value="Etc/GMT-12" />
+      <xsd:enumeration value="Etc/GMT-13" />
+      <xsd:enumeration value="Etc/GMT-14" />
+      <xsd:enumeration value="Etc/GMT-2" />
+      <xsd:enumeration value="Etc/GMT-3" />
+      <xsd:enumeration value="Etc/GMT-4" />
+      <xsd:enumeration value="Etc/GMT-5" />
+      <xsd:enumeration value="Etc/GMT-6" />
+      <xsd:enumeration value="Etc/GMT-7" />
+      <xsd:enumeration value="Etc/GMT-8" />
+      <xsd:enumeration value="Etc/GMT-9" />
+      <xsd:enumeration value="Etc/GMT" />
+      <xsd:enumeration value="Etc/GMT+0" />
+      <xsd:enumeration value="Etc/GMT-0" />
+      <xsd:enumeration value="Etc/GMT0" />
+      <xsd:enumeration value="Etc/Greenwich" />
+      <xsd:enumeration value="Etc/UCT" />
+      <xsd:enumeration value="Etc/UTC" />
+      <xsd:enumeration value="Etc/Universal" />
+      <xsd:enumeration value="Etc/Zulu" />
+      <xsd:enumeration value="Europe/Amsterdam" />
+      <xsd:enumeration value="Europe/Andorra" />
+      <xsd:enumeration value="Europe/Athens" />
+      <xsd:enumeration value="Europe/Belfast" />
+      <xsd:enumeration value="Europe/Belgrade" />
+      <xsd:enumeration value="Europe/Berlin" />
+      <xsd:enumeration value="Europe/Brussels" />
+      <xsd:enumeration value="Europe/Bucharest" />
+      <xsd:enumeration value="Europe/Budapest" />
+      <xsd:enumeration value="Europe/Chisinau" />
+      <xsd:enumeration value="Europe/Copenhagen" />
+      <xsd:enumeration value="Europe/Dublin" />
+      <xsd:enumeration value="Europe/Gibraltar" />
+      <xsd:enumeration value="Europe/Helsinki" />
+      <xsd:enumeration value="Europe/Kaliningrad" />
+      <xsd:enumeration value="Europe/Kiev" />
+      <xsd:enumeration value="Europe/Ljubljana" />
+      <xsd:enumeration value="Europe/Luxembourg" />
+      <xsd:enumeration value="Europe/Madrid" />
+      <xsd:enumeration value="Europe/Malta" />
+      <xsd:enumeration value="Europe/Minsk" />
+      <xsd:enumeration value="Europe/Monaco" />
+      <xsd:enumeration value="Europe/Oslo" />
+      <xsd:enumeration value="Europe/Paris" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="setup_fee_applied_flag_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NA" />
+      <xsd:enumeration value="Napplied" />
+      <xsd:enumeration value="Applied" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="service_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="AMS" />
+      <xsd:enumeration value="USAGE" />
+      <xsd:enumeration value="MISC" />
+      <xsd:enumeration value="EXTERNAL" />
+      <xsd:enumeration value="FIXED_USAGE" />
+      <xsd:enumeration value="COMMIT_WITH_OVERAGE_USAGE" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="session_type_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="DOCUMENT" />
+      <xsd:enumeration value="GENERAL" />
+      <xsd:enumeration value="SILENT_ORDER_POST" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="time_period_unit_enum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Days" />
+      <xsd:enumeration value="Months" />
+      <xsd:enumeration value="Years" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

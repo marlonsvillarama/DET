@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="SuggestAccountPaymentScheduleRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="SUGGEST_ACCOUNT_PAYMENT_SCHEDULE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SUGGEST_ACCOUNT_PAYMENT_SCHEDULE">
+    <xsd:annotation>
+      <xsd:documentation>
+				Suggest Account Payment Schedule generates a suggested payment schedule for the specified Account.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for Get Account Billing Schedule Request:
+						account_id | Account_Namespace
+						invoice_number?
+						amount?
+						First_Payment_Date
+						number_of_payments
+						time_between_payments_number
+						time_between_payments_unit
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element minOccurs="0" ref="invoice_number" />
+        <xsd:element minOccurs="0" ref="amount" />
+        <xsd:element ref="First_Payment_Date" />
+        <xsd:element ref="number_of_payments" />
+        <xsd:element minOccurs="0" ref="time_between_payments_number" />
+        <xsd:element minOccurs="0" ref="time_between_payments_unit" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_SUGGEST_ACCOUNT_PAYMENT_SCHEDULE">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Payment_Schedule" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

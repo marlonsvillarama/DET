@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="LookupTransactionRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="LOOKUP_TRANSACTION" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LOOKUP_TRANSACTION">
+    <xsd:annotation>
+      <xsd:documentation>
+				Lookup Transaction will return detailed transaction information for the specified Account.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for the Lookup Invoice Request:
+						account_id | Account_Namespace
+						information_type
+						monexa_transaction_id
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element ref="information_type" />
+        <xsd:element ref="monexa_transaction_id" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_LOOKUP_TRANSACTION">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="account_id" />
+        <xsd:element ref="Transaction_Information" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="Response_Status">
+    <xsd:annotation>
+      <xsd:documentation>
+				In the case of an error, the API server will return a message with an error code and
+				description.
+			</xsd:documentation>
+      <xsd:documentation>
+				Response Codes
+					0000 : Success
+					0xxx : The request was successful however there are additional warnings (see Warning
+						Response Codes below for more details)
+					1xyy : Temporary or Client-side failure
+						x: Type of error. Valid Values:
+							0: Configuration Error
+							1: Request Error
+							2: Validation Error
+							3: Temporary Error. Retry request after 30 minutes. If problem persists,
+								contact IP Applications Client Services
+							4: 3rd Party Processing Error Ã¢ÂÂ further details in the response.
+						yy: Unique identifier for the error
+					2zzz : Permanent Failure
+						zzz: Unique identifier for the error
+			</xsd:documentation>
+      <xsd:documentation>
+				Warning Response Codes
+					0001
+						The request was successful but the system was not able to
+						send the configured email notices. Recommended action:
+						notify a system administrator of the failure to contact the
+						email recipient manually with the correct information.
+					0002
+						The LOOKUP request succeeded but only a portion of the
+						requested data was returned because the Administrator does
+						not have full permissions for the items request.
+						Recommended action: correct the request or grant
+						permissions for the Administrator.
+					0003
+						The AdministratorÃ¢ÂÂs password being used to submit the API
+						requests is more than 90 days old and needs to be updated
+						for security reasons. Recommended action: notify the
+						Administrator to change their password.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="response_code" />
+        <xsd:element minOccurs="0" ref="response_description" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MonexaSvcFaultData">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="service_fault_type" />
+        <xsd:element minOccurs="0" ref="service_fault_description" />
+        <xsd:element minOccurs="0" ref="service_fault_details" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

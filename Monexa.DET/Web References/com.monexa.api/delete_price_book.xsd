@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="DeletePriceBookRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="DELETE_PRICE_BOOK" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="DELETE_PRICE_BOOK">
+    <xsd:annotation>
+      <xsd:documentation>
+		  	The DELETE_PRICE_BOOK request will delete an existing Price Book in iTAPP.
+			
+			NOTE: A Price Book cannot be deleted if an Account or Subscriber in the system is
+			using the Price Book.
+		</xsd:documentation>
+      <xsd:documentation>
+			The following is the list of Required Fields for the Delete Price Book Request:
+			DELETE_PRICE_BOOK: internal_price_book_id
+		</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:choice>
+        <xsd:element ref="internal_price_book_id" />
+      </xsd:choice>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

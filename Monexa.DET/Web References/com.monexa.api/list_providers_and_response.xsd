@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="ListProvidersRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="LIST_PROVIDERS" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LIST_PROVIDERS">
+    <xsd:annotation>
+      <xsd:documentation>
+				The LIST_PROVIDERS request will return detailed information for all Providers configured in the system 
+				the Administrator has access to.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for the LIST_PROVIDERS Request:
+						information_type
+			</xsd:documentation>
+      <xsd:documentation>
+				Optional Fields
+					The following is the list of Optional Fields for the LIST_PROVIDERS Request:
+						custom_ui_enabled
+			</xsd:documentation>
+      <xsd:documentation>
+				Additional Information
+					Information for Providers such as Plans, Products, Service Groups or Offices can also
+					be requested by adding the following commands to the request:
+						LIST_PLANS
+						LIST_PRODUCTS
+						LIST_SERVICE_GROUPS
+						LIST_OFFICES
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="information_type" />
+        <xsd:element minOccurs="0" ref="custom_ui_enabled" />
+        <xsd:element minOccurs="0" name="LIST_PLANS" type="LIST_PROVIDERS_LIST_PLANS_TYPE" />
+        <xsd:element minOccurs="0" name="LIST_PRODUCTS" type="LIST_PROVIDERS_LIST_PRODUCTS_TYPE" />
+        <xsd:element minOccurs="0" name="LIST_SERVICE_GROUPS" type="LIST_PROVIDERS_LIST_SERVICE_GROUPS_TYPE" />
+        <xsd:element minOccurs="0" name="LIST_OFFICES" type="LIST_PROVIDERS_LIST_OFFICES_TYPE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="LIST_PROVIDERS_LIST_PLANS_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="information_type" />
+      <xsd:element minOccurs="0" ref="LIST_PLAN_SERVICES" />
+      <xsd:element minOccurs="0" ref="LIST_PLAN_DISCOUNTS" />
+      <xsd:element minOccurs="0" ref="LIST_PLAN_RESTRICTIONS" />
+      <xsd:element minOccurs="0" ref="LIST_PRICE_BOOKS" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LIST_PROVIDERS_LIST_PRODUCTS_TYPE">
+    <xsd:sequence />
+  </xsd:complexType>
+  <xsd:complexType name="LIST_PROVIDERS_LIST_SERVICE_GROUPS_TYPE">
+    <xsd:sequence />
+  </xsd:complexType>
+  <xsd:complexType name="LIST_PROVIDERS_LIST_OFFICES_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="information_type" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Response_LIST_PROVIDERS">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="Provider" type="REP_LIST_PROVIDERS_PROVIDER_TYPE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="REP_LIST_PROVIDERS_PROVIDER_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="provider_id" />
+      <xsd:element minOccurs="0" ref="provider_name" />
+      <xsd:element minOccurs="0" ref="external_group_id_required" />
+      <xsd:element minOccurs="0" ref="xfd_url" />
+      <xsd:element minOccurs="0" ref="custom_ui_enabled" />
+      <xsd:element minOccurs="0" ref="custom_ui_url" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Business_Rules_Class" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="payment_method" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Plan" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Product" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Service_Group" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Office" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="CreatePriceSheetRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="CREATE_PRICE_SHEET" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="CREATE_PRICE_SHEET">
+    <xsd:annotation>
+      <xsd:documentation>
+			Price Sheets are a way to create multiple pricing schemes, for Usage based Services,
+			within the same Plan.
+
+			Each Price Sheet is differentiated from other Price Sheets by its Contract Term,
+			Billing Frequency, and Currency. Each Sheet within a Price Book must have a unique
+			set of the previous three fields.
+
+			The CREATE_PRICE_SHEET request will create a new Price Sheet in iTAPP.
+			Note: The currency must be the same as the specified Office currency.
+		  	
+			Note: Usage ranges must be defined for the range 0 to 9,999,999. Format:
+			9999999.0000
+		</xsd:documentation>
+      <xsd:documentation>
+			The following is the list of Required Fields for the Create Price Sheet Request:
+			internal_price_book_id | Price_Book_Namespace
+			Price_Sheet
+			billing_frequency
+			currency
+			contract_term
+		</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="internal_price_book_id" />
+          <xsd:element ref="Price_Book_Namespace" />
+        </xsd:choice>
+        <xsd:element ref="Price_Sheet" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

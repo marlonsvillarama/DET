@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ADC8E95D-515F-43A8-9B8B-AAA515F0C2E9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Monexa.DET</RootNamespace>
+    <AssemblyName>Monexa.DET</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APIFunctions.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GifImage.cs" />
+    <Compile Include="Mediator.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoapLoggerExtension.cs" />
+    <Compile Include="SoapTemplates.cs" />
+    <Compile Include="SOAPTracer.cs" />
+    <Compile Include="TraceExtensionAttribute.cs" />
+    <Compile Include="Web References\MonexaAPI\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="models\X837.cs" />
+    <Compile Include="XmlHelper.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Web References\MonexaAPI\Category.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\check_password.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\common_elements.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\common_element_types.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_account_history.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_account_payment_schedule.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_billable_event_cmd.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_billing_line_item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_invoice_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_line_item_approval_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_plan.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_price_book.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_price_sheet.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_product.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_service_group.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_subscriber_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\create_user_setting.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\Custom_Attribute_Entry.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\delete_account_payment_schedule.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\delete_billing_line_item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\delete_line_items_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\delete_plan.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\delete_price_book.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\delete_price_sheet.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\delete_usage_data_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\Delete_Usage_Data_Error.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\delete_user_setting.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\exceptions.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\generate_line_items_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\get_account_balance_info_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\get_account_billing_schedule_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\get_account_payment_schedule_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\get_administrator_info_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\get_session_key_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\Invoice_Information.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Line_Item.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Line_Item_Approval_Error.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Line_Item_Group.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\list_account_history_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\list_custom_attributes_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\list_offices_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\list_permissions_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\list_plans_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\list_products_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\list_providers_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\list_session_key_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\list_statements_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\list_usage_data_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\list_user_setting_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\lookup_invoice_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\lookup_office_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\lookup_plan_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\lookup_price_book_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\lookup_product_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\lookup_provider_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\lookup_statement_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\lookup_subscriber_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\lookup_transaction_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\manage_invoice.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\Monexa.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\monexa_webservice.wsdl" />
+    <None Include="Web References\MonexaAPI\Payment_Schedule.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\ping_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\process_proforma_invoice_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\process_transaction_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\Product.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\MonexaAPI\REP_LIST_OFFICES_OFFICE_TYPE.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\REP_LIST_PLANS_PLAN_TYPE.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\REP_LIST_PROVIDERS_PROVIDER_TYPE.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\REP_LOOK_SUB_SUBSCRIBER_INFORMATION_TYPE.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_CREATE_INVOICE.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_CREATE_SUBSCRIBER.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_GET_ACCOUNT_BALANCE_INFO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_GET_ACCOUNT_BILLING_SCHEDULE.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_GET_ADMINISTRATOR_INFO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_GET_SESSION_KEY.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_LIST_ACCOUNT_HISTORY.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_LIST_STATEMENTS.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_LIST_USAGE_DATA.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_LOOKUP_INVOICE.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_LOOKUP_OFFICE.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_LOOKUP_PLAN.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_LOOKUP_PRICE_BOOK.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_LOOKUP_PRODUCT.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_LOOKUP_PROVIDER.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_LOOKUP_STATEMENT.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_LOOKUP_TRANSACTION.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_PING.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_PROCESS_PROFORMA_INVOICE.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_PROCESS_TRANSACTION.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_SEARCH_ACCOUNT.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_SEARCH_PLAN.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_SEARCH_SUBSCRIBER.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_SEARCH_USAGE_DATA.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Response_VALIDATE_SESSION_KEY.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\search_account_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\search_invoice_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\search_line_item_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\search_plan_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\search_product_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\search_service_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\search_service_group_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\search_subscriber_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\search_transaction_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\search_usage_data_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\Service.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Service_Group.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\Session_Key.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\SuccessResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\suggest_account_payment_schedule_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\Transaction.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\update_invoice.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\update_plan.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\update_subscriber.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MonexaAPI\User_Action.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MonexaAPI\validate_session_key_and_response.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="res\error.png" />
+    <Content Include="res\check.png" />
+    <Content Include="res\exclamation.png" />
+    <Content Include="res\hourglass.png" />
+    <Content Include="res\triangle.png" />
+    <None Include="res\ajax-loader.gif" />
+    <Content Include="res\CMS-1500-2-12-paper-claim.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="pdf\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://api.monexa.com/v05_40/SOAP/monexa_webservice.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\MonexaAPI\</RelPath>
+      <UpdateFromURL>https://api.monexa.com/v05_40/SOAP/monexa_webservice.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Monexa_DET_MonexaAPI_MonexaWebservice_v05_40</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="UpdateSubscriberRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="UPDATE_SUBSCRIBER" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="UPDATE_SUBSCRIBER">
+    <xsd:annotation>
+      <xsd:documentation>
+				The Update Subscriber transaction will update an existing Subscriber Account in iTAPP.
+			</xsd:documentation>
+      <xsd:documentation>
+				Changing Office
+					When an Office is changed and a new Plan is selected, any optional services 
+					assigned to the account must also be requested to be re-enabled on the new Plan.
+			</xsd:documentation>
+      <xsd:documentation>
+				Changing Plan
+					When a Plan is changed, just like in Create Subscriber, the default Services of 
+					the new Plan are provisioned unless otherwise specified in the request.
+			</xsd:documentation>
+      <xsd:documentation>
+				Account Status
+					When updating an Account, valid values for the account_status field are:
+					enabled
+					suspended
+					cancelled
+					deleted
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for the Update Subscriber Request:
+						Account_Information: account_id | login_id, provider_id
+			</xsd:documentation>
+      <xsd:documentation>
+			Conditional Required Fields
+				Conditional Required Fields for the Update Subscriber Request:
+					If Provider is configured to require external_group_id: Account_Information:external_group_id
+					office_id: Plan
+					Plan: plan_id, office_id
+					Service_Group: service_group_name, Service
+					Service: service_name
+					billing_frequency: discount_type
+					discount_type: billing_frequency
+					payment_method="ECP": Bank_Account_Information
+					payment_method="CC" or "AMEX" or "DSCVR" or "MC" or "RSVP" or "VISA": Credit_Card_Information
+					payment_method="PAYPAL": PayPal_Information
+					Credit_Card_Information: credit_card_number, name_on_credit_card, credit_card_expiry_date
+					Bank_Account_Information: name_of_bank, country_of_bank, bank_account_number, transit_number, routing_number
+					PayPal_Information: reference_id
+					Service Parameter: service_parameter_attribute, service_parameter_value
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Subscriber_Information" type="UPD_SUB_SUBSCRIBER_INFORMATION_TYPE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="UPD_SUB_SUBSCRIBER_INFORMATION_TYPE">
+    <xsd:sequence>
+      <xsd:element name="Account_Information" type="UPD_SUB_ACCOUNT_INFORMATION_TYPE" />
+      <xsd:element minOccurs="0" name="Billing_Information" type="UPD_SUB_BILLING_INFORMATION" />
+      <xsd:element minOccurs="0" name="Contact_Information" type="UPD_SUB_CONTACT_INFORMATION_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UPD_SUB_ACCOUNT_INFORMATION_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="account_id" />
+      <xsd:element minOccurs="0" ref="login_id" />
+      <xsd:element minOccurs="0" ref="external_group_id" />
+      <xsd:element minOccurs="0" ref="provider_id" />
+      <xsd:element minOccurs="0" ref="password" />
+      <xsd:element minOccurs="0" ref="office_id" />
+      <xsd:element minOccurs="0" name="Plan" type="UPD_SUB_ACT_PLAN_TYPE" />
+      <xsd:element minOccurs="0" ref="account_status" />
+      <xsd:element minOccurs="0" ref="cancellation_reason" />
+      <xsd:element minOccurs="0" ref="invoice_notify_flag" />
+      <xsd:element minOccurs="0" ref="statement_notify_flag" />
+      <xsd:element minOccurs="0" ref="sales_representative_name" />
+      <xsd:element minOccurs="0" ref="sales_representative_email" />
+      <xsd:element minOccurs="0" ref="promo_code" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UPD_SUB_ACT_PLAN_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="plan_id" />
+      <xsd:element minOccurs="0" name="Plan_Discount_Type" type="UPD_SUB_PLAN_DISCOUNT_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Plan_Service" type="UPD_SUB_PLAN_SERVICE_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UPD_SUB_PLAN_DISCOUNT_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="discount_type_id" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UPD_SUB_PLAN_SERVICE_TYPE">
+    <xsd:sequence>
+      <xsd:element name="Service_Group" type="UPD_SUB_SERVICE_GROUP_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UPD_SUB_SERVICE_GROUP_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="service_group_id" />
+      <xsd:element name="Service" type="UPD_SUB_SERVICE_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UPD_SUB_SERVICE_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="service_id" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Service_Parameter" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UPD_SUB_BILLING_INFORMATION">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="payment_method" />
+      <xsd:element minOccurs="0" ref="Credit_Card_Information" />
+      <xsd:element minOccurs="0" ref="Bank_Account_Information" />
+      <xsd:element minOccurs="0" ref="PayPal_Information" />
+      <xsd:element minOccurs="0" ref="Start_Date" />
+      <xsd:element minOccurs="0" ref="Expiry_Date" />
+      <xsd:element minOccurs="0" ref="billing_day" />
+      <xsd:element minOccurs="0" ref="billing_frequency" />
+      <xsd:element minOccurs="0" ref="contract_term" />
+      <xsd:element minOccurs="0" ref="currency" />
+      <xsd:element minOccurs="0" name="Price_Book" type="UPD_SUB_PRICE_BOOK_TYPE" />
+      <xsd:element minOccurs="0" ref="Billed_Up_To_Date" />
+      <xsd:element minOccurs="0" ref="Overtime_Billed_Up_To_Date" />
+      <xsd:element minOccurs="0" ref="number_failed_payment_attempts" />
+      <xsd:element minOccurs="0" ref="tax_exempt" />
+      <xsd:element minOccurs="0" ref="tax_exempt_document_type" />
+      <xsd:element minOccurs="0" ref="tax_exempt_document_reference" />
+      <xsd:element minOccurs="0" ref="Tax_Exempt_Start_Date" />
+      <xsd:element minOccurs="0" ref="Tax_Exempt_End_Date" />
+      <xsd:element minOccurs="0" ref="Business_Rules_Class" />
+      <xsd:element minOccurs="0" ref="setup_fee_applied_flag" />
+      <xsd:element minOccurs="0" ref="po_number" />
+      <xsd:element minOccurs="0" ref="collection_status" />
+      <xsd:element minOccurs="0" ref="credit_limit" />
+      <xsd:element minOccurs="0" ref="contract_minimum" />
+      <xsd:element minOccurs="0" ref="auto_pay_day" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UPD_SUB_PRICE_BOOK_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="price_book_id" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UPD_SUB_CONTACT_INFORMATION_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="first_name" />
+      <xsd:element minOccurs="0" ref="last_name" />
+      <xsd:element minOccurs="0" ref="company" />
+      <xsd:element minOccurs="0" ref="contact_email" />
+      <xsd:element minOccurs="0" ref="Bill_To_Address" />
+      <xsd:element minOccurs="0" ref="Ship_To_Address" />
+      <xsd:element minOccurs="0" ref="timezone" />
+      <xsd:element minOccurs="0" ref="phone_number_1" />
+      <xsd:element minOccurs="0" ref="phone_number_2" />
+      <xsd:element minOccurs="0" ref="fax_number" />
+      <xsd:element minOccurs="0" ref="notes" />
+      <xsd:element minOccurs="0" ref="external_account_id" />
+      <xsd:element minOccurs="0" ref="language" />
+      <xsd:element minOccurs="0" ref="verification_question" />
+      <xsd:element minOccurs="0" ref="verification_answer" />
+      <xsd:element minOccurs="0" ref="receive_provider_marketing" />
+      <xsd:element minOccurs="0" ref="receive_third_party_marketing" />
+      <xsd:element minOccurs="0" ref="referral" />
+      <xsd:element minOccurs="0" name="custom_field_1" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_2" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_3" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_4" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_5" type="string1024" />
+      <xsd:element minOccurs="0" name="custom_field_6" type="string1024" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

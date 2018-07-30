@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="SearchAccountRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="SEARCH_ACCOUNT" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SEARCH_ACCOUNT">
+    <xsd:annotation>
+      <xsd:documentation>
+				The Search Account method returns a list of Accounts matching the input criteria. This
+				Search will return Master Account matches.
+			</xsd:documentation>
+      <xsd:documentation>
+				Optional Search Fields
+					The following is the list of optional filter criteria for performing the search:
+						account_id
+						login_id
+						first_name
+						last_name
+						company
+						from_modified_time
+						to_modified_time
+						filter_by
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="account_id" />
+        <xsd:element minOccurs="0" ref="login_id" />
+        <xsd:element minOccurs="0" ref="first_name" />
+        <xsd:element minOccurs="0" ref="last_name" />
+        <xsd:element minOccurs="0" ref="company" />
+        <xsd:element minOccurs="0" ref="result_set_start" />
+        <xsd:element minOccurs="0" ref="result_set_length" />
+        <xsd:element minOccurs="0" ref="result_order" />
+        <xsd:element minOccurs="0" ref="result_sort_by" />
+        <xsd:element minOccurs="0" ref="from_modified_time" />
+        <xsd:element minOccurs="0" ref="to_modified_time" />
+        <xsd:element minOccurs="0" ref="filter_by" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_SEARCH_ACCOUNT">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="result_size" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="Account" type="REP_SEA_ACC_SUBSCRIBER_INFORMATION_TYPE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="REP_SEA_ACC_SUBSCRIBER_INFORMATION_TYPE">
+    <xsd:sequence>
+      <xsd:element name="Account_Information" type="REP_SEA_ACC_ACCOUNT_INFORMATION_TYPE" />
+      <xsd:element name="Contact_Information" type="REP_SEA_ACC_CONTACT_INFORMATION_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_SEA_ACC_ACCOUNT_INFORMATION_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="account_id" />
+      <xsd:element ref="login_id" />
+      <xsd:element ref="external_group_id" />
+      <xsd:element ref="provider_id" />
+      <xsd:element ref="provider_name" />
+      <xsd:element ref="office_id" />
+      <xsd:element ref="office_name" />
+      <xsd:element ref="account_status" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_SEA_ACC_CONTACT_INFORMATION_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="first_name" />
+      <xsd:element ref="last_name" />
+      <xsd:element ref="company" />
+      <xsd:element ref="phone_number_1" />
+      <xsd:element ref="external_account_id" />
+      <xsd:element ref="language" />
+      <xsd:element minOccurs="0" ref="master_account_id" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

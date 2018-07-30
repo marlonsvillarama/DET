@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="DeleteAccountPaymentScheduleRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="DELETE_ACCOUNT_PAYMENT_SCHEDULE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="DELETE_ACCOUNT_PAYMENT_SCHEDULE">
+    <xsd:annotation>
+      <xsd:documentation>
+				The DELETE_ACCOUNT_PAYMENT_SCHEDULE request will delete the existing account payment schedule for an invoice.
+				NOTE: All payment schedules for an account is deleted if no invoice number is specified.
+			</xsd:documentation>
+      <xsd:documentation>
+				Command Specific Request Fields
+					The following is the list of Required Fields for the Delete Account Payment Schedule Request:
+						account_id | Account_Namespace
+						invoice_number
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element minOccurs="0" ref="invoice_number" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

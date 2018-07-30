@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="DeletePlanRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="DELETE_PLAN" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="DELETE_PLAN">
+    <xsd:annotation>
+      <xsd:documentation>
+				The DELETE_PLAN request will delete an existing Plan in iTAPP.
+				NOTE: A Plan cannot be deleted if an Account or Subscriber in the system is using the Plan.
+			</xsd:documentation>
+      <xsd:documentation>
+				Command Specific Request Fields
+					The following is the list of Required Fields for the Delete Plan Request:
+						provider_id
+						plan_id
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="provider_id" />
+        <xsd:element ref="plan_id" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

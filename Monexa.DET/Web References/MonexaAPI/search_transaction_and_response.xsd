@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="SearchTransactionRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="SEARCH_TRANSACTION" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SEARCH_TRANSACTION">
+    <xsd:annotation>
+      <xsd:documentation>
+				The Search Transaction method returns a list of Transactions matching the input criteria. By
+				default the search will return all transaction matches.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for the Search Transaction Request:
+						SEARCH_TRANSACTION: provider_id | account_id | Account_Namespace
+				Optional Search Fields
+					The following is the list of optional filter criteria for performing the search:
+						transaction_type
+						payment_method
+						transaction_token
+						Start_Date
+						End_date
+						Last_Updated_Start_Date
+						Last_Updated_End_Date
+						status
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="provider_id" />
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element minOccurs="0" ref="transaction_type" />
+        <xsd:element minOccurs="0" ref="further_action" />
+        <xsd:element minOccurs="0" ref="payment_method" />
+        <xsd:element minOccurs="0" ref="transaction_token" />
+        <xsd:element minOccurs="0" ref="Start_Date" />
+        <xsd:element minOccurs="0" ref="End_Date" />
+        <xsd:element minOccurs="0" ref="Last_Updated_Start_Date" />
+        <xsd:element minOccurs="0" ref="Last_Updated_End_Date" />
+        <xsd:element minOccurs="0" name="status" type="transaction_status_enum" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_SEARCH_TRANSACTION">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Transaction" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

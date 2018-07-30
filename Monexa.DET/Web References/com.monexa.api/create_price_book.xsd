@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="CreatePriceBookRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="CREATE_PRICE_BOOK" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="CREATE_PRICE_BOOK">
+    <xsd:annotation>
+      <xsd:documentation>
+		  	Price Books are a way to create multiple pricing schemes within a Plan. For v05_10,
+			these pricing schemes will apply to Usage Services within a Plan only. Price Books
+			may contain 0 to many Price Sheets.
+		</xsd:documentation>
+      <xsd:documentation>
+			The CREATE_PRICE_BOOK request will create a new Price Book in iTAPP.
+			When creating a Price Book, it is possible to create Price Sheets within the same call.
+			
+			Note: When creating Price Sheets, the currency must be the same as the currency
+			specified by the office.
+			
+			Note: Usage ranges must be defined for the range 0 to 9,999,999. Format:
+			9999999.0000
+
+			Note: If a Usage Service does not have pricing defined, usage items will not be
+			billed.
+		</xsd:documentation>
+      <xsd:documentation>
+			Required Fields
+			The following is the list of Required Fields for the Create Price Book Request:
+				provider_id
+				plan_id
+				Price_Book
+				price_book_id
+				price_book_name
+				default
+				active
+
+			Default: Whether or not the Price Book is the default Price Book for a Plan. Valid
+			Values: Y | N
+
+			Active: Whether or not the Price Book is available for use by Accounts and
+			Subscribers. Valid Values: Y | N
+		</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="provider_id" />
+        <xsd:element ref="plan_id" />
+        <xsd:element name="Price_Book" type="CRE_PRICE_BOOK_TYPE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="CRE_PRICE_BOOK_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="price_book_id" />
+      <xsd:element ref="price_book_name" />
+      <xsd:element minOccurs="0" ref="price_book_description" />
+      <xsd:element minOccurs="0" maxOccurs="1" ref="default" />
+      <xsd:element minOccurs="0" maxOccurs="1" ref="active" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Price_Sheet" type="CRE_PRICE_BOOK_PRICE_SHEET_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CRE_PRICE_BOOK_PRICE_SHEET_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="billing_frequency" />
+      <xsd:element ref="currency" />
+      <xsd:element ref="contract_term" />
+      <xsd:element minOccurs="0" ref="usage_billing_period_number" />
+      <xsd:element minOccurs="0" ref="usage_billing_period_unit" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Service" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Usage_Service" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

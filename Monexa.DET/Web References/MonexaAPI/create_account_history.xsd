@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="CreateAccountHistoryRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="CREATE_ACCOUNT_HISTORY" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="CREATE_ACCOUNT_HISTORY">
+    <xsd:annotation>
+      <xsd:documentation>
+				The Create Account History operation will add an entry in the Audit Log
+				for an Account.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of required fields for the Create Account History request:
+						account_id | Account_Namespace
+						Account_Event: Event_Date, event_title
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element ref="Account_Event" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

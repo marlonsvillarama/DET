@@ -1,0 +1,1286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="Account_Event">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="updated_by" />
+        <xsd:element minOccurs="0" ref="Event_Date" />
+        <xsd:element ref="event_title" />
+        <xsd:element minOccurs="0" ref="event_detail" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Account_Namespace">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="login_id" />
+        <xsd:element minOccurs="0" ref="external_group_id" />
+        <xsd:element ref="provider_id" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Applied_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Applied_To_Invoice_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Auto_Pay_Run_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Authentication">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="administrator_login_name" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element ref="password" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SuccessResponse">
+    <xsd:complexType />
+  </xsd:element>
+  <xsd:element name="Bank_Account_Information">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="name_of_bank" />
+        <xsd:element minOccurs="0" ref="country_of_bank" />
+        <xsd:element ref="bank_account_number" />
+        <xsd:element minOccurs="0" ref="transit_number" />
+        <xsd:element minOccurs="0" ref="routing_number" />
+        <xsd:element minOccurs="0" ref="ecp_authorization" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Bill_To_Address">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Address" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Ship_To_Address">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Address" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Address">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="address_1" />
+        <xsd:element minOccurs="0" ref="address_2" />
+        <xsd:element minOccurs="0" ref="address_3" />
+        <xsd:element minOccurs="0" ref="address_4" />
+        <xsd:element minOccurs="0" ref="city" />
+        <xsd:element minOccurs="0" ref="state_or_province" />
+        <xsd:element minOccurs="0" ref="zip_or_postal_code" />
+        <xsd:element minOccurs="0" ref="country" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Billing_Schedule">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Billing_Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Billing_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Credit_Card_Information">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="credit_card_number" />
+        <xsd:element minOccurs="0" ref="name_on_credit_card" />
+        <xsd:element minOccurs="0" ref="credit_card_expiry_date" />
+        <xsd:element minOccurs="0" ref="card_security_code" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="year" />
+        <xsd:element ref="month" />
+        <xsd:element ref="day" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Date_Time">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="year" />
+        <xsd:element ref="month" />
+        <xsd:element ref="day" />
+        <xsd:element ref="hour" />
+        <xsd:element ref="minute" />
+        <xsd:element ref="second" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Delete_Usage_Data_Error">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="usage_id" />
+        <xsd:element ref="error_code" />
+        <xsd:element ref="error_description" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="First_Payment_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Last_Updated_End_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Last_Updated_Start_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LIST_PLAN_DISCOUNTS">
+    <xsd:complexType />
+  </xsd:element>
+  <xsd:element name="LIST_PLAN_SERVICES">
+    <xsd:complexType />
+  </xsd:element>
+  <xsd:element name="LIST_PLAN_RESTRICTIONS">
+    <xsd:complexType />
+  </xsd:element>
+  <xsd:element name="LIST_PRICE_BOOKS">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="information_type" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LIST_SERVICE_GROUPS">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="provider_id" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Office">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="office_id" />
+        <xsd:element minOccurs="0" ref="office_name" />
+        <xsd:element minOccurs="0" ref="transaction_token" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="cancellation_reason" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Payment_Map">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="payment_type" />
+        <xsd:element minOccurs="0" ref="payment_id" />
+        <xsd:element ref="amount" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Payment_Schedule">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Invoice" />
+        <xsd:element minOccurs="1" maxOccurs="unbounded" ref="Payment_Schedule_Item" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Payment_Schedule_Item">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Payment_Date" />
+        <xsd:element ref="amount" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Payment_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="PayPal_Information">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="reference_id" />
+        <xsd:element minOccurs="0" ref="Reference_ID_Last_Updated_Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Period_Start_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Period_End_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Plan">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="provider_id" />
+        <xsd:element minOccurs="0" ref="provider_name" />
+        <xsd:element ref="plan_id" />
+        <xsd:element minOccurs="0" ref="name" />
+        <xsd:element minOccurs="0" name="description" type="string4000" />
+        <xsd:element minOccurs="0" ref="product_id" />
+        <xsd:element minOccurs="0" ref="price" />
+        <xsd:element minOccurs="0" ref="setup_fee" />
+        <xsd:element minOccurs="0" ref="setup_fee_description" />
+        <xsd:element minOccurs="0" ref="early_cancellation_penalty" />
+        <xsd:element minOccurs="0" ref="cancellation_penalty_days" />
+        <xsd:element minOccurs="0" ref="expiry_num_units" />
+        <xsd:element minOccurs="0" ref="expiry_units" />
+        <xsd:element minOccurs="0" ref="use_plan_credit_limit" />
+        <xsd:element minOccurs="0" ref="credit_limit" />
+        <xsd:element minOccurs="0" ref="pooled_access" />
+        <xsd:element minOccurs="0" ref="pool_limit" />
+        <xsd:element minOccurs="0" maxOccurs="3" ref="plan_property" />
+        <xsd:element minOccurs="0" name="custom_field_1" type="string1024" />
+        <xsd:element minOccurs="0" name="custom_field_2" type="string1024" />
+        <xsd:element minOccurs="0" name="custom_field_3" type="string1024" />
+        <xsd:element minOccurs="0" name="custom_field_4" type="string1024" />
+        <xsd:element minOccurs="0" name="custom_field_5" type="string2048" />
+        <xsd:element minOccurs="0" name="custom_field_6" type="string2048" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Plan_Discount_Type" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Plan_Service" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Plan_Restriction" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Price_Book" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Plan_Service">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Service_Group" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Plan_Restriction">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="plan_id" />
+        <xsd:element ref="subaccount_limit" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Price_Book">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="internal_price_book_id" />
+        <xsd:element ref="price_book_id" />
+        <xsd:element ref="price_book_name" />
+        <xsd:element minOccurs="0" ref="price_book_description" />
+        <xsd:element minOccurs="0" maxOccurs="1" ref="default" />
+        <xsd:element minOccurs="0" maxOccurs="1" ref="active" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Price_Sheet" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Price_Book_Namespace">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="provider_id" />
+        <xsd:element ref="plan_id" />
+        <xsd:element ref="price_book_id" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Price_Sheet">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="internal_price_sheet_id" />
+        <xsd:element ref="billing_frequency" />
+        <xsd:element ref="currency" />
+        <xsd:element ref="contract_term" />
+        <xsd:element minOccurs="0" ref="usage_billing_period_number" />
+        <xsd:element minOccurs="0" ref="usage_billing_period_unit" />
+        <xsd:element minOccurs="0" ref="fee" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Service" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Usage_Service" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Service">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="service_id" />
+        <xsd:element minOccurs="0" ref="service_group_id" />
+        <xsd:element minOccurs="0" name="description" type="string64" />
+        <xsd:element minOccurs="0" ref="service_type" />
+        <xsd:element minOccurs="0" ref="price" />
+        <xsd:element minOccurs="0" ref="default_service" />
+        <xsd:element minOccurs="0" ref="optional_service" />
+        <xsd:element minOccurs="0" ref="product_id" />
+        <xsd:element minOccurs="0" ref="protocol_id" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Service_Parameter" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Service_Group">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="service_group_id" />
+        <xsd:element name="description" type="string64" />
+        <xsd:element minOccurs="0" ref="summary" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Service" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Usage_Data">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="usage_id" />
+        <xsd:element minOccurs="0" ref="service_id" />
+        <xsd:element minOccurs="0" ref="billed" />
+        <xsd:element minOccurs="0" ref="event_start_time" />
+        <xsd:element minOccurs="0" ref="Local_Event_Start_Time" />
+        <xsd:element minOccurs="0" ref="event_end_time" />
+        <xsd:element minOccurs="0" ref="Local_Event_End_Time" />
+        <xsd:element minOccurs="0" ref="quantity" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="Custom_Attribute" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Usage_Service">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="service_id" />
+        <xsd:element minOccurs="0" name="description" type="string64" />
+        <xsd:element ref="pricing_type" />
+        <xsd:element minOccurs="0" ref="calculation_period" />
+        <xsd:element minOccurs="0" ref="overage_calculation_period" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Usage_Pricing" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Usage_Pricing">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="start" />
+        <xsd:element minOccurs="0" ref="end" />
+        <xsd:element name="price" type="decimalfraction8" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Overage_Pricing" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Overage_Pricing">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="pricing_type" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Overage_Usage_Pricing" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Overage_Usage_Pricing">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="start" />
+        <xsd:element minOccurs="0" ref="end" />
+        <xsd:element name="price" type="decimalfraction8" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Product">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="provider_id" />
+        <xsd:element ref="product_id" />
+        <xsd:element minOccurs="0" name="description" type="string64" />
+        <xsd:element minOccurs="0" ref="tax_code" />
+        <xsd:element minOccurs="0" ref="price" />
+        <xsd:element minOccurs="0" ref="taxable_status" />
+        <xsd:element minOccurs="0" ref="class" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Service_Parameter">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="service_parameter_attribute" />
+        <xsd:element ref="service_parameter_value" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Earliest_Amount_Owing_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Event_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date_Time" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Start_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Expiry_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="End_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Billed_Up_To_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Overtime_Billed_Up_To_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Last_Payment_Attempt_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Last_Payment_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Local_Event_End_Time">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date_Time" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Local_Event_Start_Time">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date_Time" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Local_Transaction_Time">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date_Time" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Trial_Balance_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Invoice_Information">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Invoice" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Related_Invoice" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Transaction" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Invoice">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="Subscriber_Information" type="Subscriber_Information_Type" />
+        <xsd:element minOccurs="0" ref="invoice_number" />
+        <xsd:element minOccurs="0" ref="external_invoice_number" />
+        <xsd:element minOccurs="0" ref="invoice_amount" />
+        <xsd:element minOccurs="0" ref="Applied_Date" />
+        <xsd:element minOccurs="0" ref="applied_amount" />
+        <xsd:element minOccurs="0" ref="invoice_outstanding_amount" />
+        <xsd:element minOccurs="0" ref="Invoice_Date" />
+        <xsd:element minOccurs="0" ref="Invoice_Due_Date" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Invoice_Detail" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Related_Invoice">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Invoice" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Invoice_Detail">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Invoice_Detail_Date" />
+        <xsd:element minOccurs="0" name="description" type="string1024" />
+        <xsd:element ref="amount" />
+        <xsd:element minOccurs="0" ref="line_item_type" />
+        <xsd:element minOccurs="0" ref="quantity" />
+        <xsd:element minOccurs="0" ref="rate" />
+        <xsd:element minOccurs="0" ref="Period_Start_Date" />
+        <xsd:element minOccurs="0" ref="Period_End_Date" />
+        <xsd:element minOccurs="0" ref="plan_id" />
+        <xsd:element minOccurs="0" ref="plan_name" />
+        <xsd:element minOccurs="0" ref="service_id" />
+        <xsd:element minOccurs="0" ref="service_name" />
+        <xsd:element minOccurs="0" ref="term_quantity" />
+        <xsd:element minOccurs="0" ref="term_unit" />
+        <xsd:element minOccurs="0" ref="subscriber_id" />
+        <xsd:element minOccurs="0" ref="product_id" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Line_Item_Approval">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="line_item_id" />
+        <xsd:element ref="approval_action" />
+        <xsd:element minOccurs="0" ref="comment" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Line_Item_Approval_Error">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="line_item_id" />
+        <xsd:element ref="error_code" />
+        <xsd:element ref="error_description" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Negative_Invoice">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Invoice" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Payment_Information">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="payment_method" />
+        <xsd:choice minOccurs="0">
+          <xsd:element ref="Credit_Card_Information" />
+          <xsd:element ref="Bank_Account_Information" />
+          <xsd:element ref="PayPal_Information" />
+        </xsd:choice>
+        <xsd:element minOccurs="0" ref="Bill_To_Address" />
+        <xsd:element minOccurs="0" ref="phone_number" />
+        <xsd:element minOccurs="0" ref="contact_email" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Plan_Discount_Type">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="discount_type_id" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Discount_Info" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Positive_Invoice">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Invoice" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Pre_Payment">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Transaction" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Discount_Info">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="billing_frequency" />
+        <xsd:element minOccurs="0" ref="discount_option" />
+        <xsd:element minOccurs="0" ref="discount_rate" />
+        <xsd:element minOccurs="0" ref="setup_fee_discount" />
+        <xsd:element name="status" type="yn_enum" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Statement">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="statement_number" />
+        <xsd:element ref="Statement_Date" />
+        <xsd:element ref="balance_forward" />
+        <xsd:element ref="Forward_Date" />
+        <xsd:element ref="balance" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Statement_Detail" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Statement_Detail">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="Invoice" />
+          <xsd:element ref="Payment" />
+          <xsd:element ref="Credit" />
+          <xsd:element ref="Failed_Payment" />
+          <xsd:element ref="Failed_Credit" />
+        </xsd:choice>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Payment">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Transaction_Date" />
+        <xsd:element ref="amount" />
+        <xsd:element ref="payment_method" />
+        <xsd:element minOccurs="0" ref="credit_card_number" />
+        <xsd:element minOccurs="0" ref="transit_number" />
+        <xsd:element minOccurs="0" ref="routing_number" />
+        <xsd:element minOccurs="0" ref="bank_account_number" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Credit">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Transaction_Date" />
+        <xsd:element ref="amount" />
+        <xsd:element ref="payment_method" />
+        <xsd:element minOccurs="0" ref="credit_card_number" />
+        <xsd:element minOccurs="0" ref="transit_number" />
+        <xsd:element minOccurs="0" ref="routing_number" />
+        <xsd:element minOccurs="0" ref="bank_account_number" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Failed_Payment">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Transaction_Date" />
+        <xsd:element ref="amount" />
+        <xsd:element ref="payment_method" />
+        <xsd:element minOccurs="0" ref="credit_card_number" />
+        <xsd:element minOccurs="0" ref="transit_number" />
+        <xsd:element minOccurs="0" ref="routing_number" />
+        <xsd:element minOccurs="0" ref="bank_account_number" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Failed_Credit">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Transaction_Date" />
+        <xsd:element ref="amount" />
+        <xsd:element ref="payment_method" />
+        <xsd:element minOccurs="0" ref="credit_card_number" />
+        <xsd:element minOccurs="0" ref="transit_number" />
+        <xsd:element minOccurs="0" ref="routing_number" />
+        <xsd:element minOccurs="0" ref="bank_account_number" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Invoice_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Invoice_Due_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Transaction_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Invoice_Detail_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Line_Item_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Statement_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Forward_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Reference_ID_Last_Updated_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="api_version" type="xsd:string" />
+  <xsd:element name="account_balance" type="decimalfraction2" />
+  <xsd:element name="account_id" type="string16" />
+  <xsd:element name="account_status" type="account_status_enum" />
+  <xsd:element name="account_status_note" type="string256" />
+  <xsd:element name="account_type" type="account_type_enum" />
+  <xsd:element name="action" type="string32" />
+  <xsd:element name="action_label" type="string64" />
+  <xsd:element name="action_name" type="string24" />
+  <xsd:element name="action_type" type="action_type_enum" />
+  <xsd:element name="action_value" type="string1024" />
+  <xsd:element name="active" type="yn_enum" />
+  <xsd:element name="address" type="string30" />
+  <xsd:element name="address_1" type="string45" />
+  <xsd:element name="address_2" type="string45" />
+  <xsd:element name="address_3" type="string45" />
+  <xsd:element name="address_4" type="string45" />
+  <xsd:element name="admin_password_expired" type="password_expired_enum" />
+  <xsd:element name="administrator_login_name" type="string64" />
+  <xsd:element name="amount" type="decimalfraction2" />
+  <xsd:element name="applied_amount" type="decimalfraction2" />
+  <xsd:element name="applied_to_invoice_amount" type="decimalfraction2" />
+  <xsd:element name="apply_changes_to_existing" type="yn_enum" />
+  <xsd:element name="apply_outstanding_amounts" type="apply_outstanding_amounts_enum" />
+  <xsd:element name="approval_action" type="approval_action_enum" />
+  <xsd:element name="Approval_Date_Time">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date_Time" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="approval_group_id" type="stringMaxSequenceNo" />
+  <xsd:element name="approval_status" type="approval_status_enum" />
+  <xsd:element name="approval_code" type="string32" />
+  <xsd:element name="approver" type="string64" />
+  <xsd:element name="attribute_name" type="string24" />
+  <xsd:element name="attribute_value" type="string4000" />
+  <xsd:element name="attribute_label" type="string64" />
+  <xsd:element name="attribute_type" type="attribute_type_enum" />
+  <xsd:element name="attribute_required" type="yn_enum" />
+  <xsd:element name="available_refund_amount" type="decimalfraction2" />
+  <xsd:element name="auto_pay_day" type="string32" />
+  <xsd:element name="avs_code" type="string3" />
+  <xsd:element name="balance" type="decimalfraction2" />
+  <xsd:element name="balance_forward" type="decimalfraction2" />
+  <xsd:element name="bank_account_number" type="string20" />
+  <xsd:element name="bill_in_advance_days" type="xsd:integer" />
+  <xsd:element name="billed" type="yn_enum" />
+  <xsd:element name="billing_day" type="nullableInteger2" />
+  <xsd:element name="billing_frequency" type="billing_frequency_enum" />
+  <xsd:element name="Billing_Line_Item">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="line_item_id" />
+        <xsd:element ref="line_item_type" />
+        <xsd:element ref="product_id" />
+        <xsd:element minOccurs="0" name="description" type="string1024" />
+        <xsd:element ref="amount" />
+        <xsd:element ref="Line_Item_Date" />
+        <xsd:element ref="billing_line_item_type" />
+        <xsd:element minOccurs="0" ref="Tax_Line_Detail" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="billing_line_item_type" type="billing_line_item_type_enum" />
+  <xsd:element name="billing_type" type="billing_type_enum" />
+  <xsd:element name="Business_Rules_Class">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="business_rules_class_id" />
+        <xsd:element minOccurs="0" ref="business_rules_class_name" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="business_rules_class_id" type="string16" />
+  <xsd:element name="business_rules_class_name" type="string64" />
+  <xsd:element name="calculation_period" type="calculation_period_enum" />
+  <xsd:element name="cancellation_penalty_days" type="xsd:integer" />
+  <xsd:element name="cancellation_reason" type="string64" />
+  <xsd:element name="card_balance" type="string4000" />
+  <xsd:element name="card_security_code" type="integer4" />
+  <xsd:element name="Category">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="category_name" />
+        <xsd:element maxOccurs="unbounded" ref="action" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="category_name" type="string32" />
+  <xsd:element name="city" type="string58" />
+  <xsd:element name="class" type="string19" />
+  <xsd:element name="collection_status" type="yn_enum" />
+  <xsd:element name="comment" type="string4000" />
+  <xsd:element name="company" type="string120" />
+  <xsd:element name="contact_email" type="string64" />
+  <xsd:element name="contract_term" type="contract_term_enum" />
+  <xsd:element name="contract_minimum" type="nullableDecimalfraction2" />
+  <xsd:element name="country" type="string2" />
+  <xsd:element name="country_of_bank" type="country_of_bank_enum" />
+  <xsd:element name="Custom_Attribute_Entry">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="record_type" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Custom_Attribute" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Custom_Attribute">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="attribute_name" />
+        <xsd:element ref="attribute_value" />
+        <xsd:element minOccurs="0" ref="attribute_label" />
+        <xsd:element minOccurs="0" ref="attribute_type" />
+        <xsd:element minOccurs="0" ref="attribute_required" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="credit_card_expiry_date" type="string5" />
+  <xsd:element name="credit_card_number" type="string20" />
+  <xsd:element name="credit_limit" type="nullableDecimalfraction2" />
+  <xsd:element name="current_balance" type="decimalfraction2" />
+  <xsd:element name="currency" type="currency_enum" />
+  <xsd:element name="custom_ui_enabled" type="yn_enum" />
+  <xsd:element name="custom_ui_url" type="string2000" />
+  <xsd:element name="day" type="string2WithInts" />
+  <xsd:element name="default" type="yn_enum" />
+  <xsd:element name="default_service" type="yn_enum" />
+  <xsd:element name="discount_option" type="discount_option_enum" />
+  <xsd:element name="discount_rate" type="decimalfraction4" />
+  <xsd:element name="discount_type_id" type="string64" />
+  <xsd:element name="document_type" type="document_type_enum" />
+  <xsd:element name="early_cancellation_penalty" type="nullableDecimalfraction2" />
+  <xsd:element name="ecp_authorization" type="ecp_authorization_enum" />
+  <xsd:element name="end" type="decimalfraction4" />
+  <xsd:element name="error_code" type="string4WithInts" />
+  <xsd:element name="error_description" type="string16kb" />
+  <xsd:element name="event_detail" type="string2048" />
+  <xsd:element name="event_end_time" type="string10">
+    <xsd:annotation>
+      <xsd:documentation>
+		  Its valus is in unix timestamp format. It is number of seconds between the particular date and Unix Epoch starting from January 1st, 1970.
+		</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="event_start_time" type="string10">
+    <xsd:annotation>
+      <xsd:documentation>
+		  Its valus is in unix timestamp format. It is number of seconds between the particular date and Unix Epoch starting from January 1st, 1970.
+		</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="event_title" type="string1024" />
+  <xsd:element name="expiry_num_units" type="xsd:integer" />
+  <xsd:element name="expiry_units" type="time_period_unit_enum" />
+  <xsd:element name="external_account_id" type="string64" />
+  <xsd:element name="external_group_id" type="string128" />
+  <xsd:element name="external_group_id_required" type="yn_enum" />
+  <xsd:element name="external_invoice_number" type="string64" />
+  <xsd:element name="fee" type="decimalfraction2" />
+  <xsd:element name="fax_number" type="string19" />
+  <xsd:element name="filter_by" type="search_account_filter_by_enum" />
+  <xsd:element name="first_name" type="string20" />
+  <xsd:element name="from_modified_time" type="string10">
+    <xsd:annotation>
+      <xsd:documentation>
+				Its valus is in unix timestamp format. It is number of seconds between the particular date and Unix Epoch starting from January 1st, 1970.
+			</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="further_action" type="yn_enum" />
+  <xsd:element name="hour" type="string2WithInts" />
+  <xsd:element name="information_type" type="information_type_enum" />
+  <xsd:element name="invoice_amount" type="decimalfraction2" />
+  <xsd:element name="invoice_notify_flag" type="invoice_notify_flag_enum" />
+  <xsd:element name="invoice_number" type="string16" />
+  <xsd:element name="invoice_outstanding_amount" type="decimalfraction2" />
+  <xsd:element name="invoice_status" type="invoice_status_enum" />
+  <xsd:element name="internal_price_book_id" type="stringMaxSequenceNo" />
+  <xsd:element name="internal_price_sheet_id" type="stringMaxSequenceNo" />
+  <xsd:element name="language" type="language_enum" />
+  <xsd:element name="last_name" type="string20" />
+  <xsd:element name="last_payment_amount" type="nullableDecimalfraction2" />
+  <xsd:element name="Line_Item">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="line_item_id" />
+        <xsd:element minOccurs="0" ref="product_id" />
+        <xsd:element minOccurs="0" name="description" type="string1024" />
+        <xsd:element ref="amount" />
+        <xsd:element ref="Line_Item_Date" />
+        <xsd:element ref="document_type" />
+        <xsd:element minOccurs="0" ref="line_item_type" />
+        <xsd:element minOccurs="0" ref="Tax_Line_Detail" />
+        <xsd:element minOccurs="0" ref="quantity" />
+        <xsd:element minOccurs="0" ref="rate" />
+        <xsd:element minOccurs="0" ref="Period_Start_Date" />
+        <xsd:element minOccurs="0" ref="Period_End_Date" />
+        <xsd:element minOccurs="0" ref="plan_id" />
+        <xsd:element minOccurs="0" ref="plan_name" />
+        <xsd:element minOccurs="0" ref="service_id" />
+        <xsd:element minOccurs="0" ref="service_name" />
+        <xsd:element minOccurs="0" ref="term_quantity" />
+        <xsd:element minOccurs="0" ref="term_unit" />
+        <xsd:element minOccurs="0" ref="subscriber_id" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Line_Item_Approval_Detail" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Line_Item_Group">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="approval_group_id" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Line_Item" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Line_Item_Approval_Detail">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="approver" />
+        <xsd:element ref="approval_action" />
+        <xsd:element minOccurs="0" ref="comment" />
+        <xsd:element ref="Approval_Date_Time" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="line_item_id" type="stringMaxSequenceNo" />
+  <xsd:element name="line_item_type" type="line_item_type_enum" />
+  <xsd:element name="login_id" type="string128" />
+  <xsd:element name="master_account_id" type="string16" />
+  <xsd:element name="minute" type="string2WithInts" />
+  <xsd:element name="monexa_transaction_id" type="string11" />
+  <xsd:element name="month" type="string2WithInts" />
+  <xsd:element name="name" type="string64" />
+  <xsd:element name="name_of_bank" type="string20" />
+  <xsd:element name="name_on_credit_card" type="string40" />
+  <xsd:element name="negative_invoice_balance" type="decimalfraction2" />
+  <xsd:element name="notes" type="string16kb" />
+  <xsd:element name="number_failed_payment_attempts" type="xsd:integer" />
+  <xsd:element name="number_of_payments" type="xsd:integer" />
+  <xsd:element name="office_id" type="string16" />
+  <xsd:element name="office_name" type="string64" />
+  <xsd:element name="optional_service" type="yn_enum" />
+  <xsd:element name="overage_calculation_period" type="calculation_period_enum" />
+  <xsd:element name="password" type="string16" />
+  <xsd:element name="payment_id" type="string16" />
+  <xsd:element name="payment_method" type="string64" />
+  <xsd:element name="payment_type" type="payment_type_enum" />
+  <xsd:element name="phone_number" type="string19" />
+  <xsd:element name="phone_number_1" type="string19" />
+  <xsd:element name="phone_number_2" type="string19" />
+  <xsd:element name="plan_id" type="string16" />
+  <xsd:element name="plan_name" type="string64" />
+  <xsd:element name="plan_property" type="plan_property_enum" />
+  <xsd:element name="pooled_access" type="yn_enum" />
+  <xsd:element name="pool_limit" type="xsd:integer" />
+  <xsd:element name="po_number" type="string40" />
+  <xsd:element name="positive_invoice_balance" type="decimalfraction2" />
+  <xsd:element name="pre_payment_balance" type="decimalfraction2" />
+  <xsd:element name="price" type="decimalfraction4" />
+  <xsd:element name="price_book_id" type="string16" />
+  <xsd:element name="price_book_name" type="string64" />
+  <xsd:element name="price_book_description" type="string2000" />
+  <xsd:element name="pricing_type" type="pricing_type_enum" />
+  <xsd:element name="product_id" type="string32" />
+  <xsd:element name="promo_code" type="string128" />
+  <xsd:element name="protocol_id" type="string64" />
+  <xsd:element name="provider_id" type="string16" />
+  <xsd:element name="provider_name" type="string64" />
+  <xsd:element name="quantity" type="decimalfraction4" />
+  <xsd:element name="rate" type="decimalfraction8" />
+  <xsd:element name="receive_provider_marketing" type="yes_no_enum" />
+  <xsd:element name="receive_third_party_marketing" type="yes_no_enum" />
+  <xsd:element name="record_type" type="record_type_enum" />
+  <xsd:element name="referral" type="string64" />
+  <xsd:element name="reference_id" type="string256" />
+  <xsd:element name="reference_number" type="string4000" />
+  <xsd:element name="reporting_password" type="string96" />
+  <xsd:element name="reporting_provider_id" type="string16" />
+  <xsd:element name="reporting_username" type="string64" />
+  <xsd:element name="Request_By_Account">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="account_id" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="response_code" type="string32" />
+  <xsd:element name="response_description" type="string2000" />
+  <xsd:element name="result_order" type="result_order_enum" />
+  <xsd:element name="result_sort_by" type="result_sort_by_enum" />
+  <xsd:element name="result_set_length" type="nullableIntegermax99999" />
+  <xsd:element name="result_set_start" type="integermax99999" />
+  <xsd:element name="result_size" type="xsd:integer" />
+  <xsd:element name="routing_number" type="string9" />
+  <xsd:element name="sales_representative_name" type="string128" />
+  <xsd:element name="sales_representative_email" type="string128" />
+  <xsd:element name="second" type="string2WithInts" />
+  <xsd:element name="service_group_id" type="string32" />
+  <xsd:element name="service_id" type="string32" />
+  <xsd:element name="service_name" type="string64" />
+  <xsd:element name="service_fault_type" type="service_fault_type_enum" />
+  <xsd:element name="service_fault_description" type="xsd:string" />
+  <xsd:element name="service_fault_details" type="xsd:string" />
+  <xsd:element name="service_parameter_attribute" type="string32" />
+  <xsd:element name="service_parameter_value" type="string32" />
+  <xsd:element name="service_type" type="service_type_enum" />
+  <xsd:element name="session_information" type="string2048" />
+  <xsd:element name="session_key" type="string32" />
+  <xsd:element name="Session_Key">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="session_key" />
+        <xsd:element ref="account_id" />
+        <xsd:element minOccurs="0" ref="session_type" />
+        <xsd:element ref="session_information" />
+        <xsd:element ref="session_key_expiry_minutes" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="session_key_expiry_minutes" type="integermax99999" />
+  <xsd:element name="session_type" type="session_type_enum" />
+  <xsd:element name="setup_fee" type="decimalfraction2" />
+  <xsd:element name="setup_fee_applied_flag" type="setup_fee_applied_flag_enum" />
+  <xsd:element name="setup_fee_description" type="string64" />
+  <xsd:element name="setup_fee_discount" type="decimalfraction4" />
+  <xsd:element name="state_or_province" type="string58" />
+  <xsd:element name="start" type="decimalfraction4" />
+  <xsd:element name="statement_notify_flag" type="statement_notify_flag_enum" />
+  <xsd:element name="statement_number" type="string16" />
+  <xsd:element name="subaccount_limit" type="xsd:integer" />
+  <xsd:element name="subscriber_id" type="string16" />
+  <xsd:element name="summary" type="string4000" />
+  <xsd:element name="tax_code" type="string16" />
+  <xsd:element name="taxable_status" type="taxable_status_enum" />
+  <xsd:element name="tax_agent_name" type="string64" />
+  <xsd:element name="tax_agent_tax_code" type="string64" />
+  <xsd:element name="tax_region_type" type="tax_region_type_enum" />
+  <xsd:element name="tax_region_value" type="string32" />
+  <xsd:element name="tax_exempt" type="yn_enum" />
+  <xsd:element name="tax_exempt_document_reference" type="string32" />
+  <xsd:element name="tax_exempt_document_type" type="string32" />
+  <xsd:element name="Tax_Exempt_Start_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Tax_Exempt_End_Date">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Tax_Line_Detail">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="tax_agent_name" />
+        <xsd:element minOccurs="0" ref="tax_agent_tax_code" />
+        <xsd:element minOccurs="0" ref="tax_region_type" />
+        <xsd:element minOccurs="0" ref="tax_region_value" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="term_quantity" type="xsd:integer" />
+  <xsd:element name="time_between_payments_number" type="xsd:integer" />
+  <xsd:element name="time_between_payments_unit" type="time_period_unit_enum" />
+  <xsd:element name="term_unit" type="time_period_unit_enum" />
+  <xsd:element name="timezone" type="timezone_enum" />
+  <xsd:element name="to_modified_time" type="string10">
+    <xsd:annotation>
+      <xsd:documentation>
+				Its valus is in unix timestamp format. It is number of seconds between the particular date and Unix Epoch starting from January 1st, 1970.
+			</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="total_record_num" type="integermax99999" />
+  <xsd:element name="transaction_outstanding_amount" type="decimalfraction2" />
+  <xsd:element name="transact_proforma_amount" type="yn_enum" />
+  <xsd:element name="transaction_id" type="string255" />
+  <xsd:element name="Transaction_Information">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Transaction" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Invoice" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Transaction">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="Subscriber_Information" type="Subscriber_Information_Type" />
+        <xsd:element ref="monexa_transaction_id" />
+        <xsd:element ref="transaction_type" />
+        <xsd:element name="status" type="transaction_status_enum" />
+        <xsd:element minOccurs="0" ref="approval_code" />
+        <xsd:element minOccurs="0" ref="response_code" />
+        <xsd:element minOccurs="0" ref="response_description" />
+        <xsd:element minOccurs="0" ref="avs_code" />
+        <xsd:element minOccurs="0" ref="card_balance" />
+        <xsd:element ref="amount" />
+        <xsd:element minOccurs="0" ref="Applied_To_Invoice_Date" />
+        <xsd:element minOccurs="0" ref="applied_to_invoice_amount" />
+        <xsd:element minOccurs="0" ref="transaction_outstanding_amount" />
+        <xsd:element minOccurs="0" ref="available_refund_amount" />
+        <xsd:element minOccurs="0" ref="further_action" />
+        <xsd:element ref="transaction_time" />
+        <xsd:element ref="Local_Transaction_Time" />
+        <xsd:element minOccurs="0" ref="transaction_id" />
+        <xsd:element minOccurs="0" ref="reference_number" />
+        <xsd:element minOccurs="0" ref="reference_id" />
+        <xsd:element minOccurs="0" ref="comment" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="transaction_time" type="string10">
+    <xsd:annotation>
+      <xsd:documentation>
+		  		Its valus is in unix timestamp format. It is number of seconds between the particular date and Unix Epoch starting from January 1st, 1970.
+			</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="transaction_token" type="string32" />
+  <xsd:element name="transaction_type" type="transaction_type_enum" />
+  <xsd:element name="transit_number" type="string5" />
+  <xsd:element name="trial_balance" type="nullableDecimalfraction2" />
+  <xsd:element name="updated_by" type="string64" />
+  <xsd:element name="use_plan_credit_limit" type="yn_enum" />
+  <xsd:element name="User_Action">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="action_name" />
+        <xsd:element minOccurs="0" ref="action_value" />
+        <xsd:element minOccurs="0" ref="action_label" />
+        <xsd:element minOccurs="0" ref="action_type" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="User_Setting">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="User_Action" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="usage_billing_period_number" type="xsd:integer" />
+  <xsd:element name="usage_billing_period_unit" type="time_period_unit_enum" />
+  <xsd:element name="usage_id" type="string16" />
+  <xsd:element name="verification_answer" type="string32" />
+  <xsd:element name="verification_question" type="string80" />
+  <xsd:element name="version" type="string64" />
+  <xsd:element name="year" type="string4WithInts" />
+  <xsd:element name="xfd_url" type="string1024" />
+  <xsd:element name="zip_or_postal_code" type="string10" />
+  <xsd:complexType name="Subscriber_Information_Type">
+    <xsd:sequence>
+      <xsd:element name="Account_Information" type="Account_Information_Type" />
+      <xsd:element name="Contact_Information" type="Contact_Information_Type" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Account_Information_Type">
+    <xsd:sequence>
+      <xsd:element ref="account_id" />
+      <xsd:element ref="login_id" />
+      <xsd:element ref="external_group_id" />
+      <xsd:element ref="provider_id" />
+      <xsd:element ref="provider_name" />
+      <xsd:element ref="office_id" />
+      <xsd:element ref="office_name" />
+      <xsd:element ref="account_status" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Contact_Information_Type">
+    <xsd:sequence>
+      <xsd:element ref="first_name" />
+      <xsd:element ref="last_name" />
+      <xsd:element ref="company" />
+      <xsd:element ref="phone_number_1" />
+      <xsd:element ref="external_account_id" />
+      <xsd:element ref="language" />
+      <xsd:element minOccurs="0" ref="master_account_id" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

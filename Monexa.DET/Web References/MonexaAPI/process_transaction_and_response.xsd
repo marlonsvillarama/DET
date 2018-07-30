@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="ProcessTransactionRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="PROCESS_TRANSACTION" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="PROCESS_TRANSACTION">
+    <xsd:annotation>
+      <xsd:documentation>
+				Process Transaction will attempt to perform an authorization, charge or refund for an
+				Account.
+			</xsd:documentation>
+      <xsd:documentation>
+				Authorization
+					An authorization is currently supported for credit card payment methods only. The credit
+					card information and payment amount are submitted to the card processing networks for
+					verification of the card number, expiry and available balance on the card. A successful
+					authorization will also place a hold on the credit card for the amount requested. The
+					system currently does not support void or purchase completion for authorization type
+					transactions, therefore it is recommended to not perform authorizations for more than
+					1.00.
+					
+					An authorization transaction does not affect the balance of a customer Account in iTAPP.
+			</xsd:documentation>
+      <xsd:documentation>
+				Charge
+					A charge transaction is used to represent a payment from a customer Account to the
+					Provider. For credit card and electronic check payment types, the transaction is submitted
+					to the Processing Networks for approval.
+					A successful transaction is reflected on the balance of the customer Account in iTAPP.
+			</xsd:documentation>
+      <xsd:documentation>
+				Refund
+					A refund transaction is used to represent a transfer of funds or credit from the Provider to
+					the customer Account. For credit card and electronic check payment types, the
+					transaction is submitted to the Processing Networks for approval.
+					A successful transaction is reflected on the balance of the customer Account in iTAPP.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for the Process Transaction Request:
+						account_id | Account_Namespace
+						transaction_type
+						amount
+			</xsd:documentation>
+      <xsd:documentation>
+				Conditional Required Fields
+					The following is a list of Conditionally Required Fields for the Process Transaction Request:
+						If Payment_Information is "CC" or "AMEX" or "DSCVR" or "MC" or "RSVP" or "VISA": Credit_Card_Information
+						If Payment_Information is "ECP": Bank_Account_Information
+						If Payment_Information is "PAYPAL": PayPal_Information
+			</xsd:documentation>
+      <xsd:documentation>
+				A Note About Payment_Information
+					If Payment_Information is not sent in the request, the system will use the payment
+					information on file. If Payment information is sent, this information will be used for the
+					one-time payment only and will not update the information on file for the Account. To
+					update the payment information on file for an Account, use the UPDATE_SUBSCRIBER API
+					request.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element ref="transaction_type" />
+        <xsd:element minOccurs="0" ref="amount" />
+        <xsd:element minOccurs="0" ref="apply_outstanding_amounts" />
+        <xsd:element minOccurs="0" ref="monexa_transaction_id" />
+        <xsd:element minOccurs="0" ref="transaction_token" />
+        <xsd:element minOccurs="0" ref="Payment_Information" />
+        <xsd:element minOccurs="0" ref="comment" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Payment_Map" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_PROCESS_TRANSACTION">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="monexa_transaction_id" />
+        <xsd:element minOccurs="0" ref="transaction_id" />
+        <xsd:element minOccurs="0" ref="reference_number" />
+        <xsd:element minOccurs="0" ref="approval_code" />
+        <xsd:element minOccurs="0" ref="response_code" />
+        <xsd:element minOccurs="0" ref="response_description" />
+        <xsd:element minOccurs="0" ref="avs_code" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="GetAccountBalanceInfoRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="GET_ACCOUNT_BALANCE_INFO" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GET_ACCOUNT_BALANCE_INFO">
+    <xsd:annotation>
+      <xsd:documentation>
+				Get Account Balance Info will return detailed balance information for the specified Account.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for the Lookup Invoice Request:
+						account_id | Account_Namespace
+						information_type
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element ref="information_type" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_GET_ACCOUNT_BALANCE_INFO">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="account_id" />
+        <xsd:element ref="account_balance" />
+        <xsd:element ref="positive_invoice_balance" />
+        <xsd:element ref="negative_invoice_balance" />
+        <xsd:element ref="pre_payment_balance" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Positive_Invoice" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Negative_Invoice" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Pre_Payment" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="Response_LIST_PERMISSIONS">
+    <xsd:annotation>
+      <xsd:documentation>
+			The Lookup Permissions request returns the list of permissions available to the
+			administrator specified in the Authentication section.
+		</xsd:documentation>
+      <xsd:documentation>
+			Permissions are split into Categories, however an Administrator can be assigned All
+			Actions in a Category - this is represented by a * in the XML. Alternatively, if an
+			Administrator is a 'super user' they can have All Actions in All Categories
+
+			Permissions are split into Categories as follows:
+			Catagory_name 	Action 			Description
+			All 		* 			All actions in All Categories
+			Account 	* 			All actions in Accounts
+			Account		CreateAccount 		Create a Master Account
+			Account		UpdateAccountInfo 	Update a Master Account
+			Account		UpdateAccountContactInfo Update Contact information
+								for a Master Account
+			Account		UpdateAccountBillingInfo Update Billing information for
+								a Master Account
+			Account		ViewAccountInfo View 	Account information for
+								a Master Account
+			Account		ViewAccountContactInfo View contact information for a
+								Master Account
+			Account		ViewAccountBillingInfo 	View Billing Information for a
+								Master Account
+			Account		CreateSubAccount 	Create a Sub Account
+			Account		UpdateSubAccountInfo 	Update Account Information
+								for a Sub Account
+			Account		UpdateSubAccountContactInfo Update Contact Information
+								for a Sub Account
+			Account		ViewSubAccountInfo View Account Information for
+								a Sub Account
+			Account		ViewSubAccountContactInfo View Contact info for a Sub
+								Account
+			Account		PasswordCheck 		Check the password for an
+								Account (either a master or a
+								sub Account)
+			Account		SearchAccounts 		Search for Accounts matching
+								entered criteria
+		</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Category" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="SearchPlanRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="SEARCH_PLAN" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SEARCH_PLAN">
+    <xsd:annotation>
+      <xsd:documentation>
+				The Search Plan method returns a list of Plans matching the input criteria.
+			</xsd:documentation>
+      <xsd:documentation>
+				Optional Fields
+					The following is the list of optional filter criteria for performing the search: 
+						plan_id                       
+						name
+						provider_name
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" ref="plan_id" />
+        <xsd:element minOccurs="0" ref="name" />
+        <xsd:element minOccurs="0" ref="provider_name" />
+        <xsd:element minOccurs="0" ref="result_set_start" />
+        <xsd:element minOccurs="0" ref="result_set_length" />
+        <xsd:element minOccurs="0" ref="result_order" />
+        <xsd:element minOccurs="0" name="result_sort_by" type="search_plan_result_sort_by_enum" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_SEARCH_PLAN">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="result_size" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="Plan" type="REP_SEARCH_PLAN_PLAN_TYPE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="REP_SEARCH_PLAN_PLAN_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="provider_id" />
+      <xsd:element minOccurs="0" ref="provider_name" />
+      <xsd:element ref="plan_id" />
+      <xsd:element minOccurs="0" ref="name" />
+      <xsd:element minOccurs="0" name="description" type="string4000" />
+      <xsd:element minOccurs="0" ref="product_id" />
+      <xsd:element minOccurs="0" ref="price" />
+      <xsd:element minOccurs="0" ref="setup_fee" />
+      <xsd:element minOccurs="0" ref="setup_fee_description" />
+      <xsd:element minOccurs="0" ref="early_cancellation_penalty" />
+      <xsd:element minOccurs="0" ref="cancellation_penalty_days" />
+      <xsd:element minOccurs="0" ref="expiry_num_units" />
+      <xsd:element minOccurs="0" ref="expiry_units" />
+      <xsd:element minOccurs="0" ref="use_plan_credit_limit" />
+      <xsd:element minOccurs="0" ref="credit_limit" />
+      <xsd:element minOccurs="0" ref="pooled_access" />
+      <xsd:element minOccurs="0" ref="pool_limit" />
+      <xsd:element minOccurs="0" maxOccurs="3" ref="plan_property" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Plan_Discount_Type" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Plan_Service" type="REP_SEARCH_PLAN_PLAN_SERVICE_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Plan_Restriction" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Price_Book" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_SEARCH_PLAN_PLAN_SERVICE_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Service_Group" type="REP_SEARCH_PLAN_SERVICE_GROUP_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_SEARCH_PLAN_SERVICE_GROUP_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="service_group_id" />
+      <xsd:element name="description" type="string64" />
+      <xsd:element minOccurs="0" ref="summary" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Service" type="REP_SEARCH_PLAN_SERVICE_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_SEARCH_PLAN_SERVICE_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="service_id" />
+      <xsd:element name="description" type="string64" />
+      <xsd:element ref="service_type" />
+      <xsd:element minOccurs="0" ref="price" />
+      <xsd:element ref="default_service" />
+      <xsd:element ref="optional_service" />
+      <xsd:element ref="product_id" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

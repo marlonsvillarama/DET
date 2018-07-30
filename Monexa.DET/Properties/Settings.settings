@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Monexa.DET.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Monexa_DET_com_monexa_api_MonexaWebservice_v05_40" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ondemand.monexa.com/SOAP/services/MonexaWebservice_v05_40</Value>
+    </Setting>
+    <Setting Name="Monexa_DET_MonexaAPI_MonexaWebservice_v05_40" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ondemand.monexa.com/SOAP/services/MonexaWebservice_v05_40</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

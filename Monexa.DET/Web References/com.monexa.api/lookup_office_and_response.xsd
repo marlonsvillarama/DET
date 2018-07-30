@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="LookupOfficeRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="LOOKUP_OFFICE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LOOKUP_OFFICE">
+    <xsd:annotation>
+      <xsd:documentation>
+				The LOOKUP_OFFICE request will return detailed information for a specific Office.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for the LOOKUP_OFFICE Request:
+						office_id
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="office_id" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_LOOKUP_OFFICE">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Office" type="REP_LOOKUP_OFFICE_OFFICE_TYPE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="REP_LOOKUP_OFFICE_OFFICE_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="office_id" />
+      <xsd:element minOccurs="0" ref="office_name" />
+      <xsd:element minOccurs="0" ref="transaction_token" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="cancellation_reason" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

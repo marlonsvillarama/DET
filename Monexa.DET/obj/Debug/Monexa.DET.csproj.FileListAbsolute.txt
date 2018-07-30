@@ -1,0 +1,17 @@
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\obj\Debug\Monexa.DET.csprojResolveAssemblyReference.cache
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\obj\Debug\Monexa.DET.Form1.resources
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\obj\Debug\Monexa.DET.Properties.Resources.resources
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\obj\Debug\Monexa.DET.csproj.GenerateResource.cache
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\obj\Debug\Monexa.DET.csproj.CoreCompileInputs.cache
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\bin\Debug\Monexa.DET.exe.config
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\bin\Debug\Monexa.DET.exe
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\bin\Debug\Monexa.DET.pdb
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\obj\Debug\Monexa.DET.csproj.CopyComplete
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\obj\Debug\Monexa.DET.exe
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\obj\Debug\Monexa.DET.pdb
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\bin\Debug\itextsharp.dll
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\bin\Debug\itextsharp.xml
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\bin\Debug\log4net.dll
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\bin\Debug\log4net.xml
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\bin\Debug\Newtonsoft.Json.dll
+C:\NetSuite\FILES\PROJECTS\SuiteBilling\Monexa.DET\bin\Debug\Newtonsoft.Json.xml

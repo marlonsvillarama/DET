@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="ListOfficesRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="LIST_OFFICES" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LIST_OFFICES">
+    <xsd:annotation>
+      <xsd:documentation>
+				The LIST_OFFICES request will return all Offices for a Provider configured in the system 
+				the Administrator has access to.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of Required Fields for the List Offices Request:
+						information_type
+			</xsd:documentation>
+      <xsd:documentation>
+				Information_type
+					If information_type = minimum, the fields from the Office element returned in the response
+					are:
+						office_id
+						office_name
+					If information_type = summary, the fields from the Office element returned in the response
+					are:
+						office_id
+						office_name
+						transaction_token
+						cancellation_reason
+					If information_type = full, all fields in the Office element will be returned in the response.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="information_type" />
+        <xsd:element minOccurs="0" ref="provider_id" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_LIST_OFFICES">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="Office" type="REP_LIST_OFFICES_OFFICE_TYPE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="REP_LIST_OFFICES_OFFICE_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="office_id" />
+      <xsd:element minOccurs="0" ref="office_name" />
+      <xsd:element minOccurs="0" ref="transaction_token" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" ref="cancellation_reason" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

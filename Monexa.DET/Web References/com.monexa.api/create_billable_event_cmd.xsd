@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="CreateBillableEventRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="CREATE_BILLABLE_EVENT" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="CREATE_BILLABLE_EVENT">
+    <xsd:annotation>
+      <xsd:documentation>
+			The Create Billable Event transaction will add an entry to the event log used to calculate
+			usage based billing line items.
+
+			The system supports two types of usage based billing services: Simple Usage and Time-
+			Based Usage.
+		</xsd:documentation>
+      <xsd:documentation>
+			Simple Usage
+				For Simple Usage Services, the rating engine uses quantity information only to determine
+				the billable amount(s).
+
+				Required fields for a Simple Usage Service:
+					account_id | Account_Namespace
+					service_id
+					quantity
+		</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element ref="service_id" />
+        <xsd:element minOccurs="0" ref="event_start_time" />
+        <xsd:element minOccurs="0" ref="event_end_time" />
+        <xsd:element ref="quantity" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Custom_Attribute" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

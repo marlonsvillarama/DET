@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="LookupPriceBookRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="LOOKUP_PRICE_BOOK" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LOOKUP_PRICE_BOOK">
+    <xsd:annotation>
+      <xsd:documentation>
+		  	The Lookup Price Book transaction will return information about an existing Price
+			Book. In the case where the Price Book does not exist, an error will be returned.
+		</xsd:documentation>
+      <xsd:documentation>
+			The following is the list of Required Fields for the Delete Price Book Request:
+			
+			LOOKUP_PRICE_BOOK: internal_price_book_id | Price_Book_Namespace
+		</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:choice>
+        <xsd:element ref="internal_price_book_id" />
+        <xsd:element ref="Price_Book_Namespace" />
+      </xsd:choice>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_LOOKUP_PRICE_BOOK">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Price_Book" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

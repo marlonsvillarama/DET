@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="ListAccountHistoryRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="LIST_ACCOUNT_HISTORY" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LIST_ACCOUNT_HISTORY">
+    <xsd:annotation>
+      <xsd:documentation>
+			List Account History will return details from the Audit Log about changes made to the
+			specified Account.
+		</xsd:documentation>
+      <xsd:documentation>
+			Required Fields
+				The following is the list of Required Fields for the List Account History Request:
+					LIST_ACCOUNT_HISTORY: account_id | Account_Namespace
+		</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element minOccurs="0" ref="Start_Date" />
+        <xsd:element minOccurs="0" ref="End_Date" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_LIST_ACCOUNT_HISTORY">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="account_id" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="Account_Event" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

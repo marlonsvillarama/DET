@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.monexa.com" targetNamespace="http://www.monexa.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="SearchUsageDataRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Authentication" />
+        <xsd:element ref="SEARCH_USAGE_DATA" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SEARCH_USAGE_DATA">
+    <xsd:annotation>
+      <xsd:documentation>
+				The Search Usage Data method returns a list of Usage Data matching the input criteria.
+			</xsd:documentation>
+      <xsd:documentation>
+				Required Fields
+					The following is the list of required filter criteria for performing the search: 
+						account_id | Account_Namespace
+			</xsd:documentation>
+      <xsd:documentation>
+				Optional Fields
+					The following is the list of optional filter criteria for performing the search: 
+						service_id                       
+						billed
+						Start_Date
+						End_Date
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:choice>
+          <xsd:element ref="account_id" />
+          <xsd:element ref="Account_Namespace" />
+        </xsd:choice>
+        <xsd:element minOccurs="0" ref="service_id" />
+        <xsd:element minOccurs="0" ref="billed" />
+        <xsd:element minOccurs="0" ref="Start_Date" />
+        <xsd:element minOccurs="0" ref="End_Date" />
+        <xsd:element minOccurs="0" ref="result_set_start" />
+        <xsd:element minOccurs="0" ref="result_set_length" />
+        <xsd:element minOccurs="0" ref="result_order" />
+        <xsd:element minOccurs="0" name="result_sort_by" type="search_usage_data_result_sort_by_enum" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Response_SEARCH_USAGE_DATA">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="result_size" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="Usage_Data" type="REP_SEARCH_USAGE_DATA_USAGE_DATA_TYPE" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="REP_SEARCH_USAGE_DATA_USAGE_DATA_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="usage_id" />
+      <xsd:element minOccurs="0" ref="service_id" />
+      <xsd:element minOccurs="0" ref="billed" />
+      <xsd:element minOccurs="0" ref="event_start_time" />
+      <xsd:element minOccurs="0" ref="Local_Event_Start_Time" />
+      <xsd:element minOccurs="0" ref="event_end_time" />
+      <xsd:element minOccurs="0" ref="Local_Event_End_Time" />
+      <xsd:element minOccurs="0" ref="quantity" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Custom_Attribute" type="REP_SEARCH_USAGE_DATA_CUSTOM_ATTRIBUTE_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REP_SEARCH_USAGE_DATA_CUSTOM_ATTRIBUTE_TYPE">
+    <xsd:sequence>
+      <xsd:element ref="attribute_name" />
+      <xsd:element ref="attribute_value" />
+      <xsd:element minOccurs="0" ref="attribute_label" />
+      <xsd:element minOccurs="0" ref="attribute_type" />
+      <xsd:element minOccurs="0" ref="attribute_required" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
