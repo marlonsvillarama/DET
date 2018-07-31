@@ -37,12 +37,12 @@ namespace Monexa.DET
         private BackgroundWorker bwAPI;
         private StringBuilder sbFile;
 
-        private List<REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE> allSubscribers;
+        private Dictionary<string, List<object>> dataSet;
+        private List<object> filteredDataSet;
 
-        private List<string> accountIDs;
-        private string currentKey;
+        private string entityKey;
         private string requestKey;
-        private int recCounter;
+        private int requestCounter;
         private int errorCounter;
         private int fileCounter;
         private int PAGE_SIZE = 10;
@@ -50,6 +50,9 @@ namespace Monexa.DET
         private Dictionary<string, object> allRequests;
         private Dictionary<string, object> allResponses;
         private Dictionary<string, object> allErrors;
+        private List<object> allResults;
+
+        private StringBuilder sbSummary;
 
         private enum TaskStatus
         {
@@ -105,16 +108,16 @@ namespace Monexa.DET
         {
             wsCommands = new Dictionary<string, string>
             {
-                { "PingServer", "Web service ping" },
-                { "AllAccounts", "Extract accounts" },
-                //{ "AccountDetails", "Extract account details" },
-                //{ "AccountPricing", "Extract account pricing" },
-                //{ "Subscribers", "Extract subscribers" },
-                //{ "SubAccounts", "Extract sub-accounts" },
-                { "Invoices", "Extract invoices" },
+                { "PingServer", "Web service ping" },                       // OK
+                //{ "AllAccounts", "Extract accounts" },                      // OK
+                //{ "AccountDetails", "Extract account details" },            // OK
+                //{ "AccountPricing", "Extract account pricing" },          <-- API is missing!
+                //{ "Subscribers", "Extract subscribers" },                   // OK
+                //{ "SubAccounts", "Extract sub-accounts" },                <-- No parent_account_id parameter in SEARCH_SUBSCRIBER
+                //{ "Invoices", "Extract invoices" },                         // OK
                 //{ "InvoiceDetails", "Extract invoice details" },
-                //{ "Transactions", "Extract transactions" },
-                //{ "Plans", "Extract plans" },
+                //{ "Transactions", "Extract transactions" },                 // OK
+                { "Plans", "Extract plans" },
                 //{ "PlanDetails", "Extract plan details" },
                 //{ "PriceBooks", "Extract price books" },
                 //{ "PriceBookDetails", "Extract price book details" },
@@ -144,40 +147,43 @@ namespace Monexa.DET
             allRequests = new Dictionary<string, object>();
             allResponses = new Dictionary<string, object>();
             allErrors = new Dictionary<string, object>();
+            dataSet = new Dictionary<string, List<object>>();
 
-            allSubscribers = new List<REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE>();
+            sbSummary = new StringBuilder();
         }
 
         private void ResetCounters()
         {
             sbFile = new StringBuilder();
-            accountIDs = new List<string>();
-            recCounter = 0;
+            filteredDataSet = new List<object>();
+            requestCounter = 0;
             errorCounter = 0;
             fileCounter = 1;
+            allResults = new List<object>();
+            allErrors = new Dictionary<string, object>();
         }
         #endregion
 
         #region UI Functions
         private void RunNextCommand()
         {
-            //Panel pn = (Panel)Controls.Find("pn" + commandsToProcess[0], true)[0];
-            //pn.Visible = true;
+            //if (commandsToProcess.Count > 0)
+            //{
+                bwAPI = new BackgroundWorker
+                {
+                    WorkerReportsProgress = true,
+                    WorkerSupportsCancellation = true
+                };
+                bwAPI.DoWork += bwAPI_DoWork;
+                bwAPI.ProgressChanged += bwAPI_ProgressChanged;
+                bwAPI.RunWorkerCompleted += bwAPI_RunWorkerCompleted;
 
-            bwAPI = new BackgroundWorker
-            {
-                WorkerReportsProgress = true,
-                WorkerSupportsCancellation = true
-            };
-            bwAPI.DoWork += bwAPI_DoWork;
-            bwAPI.ProgressChanged += bwAPI_ProgressChanged;
-            bwAPI.RunWorkerCompleted += bwAPI_RunWorkerCompleted;
+                ListViewItem lvi = FindCurrentListViewItem();
+                lvi.ImageIndex = (int)TaskStatus.InProgress;
+                lvi.ForeColor = System.Drawing.Color.Black;
 
-            ListViewItem lvi = FindCurrentListViewItem();
-            lvi.ImageIndex = (int)TaskStatus.InProgress;
-            lvi.ForeColor = System.Drawing.Color.Black;
-
-            bwAPI.RunWorkerAsync(commandsToProcess[0]);
+                bwAPI.RunWorkerAsync(commandsToProcess[0]);
+            //}
         }
 
         private void ToggleControls(bool enabled)
@@ -243,13 +249,13 @@ namespace Monexa.DET
                     GetInvoices();
                     break;
                 case "InvoiceDetails":
-                    //GetInvoiceDetails();
+                    GetInvoiceDetails();
                     break;
                 case "Transactions":
-                    //GetTransactions();
+                    GetTransactions();
                     break;
                 case "Plans":
-                    //GetPlans();
+                    GetPlans();
                     break;
                 case "PlanDetails":
                     //GetPlanDetails();
@@ -284,7 +290,7 @@ namespace Monexa.DET
                 allErrors.Add(requestKey, e.UserState);
                 errorCounter++;
 
-                WriteResults(e.UserState);
+                //WriteResults(e.UserState);
             }
             else
             {
@@ -294,29 +300,52 @@ namespace Monexa.DET
                 }
                 else
                 {
-                    allResponses.Add(requestKey, e.UserState);
-                    recCounter++;
+                    requestCounter++;
 
-                    WriteResults(e.UserState);
+                    if (e != null)
+                        WriteResults(e.UserState);
                 }
             }
         }
 
         private void bwAPI_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (commandsToProcess.Count > 0)
+            if (commandsToProcess[0] != "PingServer")
             {
-                ListViewItem lvi = FindCurrentListViewItem();
-                lvi.ImageIndex = (int)TaskStatus.Success;
+                WriteToFile();
+                WriteErrorFile();
 
-                commandsToProcess.RemoveAt(0);
+                StringBuilder sb = new StringBuilder()
+                    .Append("Received ").Append(allResults.Count)
+                    .Append(entityKey).Append(allResults.Count > 1 ? "s" : "");
+
+                if (allErrors.Count > 0)
+                {
+                    sb.Append(" with ").Append(allErrors.Count)
+                        .Append(" error").Append(allErrors.Count > 1 ? "s" : "");
+                }
+
+                UpdateProgress(sb.ToString());
             }
 
-            if (commandsToProcess.Count > 0)
-                RunNextCommand();
+            ListViewItem lvi = FindCurrentListViewItem();
+            if (allErrors.Count > 0)
+            {
+                lvi.ImageIndex = (int)TaskStatus.WithErrors;
+            }
             else
             {
-                txtResponse.Text = "Total web service requests sent: " +
+                lvi.ImageIndex = (int)TaskStatus.Success;
+            }
+
+            commandsToProcess.RemoveAt(0);
+
+            if (commandsToProcess.Count > 0) {
+                RunNextCommand();
+            }
+            else
+            {
+                txtSummary.Text = "Total web service requests sent: " +
                     allRequests.Count.ToString() + Environment.NewLine +
                     "Success: " + allResponses.Count.ToString() + Environment.NewLine +
                     "Failed: " + allErrors.Count.ToString() + Environment.NewLine;
@@ -338,6 +367,7 @@ namespace Monexa.DET
 
         #endregion
 
+        #region Web Service Functions
         private Authentication Authentication
         {
             get
@@ -351,7 +381,7 @@ namespace Monexa.DET
             }
         }
 
-        #region Web Service Functions
+        // OK
         private void PingServer()
         {
             try
@@ -367,24 +397,27 @@ namespace Monexa.DET
             }
         }
 
+        // OK
         private void GetAllAccounts()
         {
             ResetCounters();
+
+            allResults = new List<object>();
 
             try
             {
                 SearchSubscriberRequest req = new SearchSubscriberRequest();
                 req.Authentication = auth;
+                req.SEARCH_SUBSCRIBER = new SEARCH_SUBSCRIBER();
+                req.SEARCH_SUBSCRIBER.account_type = account_type_enum.all;
+                req.SEARCH_SUBSCRIBER.account_typeSpecified = true;
 
-                SEARCH_SUBSCRIBER search = new SEARCH_SUBSCRIBER();
-                search.account_type = account_type_enum.all;
-                search.account_typeSpecified = true;
-                req.SEARCH_SUBSCRIBER = search;
-
+                entityKey = " account";
                 requestKey = commandsToProcess[0];
-                allRequests.Add(requestKey, search);
+                allRequests.Add(requestKey, req);
 
                 Response_SEARCH_SUBSCRIBER res = ws.searchSubscriber(req);
+                allResponses.Add(requestKey, res);
 
                 bwAPI.ReportProgress(100, res);
             }
@@ -394,33 +427,37 @@ namespace Monexa.DET
             }
         }
 
+        // OK
         private void GetAccountDetails()
         {
             ResetCounters();
-            accountIDs = allSubscribers
-                .Where(sub => String.IsNullOrEmpty(sub.Account_Information.account_id) == false)
-                .Select(sub => sub.Account_Information.account_id)
+            filteredDataSet = dataSet["ACCOUNTS"]
+                .Where(sub => String.IsNullOrEmpty(((REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE)sub).Account_Information.account_id) == false)
+                //.Select(sub => ((REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE)sub).Account_Information.account_id)
+                .Distinct()
                 .ToList();
 
-            foreach (REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE sub in allSubscribers)
+            allResults = new List<object>();
+
+            foreach (REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE sub in filteredDataSet)
             {
                 try
                 {
-                    if (sub.Account_Information.account_id != null)
+                    //if (sub.Account_Information.account_id != null)
+                    if (allRequests.ContainsKey(sub.Account_Information.account_id.ToString()) == false)
                     {
                         LookupSubscriberRequest req = new LookupSubscriberRequest();
                         req.Authentication = auth;
+                        req.LOOKUP_SUBSCRIBER = new LOOKUP_SUBSCRIBER();
+                        req.LOOKUP_SUBSCRIBER.ItemElementName = ItemChoiceType1.account_id;
+                        req.LOOKUP_SUBSCRIBER.Item = sub.Account_Information.account_id.ToString();
 
-                        LOOKUP_SUBSCRIBER search = new LOOKUP_SUBSCRIBER();
-                        search.ItemElementName = ItemChoiceType1.account_id;
-                        search.Item = sub.Account_Information.account_id.ToString();
-                        req.LOOKUP_SUBSCRIBER = search;
-
-                        currentKey = sub.Account_Information.account_id;
-                        requestKey = commandsToProcess[0] + "_" + currentKey.ToString();
+                        entityKey = " account detail";
+                        requestKey = commandsToProcess[0] + "_" + sub.Account_Information.account_id.ToString();
+                        allRequests.Add(requestKey, req);
 
                         REP_LOOK_SUB_SUBSCRIBER_INFORMATION_TYPE[] res = ws.lookupSubscriber(req);
-                        allRequests.Add(requestKey, search);
+                        allResponses.Add(requestKey, res);
 
                         bwAPI.ReportProgress(100, res);
                     }
@@ -432,39 +469,56 @@ namespace Monexa.DET
             }
         }
 
-        // TO BE IMPLEMENTED
+        // API IS MISSING: SEARCH_PRICE_SHEET
         private void GetAccountPricing()
         {
             ResetCounters();
 
-            
+            allResults = new List<object>();
+
         }
 
+        // OK
         private void GetSubscribers()
         {
             ResetCounters();
+            //filteredDataSet = allSubscribers
+            filteredDataSet = dataSet["ACCOUNTS"]
+                .Where(sub => String.IsNullOrEmpty(((REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE)sub).Contact_Information.master_account_id) == false)
+                //.Select(sub => ((REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE)sub).Contact_Information.master_account_id)
+                //.Distinct()
+                .ToList();
 
-            foreach (REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE sub in allSubscribers)
+            allResults = new List<object>();
+
+            //foreach(string s in filteredDataSet)
+            foreach(REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE sub in filteredDataSet)
             {
                 try
                 {
-                    if (sub.Contact_Information.master_account_id != null)
+                    if (allRequests.ContainsKey(sub.Account_Information.account_id.ToString()) == false)
                     {
                         SearchSubscriberRequest req = new SearchSubscriberRequest();
                         req.Authentication = auth;
                         req.SEARCH_SUBSCRIBER = new SEARCH_SUBSCRIBER();
-                        req.SEARCH_SUBSCRIBER.account_id = sub.Contact_Information.master_account_id;
+                        req.SEARCH_SUBSCRIBER.account_id = sub.Account_Information.account_id;
 
-                        currentKey = sub.Contact_Information.master_account_id;
-                        requestKey = commandsToProcess[0] + "_" + currentKey.ToString();
-                        allRequests.Add(requestKey, req);
+                        entityKey = " subscriber";
+                        requestKey = commandsToProcess[0] + "_" + sub.Account_Information.account_id;
 
-                        Response_SEARCH_SUBSCRIBER res = ws.searchSubscriber(req);
+                        Response_SEARCH_SUBSCRIBER res = null;
+                        if (allRequests.ContainsKey(requestKey) == false)
+                        {
+                            allRequests.Add(requestKey, req);
+
+                            res = ws.searchSubscriber(req);
+                            allResponses.Add(requestKey, res);
+                        }
 
                         bwAPI.ReportProgress(100, res);
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     bwAPI.ReportProgress(0, ex);
                 }
@@ -475,29 +529,45 @@ namespace Monexa.DET
         private void GetSubAccounts()
         {
             ResetCounters();
-            /*
-            accountIDs = allSubscribers
-                .Where(sub => String.IsNullOrEmpty(sub.Account_Information.account_id) == false)
-                .Select(sub => sub.Account_Information.account_id)
+            
+            //filteredDataSet = allSubscribers
+            filteredDataSet = dataSet["ACCOUNTS"]
+                .Where(sub => String.IsNullOrEmpty(((REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE)sub).Account_Information.account_id) == false)
+                //.Select(sub => ((REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE)sub).Account_Information.account_id)
+                .Distinct()
                 .ToList();
 
-            foreach (REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE sub in allSubscribers)
+            //foreach (REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE sub in allSubscribers)
+            foreach(string s in filteredDataSet)
             {
                 try
                 {
                     SearchSubscriberRequest req = new SearchSubscriberRequest();
                     req.Authentication = auth;
-
+                    
                     SEARCH_SUBSCRIBER search = new SEARCH_SUBSCRIBER();
                 }
-            }*/
+                catch (Exception ex)
+                {
+                    bwAPI.ReportProgress(0, ex);
+                }
+            }
         }
 
+        // OK
         private void GetInvoices()
         {
             ResetCounters();
+            //filteredDataSet = allSubscribers
+            filteredDataSet = dataSet["ACCOUNTS"]
+                .Where(sub => String.IsNullOrEmpty(((REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE)sub).Account_Information.account_id) == false)
+                //.Select(inv => ((REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE)inv).Account_Information.account_id)
+                .ToList();
 
-            foreach (REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE sub in allSubscribers)
+            allResults = new List<object>();
+
+            //foreach(string s in filteredDataSet)
+            foreach(REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE sub in filteredDataSet)
             {
                 try
                 {
@@ -506,23 +576,140 @@ namespace Monexa.DET
                     req.SEARCH_INVOICE = new SEARCH_INVOICE();
                     req.SEARCH_INVOICE.information_type = information_type_enum.full;
                     req.SEARCH_INVOICE.ItemElementName = ItemChoiceType2.account_id;
+                    //req.SEARCH_INVOICE.Item = s;
                     req.SEARCH_INVOICE.Item = sub.Account_Information.account_id;
 
-                    currentKey = sub.Account_Information.account_id;
-                    requestKey = commandsToProcess[0] + "_" + currentKey.ToString();
+                    //entityKey = sub.Account_Information.account_id;
+                    entityKey = " invoice";
+                    requestKey = commandsToProcess[0] + "_" + sub.Account_Information.account_id;
+                    //requestKey = commandsToProcess[0] + "_" + s.ToString();
                     allRequests.Add(requestKey, req);
 
                     Invoice_Information[] res = ws.searchInvoice(req);
+                    allResponses.Add(requestKey, res);
 
                     bwAPI.ReportProgress(100, res);
+                    //}
                 }
                 catch (Exception ex)
                 {
                     bwAPI.ReportProgress(0, ex);
                 }
             }
+        }
+        
+        // OK
+        private void GetInvoiceDetails()
+        {
+            ResetCounters();
+            filteredDataSet = dataSet["INVOICES"];
+            /*filteredDataSet = dataSet["INVOICES"]
+                .Where(sub => String.IsNullOrEmpty(((Invoice_Information)sub).Account_Information.account_id) == false)
+                .Select(sub => sub.Account_Information.account_id)
+                .Distinct()
+                .ToList();*/
 
+            foreach(Invoice_Information inv in dataSet["INVOICES"])
+            {
+                try
+                {
+                    LookupInvoiceRequest req = new LookupInvoiceRequest();
+                    req.Authentication = auth;
+                    req.LOOKUP_INVOICE = new LOOKUP_INVOICE();
+                    req.LOOKUP_INVOICE.invoice_number = inv.Invoice.invoice_number;
+                    req.LOOKUP_INVOICE.information_type = information_type_enum.full;
+                    req.LOOKUP_INVOICE.Item = inv.Invoice.Subscriber_Information.Account_Information.account_id;
 
+                    entityKey = " invoice detail";
+                    requestKey = commandsToProcess[0] + "_" + inv.Invoice.invoice_number;
+                    allRequests.Add(requestKey, req);
+
+                    Response_LOOKUP_INVOICE res = ws.lookupInvoice(req);
+                    allResponses.Add(requestKey, res);
+
+                    bwAPI.ReportProgress(100, res);
+                }
+                catch(Exception ex)
+                {
+                    bwAPI.ReportProgress(0, ex);
+                }
+            }
+        }
+        
+        // OK
+        private void GetTransactions()
+        {
+            ResetCounters();
+            filteredDataSet = dataSet["ACCOUNTS"]
+                .Where(sub => String.IsNullOrEmpty(((REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE)sub).Account_Information.account_id) == false)
+                //.Select(inv => ((REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE)inv).Account_Information.account_id)
+                .ToList();
+
+            allResults = new List<object>();
+
+            foreach (REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE sub in filteredDataSet)
+            {
+                try
+                {
+                    SearchTransactionRequest req = new SearchTransactionRequest();
+                    req.Authentication = auth;
+                    req.SEARCH_TRANSACTION = new SEARCH_TRANSACTION();
+                    req.SEARCH_TRANSACTION.ItemElementName = ItemChoiceType3.account_id;
+                    req.SEARCH_TRANSACTION.Item = sub.Account_Information.account_id;
+
+                    entityKey = " transaction";
+                    requestKey = commandsToProcess[0] + "_" + sub.Account_Information.account_id;
+                    allRequests.Add(requestKey, req);
+
+                    Transaction[] res = ws.searchTransaction(req);
+                    allResponses.Add(requestKey, res);
+
+                    bwAPI.ReportProgress(100, res);
+                }
+                catch(Exception ex)
+                {
+                    bwAPI.ReportProgress(0, ex);
+                }
+            }
+        }
+        
+        // WIP
+        private void GetPlans()
+        {
+            ResetCounters();
+
+            allResults = new List<object>();
+
+            try
+            {
+                /*ListPlansRequest req = new ListPlansRequest();
+                req.LIST_PLANS = new LIST_PLANS();
+                req.LIST_PLANS.information_type = information_type_enum.full;
+
+                req.LIST_PLANS.LIST_PRICE_BOOKS = new LIST_PRICE_BOOKS();
+                req.LIST_PLANS.LIST_PRICE_BOOKS.information_type = information_type_enum.full;*/
+
+                SearchPlanRequest req = new SearchPlanRequest();
+                req.Authentication = auth;
+                req.SEARCH_PLAN = new SEARCH_PLAN();
+                req.SEARCH_PLAN.provider_name = "*";
+
+                entityKey = " plan";
+                requestKey = commandsToProcess[0];
+                allRequests.Add(requestKey, req);
+
+                Response_SEARCH_PLAN res = ws.searchPlan(req);
+                allResponses.Add(requestKey, res);
+
+                //REP_LIST_PLANS_PLAN_TYPE[] res = ws.listPlans(req);
+                //allResponses.Add(requestKey, res);
+
+                bwAPI.ReportProgress(100, res);
+            }
+            catch(Exception ex)
+            {
+                bwAPI.ReportProgress(0, ex);
+            }
         }
         #endregion
 
@@ -531,45 +718,71 @@ namespace Monexa.DET
         {
             string fileName;
 
-            fileName = Directory.GetCurrentDirectory() + "\\" + commandsToProcess[0] + "_" +
-                fileCounter.ToString() + ".txt";
-            File.WriteAllText(fileName, sbFile.ToString());
-
-            fileCounter++;
             sbFile = new StringBuilder();
+
+            for(int i=0, n=allResults.Count; i<n; i++)
+            {
+                sbFile.Append(JsonConvert.SerializeObject(allResults[i])).Append(Environment.NewLine);
+
+                if (
+                    (i % PAGE_SIZE == 0 && i > 0) || (i == (allResults.Count - 1))
+                    )
+                {
+                    fileName = Directory.GetCurrentDirectory() + "\\" + commandsToProcess[0] + "_" +
+                        fileCounter.ToString() + ".txt";
+
+                    File.WriteAllText(fileName,
+                        sbFile.Length > 0 ? sbFile.ToString() : "No results found");
+
+                    fileCounter++;
+                    sbFile = new StringBuilder();
+                }
+            }
+        }
+
+        private void WriteErrorFile()
+        {
+            string fileName;
+            int i = 0, n = allErrors.Count;
+
+            sbFile = new StringBuilder();
+
+            foreach(string key in allErrors.Keys)
+            {
+                sbFile.Append(JsonConvert.SerializeObject(allErrors[key])).Append(Environment.NewLine);
+
+                if ((i % PAGE_SIZE == 0 && i > 0) ||
+                    (i == allErrors.Count - 1))
+                {
+                    fileName = Directory.GetCurrentDirectory() + "\\" + commandsToProcess[0] + "_errors.txt";
+
+                    File.WriteAllText(fileName,
+                        sbFile.Length > 0 ? sbFile.ToString() : "No errors found");
+
+                    sbFile = new StringBuilder();
+                }
+
+                i++;
+            }
         }
 
         private void WriteResults (object obj)
         {
-            //string fileName;
-            //StringBuilder sb = new StringBuilder();
-
             switch (commandsToProcess[0])
             {
                 case "AllAccounts":
                     {
+                        if (dataSet.ContainsKey("ACCOUNTS") == false)
+                            dataSet["ACCOUNTS"] = new List<object>();
+
                         Response_SEARCH_SUBSCRIBER res = (Response_SEARCH_SUBSCRIBER)obj;
 
                         for (int i = 0, n = res.Subscriber_Information.Length; i < n; i++)
                         {
-                            if (cbWriteToFile.Checked == true && (i % PAGE_SIZE == 0 && i > 0))
-                            {
-                                WriteToFile();
-                            }
-
                             REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE x = res.Subscriber_Information[i];
-                            sbFile.Append(JsonConvert.SerializeObject(x)).Append(Environment.NewLine);
-                            allSubscribers.Add(x);
-
-                            /*if (string.IsNullOrEmpty(x.Account_Information.account_id) == false)
-                            {
-                                accountIDs.Add(Int32.Parse(x.Account_Information.account_id));
-                            }*/
-
-                            if (cbWriteToFile.Checked == true && (i % PAGE_SIZE > 0 && i == (n - 1)))
-                            {
-                                WriteToFile();
-                            }
+                            allResults.Add(x);
+                            dataSet["ACCOUNTS"].Add(x);
+                            //allSubscribers.Add(x);
                         }
 
                         UpdateProgress("Received " + res.result_size + " accounts");
@@ -577,57 +790,115 @@ namespace Monexa.DET
                     break;
                 case "AccountDetails":
                     {
+                        if (dataSet.ContainsKey("ACCOUNT_DETAILS") == false)
+                            dataSet["ACCOUNT_DETAILS"] = new List<object>();
+
                         REP_LOOK_SUB_SUBSCRIBER_INFORMATION_TYPE[] res = (REP_LOOK_SUB_SUBSCRIBER_INFORMATION_TYPE[])obj;
 
-                        if (cbWriteToFile.Checked == true && recCounter % PAGE_SIZE == 0 && recCounter > 0)
-                        {
-                            WriteToFile();
-                        }
-                        REP_LOOK_SUB_SUBSCRIBER_INFORMATION_TYPE x = res[0];
-                        sbFile.Append(JsonConvert.SerializeObject(x)).Append(Environment.NewLine);
+                        //if (cbWriteToFile.Checked == true && requestCounter % PAGE_SIZE == 0 && requestCounter > 0)
+                        //{
+                        //    WriteToFile();
+                        //}
 
-                        if (CanWriteToFile() == true)
-                        {
-                            WriteToFile();
-                        }
+                        //REP_LOOK_SUB_SUBSCRIBER_INFORMATION_TYPE x = res[0];
+                        allResults.Add(res[0]);
+                        dataSet["ACCOUNT_DETAILS"].Add(res[0]);
+                        //sbFile.Append(JsonConvert.SerializeObject(x)).Append(Environment.NewLine);
 
-                        //recCounter++;
+                        //if (CanWriteToFile() == true)
+                        //{
+                        //    WriteToFile();
+                        //}
+
+                        //requestCounter++;
                         UpdateProgress(WriteProgressText());
                     }
                     break;
-                case "GetSubscribers":
+                case "Subscribers":
                     {
+                        if (dataSet.ContainsKey("SUBSCRIBERS") == false)
+                            dataSet["SUBSCRIBERS"] = new List<object>();
+
                         Response_SEARCH_SUBSCRIBER res = (Response_SEARCH_SUBSCRIBER)obj;
                         for (int i = 0, n = res.Subscriber_Information.Length; i < n; i++)
                         {
-                            if (cbWriteToFile.Checked == true && (i % PAGE_SIZE == 0 && i > 0))
-                            {
-                                WriteToFile();
-                            }
+                            //if (cbWriteToFile.Checked == true && (i % PAGE_SIZE == 0 && i > 0))
+                            //{
+                            //    WriteToFile();
+                            //}
 
                             REP_SEA_SUB_SUBSCRIBER_INFORMATION_TYPE x = res.Subscriber_Information[i];
-                            sbFile.Append(JsonConvert.SerializeObject(x)).Append(Environment.NewLine);
-
-                            //recCounter++;
-                            UpdateProgress(WriteProgressText());
+                            allResults.Add(x);
+                            dataSet["SUBSCRIBERS"].Add(x);
+                            //sbFile.Append(JsonConvert.SerializeObject(x)).Append(Environment.NewLine);
                         }
+
+                        //requestCounter++;
+                        UpdateProgress(WriteProgressText());
                     }
                     break;
                 case "Invoices":
                     {
+                        if (dataSet.ContainsKey("INVOICES") == false)
+                            dataSet["INVOICES"] = new List<object>();
+
                         Invoice_Information[] res = (Invoice_Information[])obj;
+
                         for (int i=0, n=res.Length; i<n; i++)
                         {
-                            if (cbWriteToFile.Checked == true && (i % PAGE_SIZE == 0 && i > 0))
-                            {
-                                WriteToFile();
-                            }
-
-                            Invoice_Information x = res[i];
-                            sbFile.Append(JsonConvert.SerializeObject(x)).Append(Environment.NewLine);
-
-                            UpdateProgress(WriteProgressText());
+                            allResults.Add(res[i]);
+                            dataSet["INVOICES"].Add(res[i]);
                         }
+
+                        UpdateProgress(WriteProgressText());
+                    }
+                    break;
+                case "InvoiceDetails":
+                    {
+                        if (dataSet.ContainsKey("INVOICE_DETAILS") == false)
+                            dataSet["INVOICE_DETAILS"] = new List<object>();
+
+                        Response_LOOKUP_INVOICE res = (Response_LOOKUP_INVOICE)obj;
+                        allResults.Add(res);
+                        dataSet["INVOICE_DETAILS"].Add(res);
+
+                        UpdateProgress(WriteProgressText());
+                    }
+                    break;
+                case "Transactions":
+                    {
+                        if (dataSet.ContainsKey("TRANSACTIONS") == false)
+                            dataSet["TRANSACTIONS"] = new List<object>();
+
+                        Transaction[] res = (Transaction[])obj;
+                        
+                        for (int i=0, n=res.Length; i<n; i++)
+                        {
+                            allResults.Add(res[i]);
+                            dataSet["TRANSACTIONS"].Add(res[i]);
+                        }
+
+                        UpdateProgress(WriteProgressText());
+                    }
+                    break;
+                case "Plans":
+                    {
+                        if (dataSet.ContainsKey("PLANS") == false)
+                            dataSet["PLANS"] = new List<object>();
+
+                        /*REP_LIST_PLANS_PLAN_TYPE[] res = (REP_LIST_PLANS_PLAN_TYPE[])obj;
+
+                        for (int i = 0, n = res.Length; i < n; i++)*/
+
+                        Response_SEARCH_PLAN res = (Response_SEARCH_PLAN)obj;
+
+                        for(int i = 0, n = res.Plan.Length; i < n; i++)
+                        {
+                            allResults.Add(res.Plan[i]);
+                            dataSet["PLANS"].Add(res.Plan[i]);
+                        }
+
+                        UpdateProgress(WriteProgressText());
                     }
                     break;
                 default:
@@ -635,11 +906,11 @@ namespace Monexa.DET
             }
         }
 
+        // TO BE DELETED
         private bool CanWriteToFile()
         {
             bool output = false;
-            output = cbWriteToFile.Checked == true &&
-                (recCounter % PAGE_SIZE > 0 && recCounter == accountIDs.Count);
+            output = cbWriteToFile.Checked == true && (allResults.Count % PAGE_SIZE == 0);
 
             return output;
         }
@@ -647,25 +918,11 @@ namespace Monexa.DET
         private string WriteProgressText()
         {
             StringBuilder sb = new StringBuilder();
-            /*
-            if ((recCounter + errorCounter) < accountIDs.Count)
-            {
-                sb.Append("IN PROGRESS");
-            }
-            else
-            {
-                sb.Append("DONE");
-                if (errorCounter > 0)
-                {
-                    sb.Append(" WITH ERRORS");
-                }
-            }
-            */
-            sb.Append("Processed ").Append(recCounter).Append(" of ")
-                .Append(accountIDs.Count).Append(" requests");
+            sb.Append("Processed ").Append(requestCounter).Append(" of ")
+                .Append(filteredDataSet.Count).Append(" requests");
 
             ListViewItem lvi = FindCurrentListViewItem();
-            if ((recCounter + errorCounter) >= accountIDs.Count)
+            if ((requestCounter + errorCounter) >= filteredDataSet.Count)
             {
                 if (errorCounter > 0)
                 {
@@ -676,8 +933,6 @@ namespace Monexa.DET
                     lvi.ImageIndex = (int)TaskStatus.Success;
                 }
             }
-            //sb.Append("Processed ").Append(recCounter).Append(" of ")
-            //    .Append(accountIDs.Count).Append(" requests");
 
             return sb.ToString();
         }
